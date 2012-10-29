@@ -138,4 +138,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <ProjectReference Include="..\Granicus.MediaManager.UserSDK\Granicus.MediaManager.SDK.csproj">
+      <Project>{57C7FF27-BEF4-453B-ACD8-3B10254428D7}</Project>
+      <Name>Granicus.MediaManager.SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
