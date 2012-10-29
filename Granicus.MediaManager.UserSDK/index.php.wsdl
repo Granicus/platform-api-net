@@ -1,0 +1,1862 @@
+﻿<definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:UserSDK" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns5="http://granicus.com/xsd" name="UserSDK" targetNamespace="urn:UserSDK">
+  <types xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://granicus.com/xsd">
+      <complexType name="EventData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="UID" type="xsd:string"/>
+          <element name="ForeignID" type="xsd:int"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="CameraID" type="xsd:int"/>
+          <element name="FolderID" type="xsd:int"/>
+          <element name="Status" type="xsd:string"/>
+          <element name="AgendaType" type="xsd:string"/>
+          <element name="AgendaFile" type="xsd:string"/>
+          <element name="PlayerTemplateID" type="xsd:int"/>
+          <element name="ArchiveStatus" type="xsd:string"/>
+          <element name="Duration" type="xsd:int"/>
+          <element name="Broadcast" type="xsd:boolean"/>
+          <element name="Record" type="xsd:boolean"/>
+          <element name="AutoStart" type="xsd:boolean"/>
+          <element name="StartTime" type="xsd:dateTime"/>
+          <element name="LastModified" type="xsd:dateTime"/>
+          <element name="Attendees" type="ns5:AttendeeCollection"/>
+          <element name="MotionTypes" type="ns5:StringCollection"/>
+          <element name="Street1" type="xsd:string"/>
+          <element name="Street2" type="xsd:string"/>
+          <element name="City" type="xsd:string"/>
+          <element name="State" type="xsd:string"/>
+          <element name="Zip" type="xsd:string"/>
+          <element name="AgendaTitle" type="xsd:string"/>
+          <element name="MeetingTime" type="xsd:dateTime"/>
+          <element name="AgendaPostedDate" type="xsd:dateTime"/>
+        </all>
+      </complexType>
+      <complexType name="FolderData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="Description" type="xsd:string"/>
+          <element name="Type" type="xsd:string"/>
+          <element name="PlayerTemplateID" type="xsd:int"/>
+          <element name="CreatedDate" type="xsd:dateTime"/>
+          <element name="Views" type="ns5:IntegerCollection"/>
+          <element name="Servers" type="ns5:IntegerCollection"/>
+        </all>
+      </complexType>
+      <complexType name="ClipData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="UID" type="xsd:string"/>
+          <element name="ForeignID" type="xsd:int"/>
+          <element name="Type" type="xsd:string"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="Description" type="xsd:string"/>
+          <element name="Keywords" type="xsd:string"/>
+          <element name="Date" type="xsd:dateTime"/>
+          <element name="CameraID" type="xsd:int"/>
+          <element name="FolderID" type="xsd:int"/>
+          <element name="FileName" type="xsd:string"/>
+          <element name="MinutesType" type="xsd:string"/>
+          <element name="MinutesFile" type="xsd:string"/>
+          <element name="AgendaType" type="xsd:string"/>
+          <element name="AgendaFile" type="xsd:string"/>
+          <element name="Duration" type="xsd:int"/>
+          <element name="Status" type="xsd:string"/>
+          <element name="StartTime" type="xsd:dateTime"/>
+          <element name="LastModified" type="xsd:dateTime"/>
+          <element name="Attendees" type="ns5:AttendeeCollection"/>
+          <element name="MotionTypes" type="ns5:StringCollection"/>
+          <element name="Street1" type="xsd:string"/>
+          <element name="Street2" type="xsd:string"/>
+          <element name="City" type="xsd:string"/>
+          <element name="State" type="xsd:string"/>
+          <element name="Zip" type="xsd:string"/>
+          <element name="AgendaTitle" type="xsd:string"/>
+          <element name="AgendaPostedDate" type="xsd:dateTime"/>
+        </all>
+      </complexType>
+      <complexType name="CameraData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="Type" type="xsd:string"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="InternalIP" type="xsd:string"/>
+          <element name="ExternalIP" type="xsd:string"/>
+          <element name="BroadcastPort" type="xsd:int"/>
+          <element name="ControlPort" type="xsd:int"/>
+          <element name="Identifier" type="xsd:string"/>
+        </all>
+      </complexType>
+      <complexType name="UserData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="Username" type="xsd:string"/>
+          <element name="Password" type="xsd:string"/>
+          <element name="Fullname" type="xsd:string"/>
+          <element name="Email" type="xsd:string"/>
+          <element name="CreatedDate" type="xsd:dateTime"/>
+          <element name="LastModified" type="xsd:dateTime"/>
+        </all>
+      </complexType>
+      <complexType name="GroupData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="Description" type="xsd:string"/>
+          <element name="CreatedDate" type="xsd:dateTime"/>
+        </all>
+      </complexType>
+      <complexType name="TemplateData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="Description" type="xsd:string"/>
+          <element name="Type" type="xsd:string"/>
+          <element name="LastModified" type="xsd:dateTime"/>
+          <element name="CreatedDate" type="xsd:dateTime"/>
+        </all>
+      </complexType>
+      <complexType name="ServerData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="ControlPort" type="xsd:int"/>
+          <element name="FirewallCompatibility" type="xsd:boolean"/>
+          <element name="Multicast" type="xsd:boolean"/>
+          <element name="LoadBalancerScore" type="xsd:int"/>
+          <element name="ReplicationUN" type="xsd:string"/>
+          <element name="ReplicationPW" type="xsd:string"/>
+          <element name="CreatedDate" type="xsd:dateTime"/>
+        </all>
+      </complexType>
+      <complexType name="ServerInterfaceData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="ServerID" type="xsd:int"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="Host" type="xsd:string"/>
+          <element name="ControlPort" type="xsd:string"/>
+          <element name="Directory" type="xsd:string"/>
+          <element name="ReplicationUN" type="xsd:string"/>
+          <element name="ReplicationPW" type="xsd:string"/>
+        </all>
+      </complexType>
+      <complexType name="MetaDataData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="UID" type="xsd:string"/>
+          <element name="ParentID" type="xsd:int"/>
+          <element name="ParentUID" type="xsd:string"/>
+          <element name="ForeignID" type="xsd:int"/>
+          <element name="SourceID" type="xsd:int"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="TimeStamp" type="xsd:int"/>
+          <element name="OrderID" type="xsd:int"/>
+          <element name="Payload" type="xsd:anyType"/>
+          <element name="Children" type="ns5:MetaDataDataCollection"/>
+        </all>
+      </complexType>
+      <complexType name="CaptionData">
+        <all>
+          <element name="Caption" type="xsd:string"/>
+          <element name="TimeStamp" type="xsd:long"/>
+        </all>
+      </complexType>
+      <complexType name="KeyMapping">
+        <all>
+          <element name="ForeignID" type="xsd:int"/>
+          <element name="GranicusID" type="xsd:int"/>
+        </all>
+      </complexType>
+      <complexType name="KeyTable">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:KeyMapping[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="ViewData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="ForeignID" type="xsd:int"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="IsActive" type="xsd:boolean"/>
+          <element name="Events" type="ns5:IntegerCollection"/>
+          <element name="Folders" type="ns5:IntegerCollection"/>
+        </all>
+      </complexType>
+      <complexType name="AgendaItem">
+        <all>
+          <element name="Department" type="xsd:string"/>
+          <element name="Actions" type="xsd:string"/>
+        </all>
+      </complexType>
+      <complexType name="PracticeQuestion">
+        <all>
+          <element name="XMLData" type="xsd:string"/>
+        </all>
+      </complexType>
+      <complexType name="TrainingChapter">
+        <all>
+          <element name="Subject" type="xsd:string"/>
+        </all>
+      </complexType>
+      <complexType name="Document">
+        <all>
+          <element name="Description" type="xsd:string"/>
+          <element name="Location" type="xsd:string"/>
+          <element name="FileContents" type="xsd:base64Binary"/>
+        </all>
+      </complexType>
+      <complexType name="Note">
+        <all>
+          <element name="NoteText" type="xsd:string"/>
+          <element name="EditorsNotes" type="xsd:string"/>
+          <element name="Private" type="xsd:boolean"/>
+        </all>
+      </complexType>
+      <complexType name="VoteEntry">
+        <all>
+          <element name="Name" type="xsd:string"/>
+          <element name="Vote" type="xsd:int"/>
+        </all>
+      </complexType>
+      <complexType name="VoteRecord">
+        <all>
+          <element name="MotionID" type="xsd:int"/>
+          <element name="Passed" type="xsd:boolean"/>
+          <element name="Votes" type="ns5:VoteCollection"/>
+        </all>
+      </complexType>
+      <complexType name="Rollcall">
+        <all>
+          <element name="Attendees" type="ns5:AttendeeStatusCollection"/>
+        </all>
+      </complexType>
+      <complexType name="AttendeeStatus">
+        <all>
+          <element name="Name" type="xsd:string"/>
+          <element name="Status" type="xsd:int"/>
+        </all>
+      </complexType>
+      <complexType name="Motion">
+        <all>
+          <element name="Mover" type="xsd:string"/>
+          <element name="Seconder" type="xsd:string"/>
+          <element name="Type" type="xsd:string"/>
+          <element name="MotionText" type="xsd:string"/>
+        </all>
+      </complexType>
+      <complexType name="Attendee">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="Name" type="xsd:string"/>
+          <element name="OrderID" type="xsd:int"/>
+          <element name="Voting" type="xsd:boolean"/>
+          <element name="Chair" type="xsd:boolean"/>
+        </all>
+      </complexType>
+      <complexType name="VoteCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:VoteEntry[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="AttendeeStatusCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:AttendeeStatus[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="CameraCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:CameraData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="EventCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:EventData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="FolderCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:FolderData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="ClipCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:ClipData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="UserCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:UserData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="GroupCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:GroupData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="TemplateCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:TemplateData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="ServerCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:ServerData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="AttendeeCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:Attendee[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="MetaDataDataCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:MetaDataData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="CaptionDataCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:CaptionData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="StringCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:string[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="IntegerCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:int[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+      <complexType name="ViewCollection">
+        <complexContent>
+          <restriction base="SOAP-ENC:Array">
+            <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="ns5:ViewData[]"/>
+          </restriction>
+        </complexContent>
+      </complexType>
+    </schema>
+  </types>
+  <portType name="UserSDKPort">
+    <operation name="LogMessage">
+      <input message="tns:LogMessageRequest"/>
+      <output message="tns:LogMessageResponse"/>
+    </operation>
+    <operation name="Login">
+      <input message="tns:LoginRequest"/>
+      <output message="tns:LoginResponse"/>
+    </operation>
+    <operation name="GetChallenge">
+      <input message="tns:GetChallengeRequest"/>
+      <output message="tns:GetChallengeResponse"/>
+    </operation>
+    <operation name="SendChallengeResponse">
+      <input message="tns:SendChallengeResponseRequest"/>
+      <output message="tns:SendChallengeResponseResponse"/>
+    </operation>
+    <operation name="Logout">
+      <input message="tns:LogoutRequest"/>
+      <output message="tns:LogoutResponse"/>
+    </operation>
+    <operation name="CreateCamera">
+      <input message="tns:CreateCameraRequest"/>
+      <output message="tns:CreateCameraResponse"/>
+    </operation>
+    <operation name="GetCameras">
+      <input message="tns:GetCamerasRequest"/>
+      <output message="tns:GetCamerasResponse"/>
+    </operation>
+    <operation name="GetCamera">
+      <input message="tns:GetCameraRequest"/>
+      <output message="tns:GetCameraResponse"/>
+    </operation>
+    <operation name="GetCameraVideoLocation">
+      <input message="tns:GetCameraVideoLocationRequest"/>
+      <output message="tns:GetCameraVideoLocationResponse"/>
+    </operation>
+    <operation name="UpdateCamera">
+      <input message="tns:UpdateCameraRequest"/>
+      <output message="tns:UpdateCameraResponse"/>
+    </operation>
+    <operation name="DeleteCamera">
+      <input message="tns:DeleteCameraRequest"/>
+      <output message="tns:DeleteCameraResponse"/>
+    </operation>
+    <operation name="CreateEvent">
+      <input message="tns:CreateEventRequest"/>
+      <output message="tns:CreateEventResponse"/>
+    </operation>
+    <operation name="GetEvents">
+      <input message="tns:GetEventsRequest"/>
+      <output message="tns:GetEventsResponse"/>
+    </operation>
+    <operation name="GetEventsByForeignID">
+      <input message="tns:GetEventsByForeignIDRequest"/>
+      <output message="tns:GetEventsByForeignIDResponse"/>
+    </operation>
+    <operation name="GetEvent">
+      <input message="tns:GetEventRequest"/>
+      <output message="tns:GetEventResponse"/>
+    </operation>
+    <operation name="GetEventByUID">
+      <input message="tns:GetEventByUIDRequest"/>
+      <output message="tns:GetEventByUIDResponse"/>
+    </operation>
+    <operation name="GetEventVideoLocation">
+      <input message="tns:GetEventVideoLocationRequest"/>
+      <output message="tns:GetEventVideoLocationResponse"/>
+    </operation>
+    <operation name="GetEventVideoLocationByUID">
+      <input message="tns:GetEventVideoLocationByUIDRequest"/>
+      <output message="tns:GetEventVideoLocationByUIDResponse"/>
+    </operation>
+    <operation name="GetEventMetaData">
+      <input message="tns:GetEventMetaDataRequest"/>
+      <output message="tns:GetEventMetaDataResponse"/>
+    </operation>
+    <operation name="GetEventMetaDataByUID">
+      <input message="tns:GetEventMetaDataByUIDRequest"/>
+      <output message="tns:GetEventMetaDataByUIDResponse"/>
+    </operation>
+    <operation name="SetEventAgendaURL">
+      <input message="tns:SetEventAgendaURLRequest"/>
+      <output message="tns:SetEventAgendaURLResponse"/>
+    </operation>
+    <operation name="SetEventAgendaURLByUID">
+      <input message="tns:SetEventAgendaURLByUIDRequest"/>
+      <output message="tns:SetEventAgendaURLByUIDResponse"/>
+    </operation>
+    <operation name="UpdateEvent">
+      <input message="tns:UpdateEventRequest"/>
+      <output message="tns:UpdateEventResponse"/>
+    </operation>
+    <operation name="DeleteEvent">
+      <input message="tns:DeleteEventRequest"/>
+      <output message="tns:DeleteEventResponse"/>
+    </operation>
+    <operation name="AddEventMetaData">
+      <input message="tns:AddEventMetaDataRequest"/>
+      <output message="tns:AddEventMetaDataResponse"/>
+    </operation>
+    <operation name="ImportEventMetaData">
+      <input message="tns:ImportEventMetaDataRequest"/>
+      <output message="tns:ImportEventMetaDataResponse"/>
+    </operation>
+    <operation name="CreateFolder">
+      <input message="tns:CreateFolderRequest"/>
+      <output message="tns:CreateFolderResponse"/>
+    </operation>
+    <operation name="GetFolders">
+      <input message="tns:GetFoldersRequest"/>
+      <output message="tns:GetFoldersResponse"/>
+    </operation>
+    <operation name="GetFoldersByType">
+      <input message="tns:GetFoldersByTypeRequest"/>
+      <output message="tns:GetFoldersByTypeResponse"/>
+    </operation>
+    <operation name="GetFolder">
+      <input message="tns:GetFolderRequest"/>
+      <output message="tns:GetFolderResponse"/>
+    </operation>
+    <operation name="GetFolderUploadInterface">
+      <input message="tns:GetFolderUploadInterfaceRequest"/>
+      <output message="tns:GetFolderUploadInterfaceResponse"/>
+    </operation>
+    <operation name="UpdateFolder">
+      <input message="tns:UpdateFolderRequest"/>
+      <output message="tns:UpdateFolderResponse"/>
+    </operation>
+    <operation name="RegisterClipUpload">
+      <input message="tns:RegisterClipUploadRequest"/>
+      <output message="tns:RegisterClipUploadResponse"/>
+    </operation>
+    <operation name="GetClips">
+      <input message="tns:GetClipsRequest"/>
+      <output message="tns:GetClipsResponse"/>
+    </operation>
+    <operation name="GetClipsByForeignID">
+      <input message="tns:GetClipsByForeignIDRequest"/>
+      <output message="tns:GetClipsByForeignIDResponse"/>
+    </operation>
+    <operation name="GetClip">
+      <input message="tns:GetClipRequest"/>
+      <output message="tns:GetClipResponse"/>
+    </operation>
+    <operation name="GetClipByUID">
+      <input message="tns:GetClipByUIDRequest"/>
+      <output message="tns:GetClipByUIDResponse"/>
+    </operation>
+    <operation name="GetClipVideoLocation">
+      <input message="tns:GetClipVideoLocationRequest"/>
+      <output message="tns:GetClipVideoLocationResponse"/>
+    </operation>
+    <operation name="GetClipMetaData">
+      <input message="tns:GetClipMetaDataRequest"/>
+      <output message="tns:GetClipMetaDataResponse"/>
+    </operation>
+    <operation name="GetClipMetaDataByUID">
+      <input message="tns:GetClipMetaDataByUIDRequest"/>
+      <output message="tns:GetClipMetaDataByUIDResponse"/>
+    </operation>
+    <operation name="GetClipIndices">
+      <input message="tns:GetClipIndicesRequest"/>
+      <output message="tns:GetClipIndicesResponse"/>
+    </operation>
+    <operation name="GetClipIndicesByUID">
+      <input message="tns:GetClipIndicesByUIDRequest"/>
+      <output message="tns:GetClipIndicesByUIDResponse"/>
+    </operation>
+    <operation name="GetClipCaptions">
+      <input message="tns:GetClipCaptionsRequest"/>
+      <output message="tns:GetClipCaptionsResponse"/>
+    </operation>
+    <operation name="GetClipCaptionsByUID">
+      <input message="tns:GetClipCaptionsByUIDRequest"/>
+      <output message="tns:GetClipCaptionsByUIDResponse"/>
+    </operation>
+    <operation name="SetClipAgendaURL">
+      <input message="tns:SetClipAgendaURLRequest"/>
+      <output message="tns:SetClipAgendaURLResponse"/>
+    </operation>
+    <operation name="SetClipMinutesURL">
+      <input message="tns:SetClipMinutesURLRequest"/>
+      <output message="tns:SetClipMinutesURLResponse"/>
+    </operation>
+    <operation name="UpdateClip">
+      <input message="tns:UpdateClipRequest"/>
+      <output message="tns:UpdateClipResponse"/>
+    </operation>
+    <operation name="DeleteClip">
+      <input message="tns:DeleteClipRequest"/>
+      <output message="tns:DeleteClipResponse"/>
+    </operation>
+    <operation name="AddClipMetaData">
+      <input message="tns:AddClipMetaDataRequest"/>
+      <output message="tns:AddClipMetaDataResponse"/>
+    </operation>
+    <operation name="ImportClipMetaData">
+      <input message="tns:ImportClipMetaDataRequest"/>
+      <output message="tns:ImportClipMetaDataResponse"/>
+    </operation>
+    <operation name="GetMetaData">
+      <input message="tns:GetMetaDataRequest"/>
+      <output message="tns:GetMetaDataResponse"/>
+    </operation>
+    <operation name="GetMetaDataByUID">
+      <input message="tns:GetMetaDataByUIDRequest"/>
+      <output message="tns:GetMetaDataByUIDResponse"/>
+    </operation>
+    <operation name="GetMetaDataVideoLocation">
+      <input message="tns:GetMetaDataVideoLocationRequest"/>
+      <output message="tns:GetMetaDataVideoLocationResponse"/>
+    </operation>
+    <operation name="UpdateMetaData">
+      <input message="tns:UpdateMetaDataRequest"/>
+      <output message="tns:UpdateMetaDataResponse"/>
+    </operation>
+    <operation name="DeleteMetaData">
+      <input message="tns:DeleteMetaDataRequest"/>
+      <output message="tns:DeleteMetaDataResponse"/>
+    </operation>
+    <operation name="FetchAttachment">
+      <input message="tns:FetchAttachmentRequest"/>
+      <output message="tns:FetchAttachmentResponse"/>
+    </operation>
+    <operation name="CreateView">
+      <input message="tns:CreateViewRequest"/>
+      <output message="tns:CreateViewResponse"/>
+    </operation>
+    <operation name="GetViews">
+      <input message="tns:GetViewsRequest"/>
+      <output message="tns:GetViewsResponse"/>
+    </operation>
+    <operation name="GetView">
+      <input message="tns:GetViewRequest"/>
+      <output message="tns:GetViewResponse"/>
+    </operation>
+    <operation name="UpdateView">
+      <input message="tns:UpdateViewRequest"/>
+      <output message="tns:UpdateViewResponse"/>
+    </operation>
+    <operation name="CreateUser">
+      <input message="tns:CreateUserRequest"/>
+      <output message="tns:CreateUserResponse"/>
+    </operation>
+    <operation name="GetCurrentUserID">
+      <input message="tns:GetCurrentUserIDRequest"/>
+      <output message="tns:GetCurrentUserIDResponse"/>
+    </operation>
+    <operation name="GetCurrentUserLogon">
+      <input message="tns:GetCurrentUserLogonRequest"/>
+      <output message="tns:GetCurrentUserLogonResponse"/>
+    </operation>
+    <operation name="GetUsers">
+      <input message="tns:GetUsersRequest"/>
+      <output message="tns:GetUsersResponse"/>
+    </operation>
+    <operation name="GetUser">
+      <input message="tns:GetUserRequest"/>
+      <output message="tns:GetUserResponse"/>
+    </operation>
+    <operation name="UpdateUser">
+      <input message="tns:UpdateUserRequest"/>
+      <output message="tns:UpdateUserResponse"/>
+    </operation>
+    <operation name="CreateGroup">
+      <input message="tns:CreateGroupRequest"/>
+      <output message="tns:CreateGroupResponse"/>
+    </operation>
+    <operation name="GetGroups">
+      <input message="tns:GetGroupsRequest"/>
+      <output message="tns:GetGroupsResponse"/>
+    </operation>
+    <operation name="GetGroup">
+      <input message="tns:GetGroupRequest"/>
+      <output message="tns:GetGroupResponse"/>
+    </operation>
+    <operation name="UpdateGroup">
+      <input message="tns:UpdateGroupRequest"/>
+      <output message="tns:UpdateGroupResponse"/>
+    </operation>
+    <operation name="CreateTemplate">
+      <input message="tns:CreateTemplateRequest"/>
+      <output message="tns:CreateTemplateResponse"/>
+    </operation>
+    <operation name="GetTemplates">
+      <input message="tns:GetTemplatesRequest"/>
+      <output message="tns:GetTemplatesResponse"/>
+    </operation>
+    <operation name="GetTemplate">
+      <input message="tns:GetTemplateRequest"/>
+      <output message="tns:GetTemplateResponse"/>
+    </operation>
+    <operation name="UpdateTemplate">
+      <input message="tns:UpdateTemplateRequest"/>
+      <output message="tns:UpdateTemplateResponse"/>
+    </operation>
+    <operation name="CreateServer">
+      <input message="tns:CreateServerRequest"/>
+      <output message="tns:CreateServerResponse"/>
+    </operation>
+    <operation name="GetServers">
+      <input message="tns:GetServersRequest"/>
+      <output message="tns:GetServersResponse"/>
+    </operation>
+    <operation name="GetServer">
+      <input message="tns:GetServerRequest"/>
+      <output message="tns:GetServerResponse"/>
+    </operation>
+    <operation name="UpdateServer">
+      <input message="tns:UpdateServerRequest"/>
+      <output message="tns:UpdateServerResponse"/>
+    </operation>
+    <operation name="GetPermissionLevel">
+      <input message="tns:GetPermissionLevelRequest"/>
+      <output message="tns:GetPermissionLevelResponse"/>
+    </operation>
+    <operation name="CreateClipGeneratedMinutesDocument">
+      <input message="tns:CreateClipGeneratedMinutesDocumentRequest"/>
+      <output message="tns:CreateClipGeneratedMinutesDocumentResponse"/>
+    </operation>
+  </portType>
+  <binding name="UserSDKBinding" type="tns:UserSDKPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="LogMessage">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#LogMessage"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="Login">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#Login"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetChallenge">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetChallenge"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="SendChallengeResponse">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#SendChallengeResponse"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="Logout">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#Logout"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="CreateCamera">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#CreateCamera"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetCameras">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetCameras"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetCamera">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetCamera"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetCameraVideoLocation">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetCameraVideoLocation"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateCamera">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateCamera"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="DeleteCamera">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#DeleteCamera"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="CreateEvent">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#CreateEvent"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetEvents">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetEvents"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetEventsByForeignID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetEventsByForeignID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetEvent">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetEvent"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetEventByUID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetEventByUID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetEventVideoLocation">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetEventVideoLocation"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetEventVideoLocationByUID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetEventVideoLocationByUID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetEventMetaData">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetEventMetaData"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetEventMetaDataByUID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetEventMetaDataByUID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="SetEventAgendaURL">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#SetEventAgendaURL"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="SetEventAgendaURLByUID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#SetEventAgendaURLByUID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateEvent">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateEvent"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="DeleteEvent">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#DeleteEvent"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="AddEventMetaData">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#AddEventMetaData"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="ImportEventMetaData">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#ImportEventMetaData"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="CreateFolder">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#CreateFolder"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetFolders">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetFolders"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetFoldersByType">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetFoldersByType"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetFolder">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetFolder"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetFolderUploadInterface">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetFolderUploadInterface"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateFolder">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateFolder"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="RegisterClipUpload">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#RegisterClipUpload"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClips">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClips"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClipsByForeignID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClipsByForeignID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClip">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClip"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClipByUID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClipByUID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClipVideoLocation">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClipVideoLocation"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClipMetaData">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClipMetaData"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClipMetaDataByUID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClipMetaDataByUID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClipIndices">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClipIndices"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClipIndicesByUID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClipIndicesByUID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClipCaptions">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClipCaptions"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetClipCaptionsByUID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetClipCaptionsByUID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="SetClipAgendaURL">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#SetClipAgendaURL"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="SetClipMinutesURL">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#SetClipMinutesURL"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateClip">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateClip"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="DeleteClip">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#DeleteClip"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="AddClipMetaData">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#AddClipMetaData"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="ImportClipMetaData">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#ImportClipMetaData"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetMetaData">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetMetaData"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetMetaDataByUID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetMetaDataByUID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetMetaDataVideoLocation">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetMetaDataVideoLocation"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateMetaData">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateMetaData"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="DeleteMetaData">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#DeleteMetaData"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="FetchAttachment">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#FetchAttachment"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="CreateView">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#CreateView"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetViews">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetViews"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetView">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetView"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateView">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateView"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="CreateUser">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#CreateUser"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetCurrentUserID">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetCurrentUserID"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetCurrentUserLogon">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetCurrentUserLogon"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetUsers">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetUsers"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetUser">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetUser"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateUser">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateUser"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="CreateGroup">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#CreateGroup"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetGroups">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetGroups"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetGroup">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetGroup"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateGroup">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateGroup"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="CreateTemplate">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#CreateTemplate"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetTemplates">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetTemplates"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetTemplate">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetTemplate"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateTemplate">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateTemplate"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="CreateServer">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#CreateServer"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetServers">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetServers"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetServer">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetServer"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="UpdateServer">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#UpdateServer"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetPermissionLevel">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#GetPermissionLevel"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="CreateClipGeneratedMinutesDocument">
+      <soap:operation soapAction="urn:UserSDK#userwebservice#CreateClipGeneratedMinutesDocument"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="UserSDKService">
+    <documentation/>
+    <port name="UserSDKPort" binding="tns:UserSDKBinding">
+      <soap:address location="http://dev.dev.granicus.com/SDK/user/index.php"/>
+    </port>
+  </service>
+  <message name="LogMessageRequest">
+    <part name="Message" type="xsd:string"/>
+    <part name="Application" type="xsd:string"/>
+    <part name="Class" type="xsd:string"/>
+    <part name="Priority" type="xsd:int"/>
+  </message>
+  <message name="LogMessageResponse">
+    <part name="result" type="xsd:int"/>
+  </message>
+  <message name="LoginRequest">
+    <part name="Username" type="xsd:string"/>
+    <part name="Password" type="xsd:string"/>
+  </message>
+  <message name="LoginResponse"/>
+  <message name="GetChallengeRequest">
+    <part name="ChallengeCode" type="xsd:string"/>
+  </message>
+  <message name="GetChallengeResponse">
+    <part name="Challenge" type="xsd:string"/>
+  </message>
+  <message name="SendChallengeResponseRequest">
+    <part name="Challenge" type="xsd:string"/>
+    <part name="Response" type="xsd:string"/>
+  </message>
+  <message name="SendChallengeResponseResponse"/>
+  <message name="LogoutRequest"/>
+  <message name="LogoutResponse"/>
+  <message name="CreateCameraRequest">
+    <part name="CameraData" type="ns5:CameraData"/>
+  </message>
+  <message name="CreateCameraResponse">
+    <part name="CameraID" type="xsd:int"/>
+  </message>
+  <message name="GetCamerasRequest"/>
+  <message name="GetCamerasResponse">
+    <part name="cameras" type="ns5:CameraCollection"/>
+  </message>
+  <message name="GetCameraRequest">
+    <part name="CameraID" type="xsd:int"/>
+  </message>
+  <message name="GetCameraResponse">
+    <part name="camera" type="ns5:CameraData"/>
+  </message>
+  <message name="GetCameraVideoLocationRequest">
+    <part name="CameraID" type="xsd:int"/>
+  </message>
+  <message name="GetCameraVideoLocationResponse">
+    <part name="url" type="xsd:string"/>
+  </message>
+  <message name="UpdateCameraRequest">
+    <part name="camera" type="ns5:CameraData"/>
+  </message>
+  <message name="UpdateCameraResponse"/>
+  <message name="DeleteCameraRequest">
+    <part name="CameraID" type="xsd:int"/>
+  </message>
+  <message name="DeleteCameraResponse"/>
+  <message name="CreateEventRequest">
+    <part name="EventData" type="ns5:EventData"/>
+  </message>
+  <message name="CreateEventResponse">
+    <part name="EventID" type="xsd:int"/>
+  </message>
+  <message name="GetEventsRequest"/>
+  <message name="GetEventsResponse">
+    <part name="events" type="ns5:EventCollection"/>
+  </message>
+  <message name="GetEventsByForeignIDRequest">
+    <part name="ForeignID" type="xsd:int"/>
+  </message>
+  <message name="GetEventsByForeignIDResponse">
+    <part name="events" type="ns5:EventCollection"/>
+  </message>
+  <message name="GetEventRequest">
+    <part name="EventID" type="xsd:int"/>
+  </message>
+  <message name="GetEventResponse">
+    <part name="event" type="ns5:EventData"/>
+  </message>
+  <message name="GetEventByUIDRequest">
+    <part name="EventUID" type="xsd:string"/>
+  </message>
+  <message name="GetEventByUIDResponse">
+    <part name="event" type="ns5:EventData"/>
+  </message>
+  <message name="GetEventVideoLocationRequest">
+    <part name="EventID" type="xsd:int"/>
+  </message>
+  <message name="GetEventVideoLocationResponse">
+    <part name="url" type="xsd:string"/>
+  </message>
+  <message name="GetEventVideoLocationByUIDRequest">
+    <part name="EventUID" type="xsd:string"/>
+  </message>
+  <message name="GetEventVideoLocationByUIDResponse">
+    <part name="url" type="xsd:string"/>
+  </message>
+  <message name="GetEventMetaDataRequest">
+    <part name="EventID" type="xsd:int"/>
+  </message>
+  <message name="GetEventMetaDataResponse">
+    <part name="metadata" type="ns5:MetaDataDataCollection"/>
+  </message>
+  <message name="GetEventMetaDataByUIDRequest">
+    <part name="EventUID" type="xsd:string"/>
+  </message>
+  <message name="GetEventMetaDataByUIDResponse">
+    <part name="metadata" type="ns5:MetaDataDataCollection"/>
+  </message>
+  <message name="SetEventAgendaURLRequest">
+    <part name="EventID" type="xsd:int"/>
+    <part name="URL" type="xsd:string"/>
+  </message>
+  <message name="SetEventAgendaURLResponse"/>
+  <message name="SetEventAgendaURLByUIDRequest">
+    <part name="EventUID" type="xsd:string"/>
+    <part name="URL" type="xsd:string"/>
+  </message>
+  <message name="SetEventAgendaURLByUIDResponse"/>
+  <message name="UpdateEventRequest">
+    <part name="event" type="ns5:EventData"/>
+  </message>
+  <message name="UpdateEventResponse"/>
+  <message name="DeleteEventRequest">
+    <part name="EventID" type="xsd:int"/>
+  </message>
+  <message name="DeleteEventResponse"/>
+  <message name="AddEventMetaDataRequest">
+    <part name="EventID" type="xsd:int"/>
+    <part name="MetaDataData" type="ns5:MetaDataData"/>
+  </message>
+  <message name="AddEventMetaDataResponse">
+    <part name="KeyTable" type="ns5:KeyTable"/>
+  </message>
+  <message name="ImportEventMetaDataRequest">
+    <part name="EventID" type="xsd:int"/>
+    <part name="MetaData" type="ns5:MetaDataDataCollection"/>
+    <part name="ClearExisting" type="xsd:boolean"/>
+    <part name="AsTree" type="xsd:boolean"/>
+  </message>
+  <message name="ImportEventMetaDataResponse">
+    <part name="KeyTable" type="ns5:KeyTable"/>
+  </message>
+  <message name="CreateFolderRequest">
+    <part name="FolderData" type="ns5:FolderData"/>
+  </message>
+  <message name="CreateFolderResponse">
+    <part name="FolderID" type="xsd:int"/>
+  </message>
+  <message name="GetFoldersRequest"/>
+  <message name="GetFoldersResponse">
+    <part name="folders" type="ns5:FolderCollection"/>
+  </message>
+  <message name="GetFoldersByTypeRequest">
+    <part name="Type" type="xsd:string"/>
+  </message>
+  <message name="GetFoldersByTypeResponse">
+    <part name="folders" type="ns5:FolderCollection"/>
+  </message>
+  <message name="GetFolderRequest">
+    <part name="FolderID" type="xsd:int"/>
+  </message>
+  <message name="GetFolderResponse">
+    <part name="folder" type="ns5:FolderData"/>
+  </message>
+  <message name="GetFolderUploadInterfaceRequest">
+    <part name="FolderID" type="xsd:int"/>
+  </message>
+  <message name="GetFolderUploadInterfaceResponse">
+    <part name="interface" type="ns5:ServerInterfaceData"/>
+  </message>
+  <message name="UpdateFolderRequest">
+    <part name="folder" type="ns5:FolderData"/>
+  </message>
+  <message name="UpdateFolderResponse"/>
+  <message name="RegisterClipUploadRequest">
+    <part name="ClipData" type="ns5:ClipData"/>
+    <part name="ServerID" type="xsd:int"/>
+  </message>
+  <message name="RegisterClipUploadResponse">
+    <part name="ClipID" type="xsd:int"/>
+  </message>
+  <message name="GetClipsRequest">
+    <part name="FolderID" type="xsd:int"/>
+  </message>
+  <message name="GetClipsResponse">
+    <part name="clips" type="ns5:ClipCollection"/>
+  </message>
+  <message name="GetClipsByForeignIDRequest">
+    <part name="ForeignID" type="xsd:int"/>
+  </message>
+  <message name="GetClipsByForeignIDResponse">
+    <part name="clips" type="ns5:ClipCollection"/>
+  </message>
+  <message name="GetClipRequest">
+    <part name="ClipID" type="xsd:int"/>
+  </message>
+  <message name="GetClipResponse">
+    <part name="clip" type="ns5:ClipData"/>
+  </message>
+  <message name="GetClipByUIDRequest">
+    <part name="ClipUID" type="xsd:string"/>
+  </message>
+  <message name="GetClipByUIDResponse">
+    <part name="clip" type="ns5:ClipData"/>
+  </message>
+  <message name="GetClipVideoLocationRequest">
+    <part name="ClipID" type="xsd:int"/>
+  </message>
+  <message name="GetClipVideoLocationResponse">
+    <part name="url" type="xsd:string"/>
+  </message>
+  <message name="GetClipMetaDataRequest">
+    <part name="ClipID" type="xsd:int"/>
+  </message>
+  <message name="GetClipMetaDataResponse">
+    <part name="metadata" type="ns5:MetaDataDataCollection"/>
+  </message>
+  <message name="GetClipMetaDataByUIDRequest">
+    <part name="ClipUID" type="xsd:string"/>
+  </message>
+  <message name="GetClipMetaDataByUIDResponse">
+    <part name="metadata" type="ns5:MetaDataDataCollection"/>
+  </message>
+  <message name="GetClipIndicesRequest">
+    <part name="ClipID" type="xsd:int"/>
+  </message>
+  <message name="GetClipIndicesResponse">
+    <part name="metadata" type="ns5:MetaDataDataCollection"/>
+  </message>
+  <message name="GetClipIndicesByUIDRequest">
+    <part name="ClipUID" type="xsd:string"/>
+  </message>
+  <message name="GetClipIndicesByUIDResponse">
+    <part name="metadata" type="ns5:MetaDataDataCollection"/>
+  </message>
+  <message name="GetClipCaptionsRequest">
+    <part name="ClipID" type="xsd:int"/>
+  </message>
+  <message name="GetClipCaptionsResponse">
+    <part name="captions" type="xsd:string"/>
+  </message>
+  <message name="GetClipCaptionsByUIDRequest">
+    <part name="ClipUID" type="xsd:string"/>
+  </message>
+  <message name="GetClipCaptionsByUIDResponse">
+    <part name="captions" type="xsd:string"/>
+  </message>
+  <message name="SetClipAgendaURLRequest">
+    <part name="ClipID" type="xsd:int"/>
+    <part name="URL" type="xsd:string"/>
+  </message>
+  <message name="SetClipAgendaURLResponse"/>
+  <message name="SetClipMinutesURLRequest">
+    <part name="ClipID" type="xsd:int"/>
+    <part name="URL" type="xsd:string"/>
+  </message>
+  <message name="SetClipMinutesURLResponse"/>
+  <message name="UpdateClipRequest">
+    <part name="clip" type="ns5:ClipData"/>
+  </message>
+  <message name="UpdateClipResponse"/>
+  <message name="DeleteClipRequest">
+    <part name="ClipID" type="xsd:int"/>
+  </message>
+  <message name="DeleteClipResponse"/>
+  <message name="AddClipMetaDataRequest">
+    <part name="ClipID" type="xsd:int"/>
+    <part name="MetaDataData" type="ns5:MetaDataData"/>
+  </message>
+  <message name="AddClipMetaDataResponse">
+    <part name="KeyTable" type="ns5:KeyTable"/>
+  </message>
+  <message name="ImportClipMetaDataRequest">
+    <part name="ClipID" type="xsd:int"/>
+    <part name="MetaData" type="ns5:MetaDataDataCollection"/>
+    <part name="ClearExisting" type="xsd:boolean"/>
+    <part name="AsTree" type="xsd:boolean"/>
+  </message>
+  <message name="ImportClipMetaDataResponse">
+    <part name="KeyTable" type="ns5:KeyTable"/>
+  </message>
+  <message name="GetMetaDataRequest">
+    <part name="MetaDataID" type="xsd:int"/>
+  </message>
+  <message name="GetMetaDataResponse">
+    <part name="MetaData" type="ns5:MetaDataData"/>
+  </message>
+  <message name="GetMetaDataByUIDRequest">
+    <part name="MetaDataUID" type="xsd:string"/>
+  </message>
+  <message name="GetMetaDataByUIDResponse">
+    <part name="MetaData" type="ns5:MetaDataData"/>
+  </message>
+  <message name="GetMetaDataVideoLocationRequest">
+    <part name="MetaDataID" type="xsd:int"/>
+  </message>
+  <message name="GetMetaDataVideoLocationResponse">
+    <part name="url" type="xsd:string"/>
+  </message>
+  <message name="UpdateMetaDataRequest">
+    <part name="MetaData" type="ns5:MetaDataData"/>
+  </message>
+  <message name="UpdateMetaDataResponse"/>
+  <message name="DeleteMetaDataRequest">
+    <part name="MetaDataID" type="xsd:int"/>
+  </message>
+  <message name="DeleteMetaDataResponse"/>
+  <message name="FetchAttachmentRequest">
+    <part name="MetaDataID" type="xsd:int"/>
+  </message>
+  <message name="FetchAttachmentResponse">
+    <part name="Attachment" type="xsd:base64Binary"/>
+  </message>
+  <message name="CreateViewRequest">
+    <part name="ViewData" type="ns5:ViewData"/>
+  </message>
+  <message name="CreateViewResponse">
+    <part name="ViewID" type="xsd:int"/>
+  </message>
+  <message name="GetViewsRequest"/>
+  <message name="GetViewsResponse">
+    <part name="views" type="ns5:ViewCollection"/>
+  </message>
+  <message name="GetViewRequest">
+    <part name="ViewID" type="xsd:int"/>
+  </message>
+  <message name="GetViewResponse">
+    <part name="view" type="ns5:ViewData"/>
+  </message>
+  <message name="UpdateViewRequest">
+    <part name="view" type="ns5:ViewData"/>
+  </message>
+  <message name="UpdateViewResponse"/>
+  <message name="CreateUserRequest">
+    <part name="UserData" type="ns5:UserData"/>
+  </message>
+  <message name="CreateUserResponse">
+    <part name="UserID" type="xsd:int"/>
+  </message>
+  <message name="GetCurrentUserIDRequest"/>
+  <message name="GetCurrentUserIDResponse">
+    <part name="UserID" type="xsd:int"/>
+  </message>
+  <message name="GetCurrentUserLogonRequest"/>
+  <message name="GetCurrentUserLogonResponse">
+    <part name="Logon" type="xsd:string"/>
+  </message>
+  <message name="GetUsersRequest"/>
+  <message name="GetUsersResponse">
+    <part name="users" type="ns5:UserCollection"/>
+  </message>
+  <message name="GetUserRequest">
+    <part name="UserID" type="xsd:int"/>
+  </message>
+  <message name="GetUserResponse">
+    <part name="user" type="ns5:UserData"/>
+  </message>
+  <message name="UpdateUserRequest">
+    <part name="user" type="ns5:UserData"/>
+  </message>
+  <message name="UpdateUserResponse"/>
+  <message name="CreateGroupRequest">
+    <part name="GroupData" type="ns5:GroupData"/>
+  </message>
+  <message name="CreateGroupResponse">
+    <part name="GroupID" type="xsd:int"/>
+  </message>
+  <message name="GetGroupsRequest"/>
+  <message name="GetGroupsResponse">
+    <part name="groups" type="ns5:GroupCollection"/>
+  </message>
+  <message name="GetGroupRequest">
+    <part name="GroupID" type="xsd:int"/>
+  </message>
+  <message name="GetGroupResponse">
+    <part name="group" type="ns5:GroupData"/>
+  </message>
+  <message name="UpdateGroupRequest">
+    <part name="group" type="ns5:GroupData"/>
+  </message>
+  <message name="UpdateGroupResponse"/>
+  <message name="CreateTemplateRequest">
+    <part name="TemplateData" type="ns5:TemplateData"/>
+  </message>
+  <message name="CreateTemplateResponse">
+    <part name="TemplateID" type="xsd:int"/>
+  </message>
+  <message name="GetTemplatesRequest"/>
+  <message name="GetTemplatesResponse">
+    <part name="templates" type="ns5:TemplateCollection"/>
+  </message>
+  <message name="GetTemplateRequest">
+    <part name="TemplateID" type="xsd:int"/>
+  </message>
+  <message name="GetTemplateResponse">
+    <part name="template" type="ns5:TemplateData"/>
+  </message>
+  <message name="UpdateTemplateRequest">
+    <part name="template" type="ns5:TemplateData"/>
+  </message>
+  <message name="UpdateTemplateResponse"/>
+  <message name="CreateServerRequest">
+    <part name="ServerData" type="ns5:ServerData"/>
+  </message>
+  <message name="CreateServerResponse">
+    <part name="ServerID" type="xsd:int"/>
+  </message>
+  <message name="GetServersRequest"/>
+  <message name="GetServersResponse">
+    <part name="servers" type="ns5:ServerCollection"/>
+  </message>
+  <message name="GetServerRequest">
+    <part name="ServerID" type="xsd:int"/>
+  </message>
+  <message name="GetServerResponse">
+    <part name="server" type="ns5:ServerData"/>
+  </message>
+  <message name="UpdateServerRequest">
+    <part name="server" type="ns5:ServerData"/>
+  </message>
+  <message name="UpdateServerResponse"/>
+  <message name="GetPermissionLevelRequest">
+    <part name="AssetType" type="xsd:string"/>
+    <part name="AssetID" type="xsd:int"/>
+  </message>
+  <message name="GetPermissionLevelResponse">
+    <part name="PermissionLevel" type="xsd:int"/>
+  </message>
+  <message name="CreateClipGeneratedMinutesDocumentRequest">
+    <part name="clipUid" type="xsd:string"/>
+    <part name="name" type="xsd:string"/>
+    <part name="templateUid" type="xsd:string"/>
+    <part name="isPublished" type="xsd:boolean"/>
+    <part name="isDefault" type="xsd:boolean"/>
+  </message>
+  <message name="CreateClipGeneratedMinutesDocumentResponse"/>
+</definitions>

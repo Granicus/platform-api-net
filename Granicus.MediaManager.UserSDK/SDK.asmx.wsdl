@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://granicus.com/MediaVault/SDK" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://granicus.com/MediaVault/SDK" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://granicus.com/MediaVault/SDK">
+      <s:element name="UploadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FolderID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bytes" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadFileResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SecurityHeader" type="tns:SecurityHeader" />
+      <s:complexType name="SecurityHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceHost" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecurityToken" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StartUpload">
+        <s:complexType />
+      </s:element>
+      <s:element name="StartUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartUploadResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GUID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ChunkPosition" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="bytes" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendChunkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendChunkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinishUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FinishUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FinishUploadResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AbortUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AbortUploadResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AssignUploadedFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClipUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Extension" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AssignUploadedFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RegisterUploadedFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GUID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FolderID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Extension" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterUploadedFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegisterUploadedFileResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="StartUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:StartUpload" />
+  </wsdl:message>
+  <wsdl:message name="StartUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:StartUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartUploadSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:SendChunk" />
+  </wsdl:message>
+  <wsdl:message name="SendChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:SendChunkResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendChunkSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="FinishUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:FinishUpload" />
+  </wsdl:message>
+  <wsdl:message name="FinishUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:FinishUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="FinishUploadSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="AbortUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:AbortUpload" />
+  </wsdl:message>
+  <wsdl:message name="AbortUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:AbortUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="AbortUploadSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="AssignUploadedFileSoapIn">
+    <wsdl:part name="parameters" element="tns:AssignUploadedFile" />
+  </wsdl:message>
+  <wsdl:message name="AssignUploadedFileSoapOut">
+    <wsdl:part name="parameters" element="tns:AssignUploadedFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="AssignUploadedFileSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:message name="RegisterUploadedFileSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterUploadedFile" />
+  </wsdl:message>
+  <wsdl:message name="RegisterUploadedFileSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterUploadedFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterUploadedFileSecurityHeader">
+    <wsdl:part name="SecurityHeader" element="tns:SecurityHeader" />
+  </wsdl:message>
+  <wsdl:portType name="MediaVaultSDKServiceProxySoap">
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileSoapIn" />
+      <wsdl:output message="tns:UploadFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartUpload">
+      <wsdl:input message="tns:StartUploadSoapIn" />
+      <wsdl:output message="tns:StartUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendChunk">
+      <wsdl:input message="tns:SendChunkSoapIn" />
+      <wsdl:output message="tns:SendChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishUpload">
+      <wsdl:input message="tns:FinishUploadSoapIn" />
+      <wsdl:output message="tns:FinishUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AbortUpload">
+      <wsdl:input message="tns:AbortUploadSoapIn" />
+      <wsdl:output message="tns:AbortUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignUploadedFile">
+      <wsdl:input message="tns:AssignUploadedFileSoapIn" />
+      <wsdl:output message="tns:AssignUploadedFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUploadedFile">
+      <wsdl:input message="tns:RegisterUploadedFileSoapIn" />
+      <wsdl:output message="tns:RegisterUploadedFileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MediaVaultSDKServiceProxySoap" type="tns:MediaVaultSDKServiceProxySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://granicus.com/MediaVault/SDK/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UploadFileSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartUpload">
+      <soap:operation soapAction="http://granicus.com/MediaVault/SDK/StartUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:StartUploadSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendChunk">
+      <soap:operation soapAction="http://granicus.com/MediaVault/SDK/SendChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendChunkSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FinishUpload">
+      <soap:operation soapAction="http://granicus.com/MediaVault/SDK/FinishUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FinishUploadSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AbortUpload">
+      <soap:operation soapAction="http://granicus.com/MediaVault/SDK/AbortUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AbortUploadSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignUploadedFile">
+      <soap:operation soapAction="http://granicus.com/MediaVault/SDK/AssignUploadedFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AssignUploadedFileSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUploadedFile">
+      <soap:operation soapAction="http://granicus.com/MediaVault/SDK/RegisterUploadedFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RegisterUploadedFileSecurityHeader" part="SecurityHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MediaVaultSDKServiceProxy">
+    <wsdl:port name="MediaVaultSDKServiceProxySoap" binding="tns:MediaVaultSDKServiceProxySoap">
+      <soap:address location="http://mediaserver-102.granicus.com:443/MediaVault/SDK.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

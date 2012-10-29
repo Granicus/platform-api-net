@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns5="http://granicus.com/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:AlphaCorpConnector" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="AlphaCorpConnector" targetNamespace="urn:AlphaCorpConnector" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://granicus.com/xsd">
+      <xsd:complexType name="EventData">
+        <xsd:all>
+          <xsd:element name="ID" type="xsd:int" />
+          <xsd:element name="ForeignID" type="xsd:int" />
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="CameraID" type="xsd:int" />
+          <xsd:element name="FolderID" type="xsd:int" />
+          <xsd:element name="Duration" type="xsd:int" />
+          <xsd:element name="StartTime" type="xsd:dateTime" />
+          <xsd:element name="Attendees" type="ns5:AttendeeCollection" />
+          <xsd:element name="MotionTypes" type="ns5:StringCollection" />
+          <xsd:element name="Street1" type="xsd:string" />
+          <xsd:element name="Street2" type="xsd:string" />
+          <xsd:element name="City" type="xsd:string" />
+          <xsd:element name="State" type="xsd:string" />
+          <xsd:element name="Zip" type="xsd:string" />
+          <xsd:element name="AgendaTitle" type="xsd:string" />
+          <xsd:element name="MeetingTime" type="xsd:dateTime" />
+          <xsd:element name="AgendaPostedDate" type="xsd:dateTime" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="FolderData">
+        <xsd:all>
+          <xsd:element name="ID" type="xsd:int" />
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="Description" type="xsd:string" />
+          <xsd:element name="PlayerTemplateID" type="xsd:int" />
+          <xsd:element name="CreatedDate" type="xsd:dateTime" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ClipData">
+        <xsd:all>
+          <xsd:element name="ID" type="xsd:int" />
+          <xsd:element name="ForeignID" type="xsd:int" />
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="CameraID" type="xsd:int" />
+          <xsd:element name="Duration" type="xsd:int" />
+          <xsd:element name="StartTime" type="xsd:dateTime" />
+          <xsd:element name="Attendees" type="ns5:AttendeeCollection" />
+          <xsd:element name="Street1" type="xsd:string" />
+          <xsd:element name="Street2" type="xsd:string" />
+          <xsd:element name="City" type="xsd:string" />
+          <xsd:element name="State" type="xsd:string" />
+          <xsd:element name="Zip" type="xsd:string" />
+          <xsd:element name="AgendaTitle" type="xsd:string" />
+          <xsd:element name="AgendaPostedDate" type="xsd:dateTime" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Camera">
+        <xsd:all>
+          <xsd:element name="ID" type="xsd:int" />
+          <xsd:element name="Type" type="xsd:string" />
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="InternalIP" type="xsd:string" />
+          <xsd:element name="ExternalIP" type="xsd:string" />
+          <xsd:element name="BroadcastPort" type="xsd:int" />
+          <xsd:element name="ControlPort" type="xsd:int" />
+          <xsd:element name="Identifier" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="MetaData">
+        <xsd:all>
+          <xsd:element name="ID" type="xsd:int" />
+          <xsd:element name="ParentID" type="xsd:int" />
+          <xsd:element name="ForeignID" type="xsd:int" />
+          <xsd:element name="Type" type="xsd:string" />
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="TimeStamp" type="xsd:int" />
+          <xsd:element name="Payload" type="xsd:anyType" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ViewData">
+        <xsd:all>
+          <xsd:element name="ID" type="xsd:int" />
+          <xsd:element name="ForeignID" type="xsd:int" />
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="IsActive" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="MetaRecordBase">
+        <xsd:all>
+          <xsd:element name="Payload1" type="xsd:string" />
+          <xsd:element name="Payload2" type="xsd:string" />
+          <xsd:element name="Ref1" type="xsd:string" />
+          <xsd:element name="Ref2" type="xsd:string" />
+          <xsd:element name="Ref3" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="AgendaItem">
+        <xsd:all>
+          <xsd:element name="Details" type="ns5:ItemDetailCollection" />
+          <xsd:element name="Department" type="xsd:string" />
+          <xsd:element name="Actions" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Document">
+        <xsd:all>
+          <xsd:element name="Description" type="xsd:string" />
+          <xsd:element name="Location" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Note">
+        <xsd:all>
+          <xsd:element name="NoteText" type="xsd:string" />
+          <xsd:element name="EditorsNotes" type="xsd:string" />
+          <xsd:element name="Private" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ItemDetail">
+        <xsd:all>
+          <xsd:element name="Key" type="xsd:int" />
+          <xsd:element name="Type" type="xsd:string" />
+          <xsd:element name="Value" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="VoteEntry">
+        <xsd:all>
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="Vote" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="VoteRecord">
+        <xsd:all>
+          <xsd:element name="MotionID" type="xsd:int" />
+          <xsd:element name="Passed" type="xsd:boolean" />
+          <xsd:element name="Votes" type="ns5:VoteCollection" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Rollcall">
+        <xsd:all>
+          <xsd:element name="Attendees" type="ns5:AttendeeStatusCollection" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="AttendeeStatus">
+        <xsd:all>
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="Status" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Motion">
+        <xsd:all>
+          <xsd:element name="Mover" type="xsd:string" />
+          <xsd:element name="Seconder" type="xsd:string" />
+          <xsd:element name="Type" type="xsd:string" />
+          <xsd:element name="MotionText" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="KeyMapping">
+        <xsd:all>
+          <xsd:element name="ForeignID" type="xsd:int" />
+          <xsd:element name="GranicusID" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="Attendee">
+        <xsd:all>
+          <xsd:element name="Name" type="xsd:string" />
+          <xsd:element name="Voting" type="xsd:boolean" />
+          <xsd:element name="Chair" type="xsd:boolean" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="VoteCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:VoteEntry[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="AttendeeStatusCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:AttendeeStatus[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ItemDetailCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:ItemDetail[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="CameraCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:Camera[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="EventCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:EventData[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="FolderCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:FolderData[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ClipCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:ClipData[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="AttendeeCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:Attendee[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="MetaDataCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:MetaData[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ForeignKeyTable">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:KeyMapping[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="StringCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ViewCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:ViewData[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="logMessageRequest">
+    <wsdl:part name="message" type="xsd:string" />
+    <wsdl:part name="class" type="xsd:string" />
+    <wsdl:part name="priority" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="logMessageResponse">
+    <wsdl:part name="result" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="result" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getEventsRequest" />
+  <wsdl:message name="getEventsResponse">
+    <wsdl:part name="events" type="ns5:EventCollection" />
+  </wsdl:message>
+  <wsdl:message name="getFoldersRequest" />
+  <wsdl:message name="getFoldersResponse">
+    <wsdl:part name="folders" type="ns5:FolderCollection" />
+  </wsdl:message>
+  <wsdl:message name="getArchivesByForeignIDRequest">
+    <wsdl:part name="ForeignID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getArchivesByForeignIDResponse">
+    <wsdl:part name="archives" type="ns5:ClipCollection" />
+  </wsdl:message>
+  <wsdl:message name="createEventRequest">
+    <wsdl:part name="Event" type="ns5:EventData" />
+  </wsdl:message>
+  <wsdl:message name="createEventResponse">
+    <wsdl:part name="EventID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="writeEventMetaBranchRequest">
+    <wsdl:part name="EventID" type="xsd:int" />
+    <wsdl:part name="ParentID" type="xsd:int" />
+    <wsdl:part name="Branch" type="ns5:MetaDataCollection" />
+  </wsdl:message>
+  <wsdl:message name="writeEventMetaBranchResponse">
+    <wsdl:part name="KeyTable" type="ns5:ForeignKeyTable" />
+  </wsdl:message>
+  <wsdl:message name="getEventMetaDataRequest">
+    <wsdl:part name="EventID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getEventMetaDataResponse">
+    <wsdl:part name="metadata" type="ns5:MetaDataCollection" />
+  </wsdl:message>
+  <wsdl:message name="getArchiveMetaDataRequest">
+    <wsdl:part name="ClipID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getArchiveMetaDataResponse">
+    <wsdl:part name="metadata" type="ns5:MetaDataCollection" />
+  </wsdl:message>
+  <wsdl:message name="setArchiveMinutesURLRequest">
+    <wsdl:part name="ClipID" type="xsd:int" />
+    <wsdl:part name="URL" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="setArchiveMinutesURLResponse" />
+  <wsdl:message name="setEventAgendaURLRequest">
+    <wsdl:part name="EventID" type="xsd:int" />
+    <wsdl:part name="URL" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="setEventAgendaURLResponse" />
+  <wsdl:message name="getCamerasRequest" />
+  <wsdl:message name="getCamerasResponse">
+    <wsdl:part name="Cameras" type="ns5:CameraCollection" />
+  </wsdl:message>
+  <wsdl:message name="getViewsRequest" />
+  <wsdl:message name="getViewsResponse">
+    <wsdl:part name="Views" type="ns5:ViewCollection" />
+  </wsdl:message>
+  <wsdl:message name="setViewForeignIDRequest">
+    <wsdl:part name="ViewID" type="xsd:int" />
+    <wsdl:part name="ForeignID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="setViewForeignIDResponse" />
+  <wsdl:message name="getViewsByForeignIDRequest">
+    <wsdl:part name="ForeignID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getViewsByForeignIDResponse">
+    <wsdl:part name="Views" type="ns5:ViewCollection" />
+  </wsdl:message>
+  <wsdl:message name="sanitizeHtmlTestRequest">
+    <wsdl:part name="Html" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="sanitizeHtmlTestResponse">
+    <wsdl:part name="Text" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="AlphaCorpConnectorPort">
+    <wsdl:operation name="logMessage">
+      <wsdl:input message="tns:logMessageRequest" />
+      <wsdl:output message="tns:logMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdl:input message="tns:loginRequest" />
+      <wsdl:output message="tns:loginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEvents">
+      <wsdl:input message="tns:getEventsRequest" />
+      <wsdl:output message="tns:getEventsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFolders">
+      <wsdl:input message="tns:getFoldersRequest" />
+      <wsdl:output message="tns:getFoldersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getArchivesByForeignID">
+      <wsdl:input message="tns:getArchivesByForeignIDRequest" />
+      <wsdl:output message="tns:getArchivesByForeignIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createEvent">
+      <wsdl:input message="tns:createEventRequest" />
+      <wsdl:output message="tns:createEventResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="writeEventMetaBranch">
+      <wsdl:input message="tns:writeEventMetaBranchRequest" />
+      <wsdl:output message="tns:writeEventMetaBranchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEventMetaData">
+      <wsdl:input message="tns:getEventMetaDataRequest" />
+      <wsdl:output message="tns:getEventMetaDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getArchiveMetaData">
+      <wsdl:input message="tns:getArchiveMetaDataRequest" />
+      <wsdl:output message="tns:getArchiveMetaDataResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setArchiveMinutesURL">
+      <wsdl:input message="tns:setArchiveMinutesURLRequest" />
+      <wsdl:output message="tns:setArchiveMinutesURLResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setEventAgendaURL">
+      <wsdl:input message="tns:setEventAgendaURLRequest" />
+      <wsdl:output message="tns:setEventAgendaURLResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCameras">
+      <wsdl:input message="tns:getCamerasRequest" />
+      <wsdl:output message="tns:getCamerasResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getViews">
+      <wsdl:input message="tns:getViewsRequest" />
+      <wsdl:output message="tns:getViewsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setViewForeignID">
+      <wsdl:input message="tns:setViewForeignIDRequest" />
+      <wsdl:output message="tns:setViewForeignIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getViewsByForeignID">
+      <wsdl:input message="tns:getViewsByForeignIDRequest" />
+      <wsdl:output message="tns:getViewsByForeignIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sanitizeHtmlTest">
+      <wsdl:input message="tns:sanitizeHtmlTestRequest" />
+      <wsdl:output message="tns:sanitizeHtmlTestResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlphaCorpConnectorBinding" type="tns:AlphaCorpConnectorPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="logMessage">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#logMessage" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#login" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEvents">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#getEvents" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFolders">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#getFolders" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getArchivesByForeignID">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#getArchivesByForeignID" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createEvent">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#createEvent" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="writeEventMetaBranch">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#writeEventMetaBranch" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEventMetaData">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#getEventMetaData" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getArchiveMetaData">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#getArchiveMetaData" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setArchiveMinutesURL">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#setArchiveMinutesURL" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setEventAgendaURL">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#setEventAgendaURL" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCameras">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#getCameras" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getViews">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#getViews" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setViewForeignID">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#setViewForeignID" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getViewsByForeignID">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#getViewsByForeignID" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sanitizeHtmlTest">
+      <soap:operation soapAction="urn:AlphaCorpConnector#AlphaCorpConnector#sanitizeHtmlTest" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:AlphaCorpConnector" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AlphaCorpConnectorService">
+    <documentation />
+    <wsdl:port name="AlphaCorpConnectorPort" binding="tns:AlphaCorpConnectorBinding">
+      <soap:address location="http://trench.qa.granicus.com/Connectors/AlphaCorp.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

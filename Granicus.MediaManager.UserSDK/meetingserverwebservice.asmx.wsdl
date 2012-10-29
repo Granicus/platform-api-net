@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://granicus.com/lacity/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://granicus.com/lacity/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://granicus.com/lacity/">
+      <s:element name="LoadMeeting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="documentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadMeetingResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CloseMeeting">
+        <s:complexType />
+      </s:element>
+      <s:element name="CloseMeetingResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDocuments">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDocumentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocumentsResult" type="tns:ArrayOfDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Document" nillable="true" type="tns:Document" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Document">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatusResult" type="tns:Status" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Status">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ConnectedToMeetingServer" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="EncoderState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArchiveState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MeetingTimerState" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MeetingTimeElapsed" type="s:unsignedLong" />
+          <s:element minOccurs="0" maxOccurs="1" name="MeetingName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArchiveFileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgendaDocumentID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MinutesDocumentID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MasterDocumentID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArchiveFolderID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArchiveDuration" type="s:unsignedLong" />
+          <s:element minOccurs="1" maxOccurs="1" name="SuspendRecordItem" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StartMeeting">
+        <s:complexType />
+      </s:element>
+      <s:element name="StartMeetingResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="StopMeeting">
+        <s:complexType />
+      </s:element>
+      <s:element name="StopMeetingResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RecordItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="foreignId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecordItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecordItemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecordNonIndexedItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="foreignId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecordNonIndexedItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecordNonIndexedItemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSuspendRecordItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="value" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSuspendRecordItemResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ArrayOfDocument" nillable="true" type="tns:ArrayOfDocument" />
+      <s:element name="Status" nillable="true" type="tns:Status" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoadMeetingSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadMeeting" />
+  </wsdl:message>
+  <wsdl:message name="LoadMeetingSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadMeetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseMeetingSoapIn">
+    <wsdl:part name="parameters" element="tns:CloseMeeting" />
+  </wsdl:message>
+  <wsdl:message name="CloseMeetingSoapOut">
+    <wsdl:part name="parameters" element="tns:CloseMeetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocuments" />
+  </wsdl:message>
+  <wsdl:message name="GetDocumentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartMeetingSoapIn">
+    <wsdl:part name="parameters" element="tns:StartMeeting" />
+  </wsdl:message>
+  <wsdl:message name="StartMeetingSoapOut">
+    <wsdl:part name="parameters" element="tns:StartMeetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="StopMeetingSoapIn">
+    <wsdl:part name="parameters" element="tns:StopMeeting" />
+  </wsdl:message>
+  <wsdl:message name="StopMeetingSoapOut">
+    <wsdl:part name="parameters" element="tns:StopMeetingResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecordItemSoapIn">
+    <wsdl:part name="parameters" element="tns:RecordItem" />
+  </wsdl:message>
+  <wsdl:message name="RecordItemSoapOut">
+    <wsdl:part name="parameters" element="tns:RecordItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecordNonIndexedItemSoapIn">
+    <wsdl:part name="parameters" element="tns:RecordNonIndexedItem" />
+  </wsdl:message>
+  <wsdl:message name="RecordNonIndexedItemSoapOut">
+    <wsdl:part name="parameters" element="tns:RecordNonIndexedItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetSuspendRecordItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SetSuspendRecordItem" />
+  </wsdl:message>
+  <wsdl:message name="SetSuspendRecordItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SetSuspendRecordItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadMeetingHttpGetIn">
+    <wsdl:part name="documentId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoadMeetingHttpGetOut" />
+  <wsdl:message name="CloseMeetingHttpGetIn" />
+  <wsdl:message name="CloseMeetingHttpGetOut" />
+  <wsdl:message name="GetDocumentsHttpGetIn" />
+  <wsdl:message name="GetDocumentsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusHttpGetIn" />
+  <wsdl:message name="GetStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:Status" />
+  </wsdl:message>
+  <wsdl:message name="StartMeetingHttpGetIn" />
+  <wsdl:message name="StartMeetingHttpGetOut" />
+  <wsdl:message name="StopMeetingHttpGetIn" />
+  <wsdl:message name="StopMeetingHttpGetOut" />
+  <wsdl:message name="RecordItemHttpGetIn">
+    <wsdl:part name="body" type="s:string" />
+    <wsdl:part name="foreignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RecordItemHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RecordNonIndexedItemHttpGetIn">
+    <wsdl:part name="body" type="s:string" />
+    <wsdl:part name="foreignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RecordNonIndexedItemHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetSuspendRecordItemHttpGetIn">
+    <wsdl:part name="value" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetSuspendRecordItemHttpGetOut" />
+  <wsdl:message name="LoadMeetingHttpPostIn">
+    <wsdl:part name="documentId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoadMeetingHttpPostOut" />
+  <wsdl:message name="CloseMeetingHttpPostIn" />
+  <wsdl:message name="CloseMeetingHttpPostOut" />
+  <wsdl:message name="GetDocumentsHttpPostIn" />
+  <wsdl:message name="GetDocumentsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDocument" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusHttpPostIn" />
+  <wsdl:message name="GetStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:Status" />
+  </wsdl:message>
+  <wsdl:message name="StartMeetingHttpPostIn" />
+  <wsdl:message name="StartMeetingHttpPostOut" />
+  <wsdl:message name="StopMeetingHttpPostIn" />
+  <wsdl:message name="StopMeetingHttpPostOut" />
+  <wsdl:message name="RecordItemHttpPostIn">
+    <wsdl:part name="body" type="s:string" />
+    <wsdl:part name="foreignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RecordItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RecordNonIndexedItemHttpPostIn">
+    <wsdl:part name="body" type="s:string" />
+    <wsdl:part name="foreignId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RecordNonIndexedItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetSuspendRecordItemHttpPostIn">
+    <wsdl:part name="value" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetSuspendRecordItemHttpPostOut" />
+  <wsdl:portType name="MeetingServerWebServiceSoap">
+    <wsdl:operation name="LoadMeeting">
+      <wsdl:input message="tns:LoadMeetingSoapIn" />
+      <wsdl:output message="tns:LoadMeetingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseMeeting">
+      <wsdl:input message="tns:CloseMeetingSoapIn" />
+      <wsdl:output message="tns:CloseMeetingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <wsdl:input message="tns:GetDocumentsSoapIn" />
+      <wsdl:output message="tns:GetDocumentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:input message="tns:GetStatusSoapIn" />
+      <wsdl:output message="tns:GetStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartMeeting">
+      <wsdl:input message="tns:StartMeetingSoapIn" />
+      <wsdl:output message="tns:StartMeetingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopMeeting">
+      <wsdl:input message="tns:StopMeetingSoapIn" />
+      <wsdl:output message="tns:StopMeetingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecordItem">
+      <wsdl:input message="tns:RecordItemSoapIn" />
+      <wsdl:output message="tns:RecordItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecordNonIndexedItem">
+      <wsdl:input message="tns:RecordNonIndexedItemSoapIn" />
+      <wsdl:output message="tns:RecordNonIndexedItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSuspendRecordItem">
+      <wsdl:input message="tns:SetSuspendRecordItemSoapIn" />
+      <wsdl:output message="tns:SetSuspendRecordItemSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MeetingServerWebServiceHttpGet">
+    <wsdl:operation name="LoadMeeting">
+      <wsdl:input message="tns:LoadMeetingHttpGetIn" />
+      <wsdl:output message="tns:LoadMeetingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseMeeting">
+      <wsdl:input message="tns:CloseMeetingHttpGetIn" />
+      <wsdl:output message="tns:CloseMeetingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <wsdl:input message="tns:GetDocumentsHttpGetIn" />
+      <wsdl:output message="tns:GetDocumentsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:input message="tns:GetStatusHttpGetIn" />
+      <wsdl:output message="tns:GetStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartMeeting">
+      <wsdl:input message="tns:StartMeetingHttpGetIn" />
+      <wsdl:output message="tns:StartMeetingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopMeeting">
+      <wsdl:input message="tns:StopMeetingHttpGetIn" />
+      <wsdl:output message="tns:StopMeetingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecordItem">
+      <wsdl:input message="tns:RecordItemHttpGetIn" />
+      <wsdl:output message="tns:RecordItemHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecordNonIndexedItem">
+      <wsdl:input message="tns:RecordNonIndexedItemHttpGetIn" />
+      <wsdl:output message="tns:RecordNonIndexedItemHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSuspendRecordItem">
+      <wsdl:input message="tns:SetSuspendRecordItemHttpGetIn" />
+      <wsdl:output message="tns:SetSuspendRecordItemHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MeetingServerWebServiceHttpPost">
+    <wsdl:operation name="LoadMeeting">
+      <wsdl:input message="tns:LoadMeetingHttpPostIn" />
+      <wsdl:output message="tns:LoadMeetingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseMeeting">
+      <wsdl:input message="tns:CloseMeetingHttpPostIn" />
+      <wsdl:output message="tns:CloseMeetingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <wsdl:input message="tns:GetDocumentsHttpPostIn" />
+      <wsdl:output message="tns:GetDocumentsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:input message="tns:GetStatusHttpPostIn" />
+      <wsdl:output message="tns:GetStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartMeeting">
+      <wsdl:input message="tns:StartMeetingHttpPostIn" />
+      <wsdl:output message="tns:StartMeetingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopMeeting">
+      <wsdl:input message="tns:StopMeetingHttpPostIn" />
+      <wsdl:output message="tns:StopMeetingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecordItem">
+      <wsdl:input message="tns:RecordItemHttpPostIn" />
+      <wsdl:output message="tns:RecordItemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecordNonIndexedItem">
+      <wsdl:input message="tns:RecordNonIndexedItemHttpPostIn" />
+      <wsdl:output message="tns:RecordNonIndexedItemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSuspendRecordItem">
+      <wsdl:input message="tns:SetSuspendRecordItemHttpPostIn" />
+      <wsdl:output message="tns:SetSuspendRecordItemHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MeetingServerWebServiceSoap" type="tns:MeetingServerWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="LoadMeeting">
+      <soap:operation soapAction="http://granicus.com/lacity/LoadMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseMeeting">
+      <soap:operation soapAction="http://granicus.com/lacity/CloseMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <soap:operation soapAction="http://granicus.com/lacity/GetDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <soap:operation soapAction="http://granicus.com/lacity/GetStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartMeeting">
+      <soap:operation soapAction="http://granicus.com/lacity/StartMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopMeeting">
+      <soap:operation soapAction="http://granicus.com/lacity/StopMeeting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecordItem">
+      <soap:operation soapAction="http://granicus.com/lacity/RecordItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecordNonIndexedItem">
+      <soap:operation soapAction="http://granicus.com/lacity/RecordNonIndexedItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSuspendRecordItem">
+      <soap:operation soapAction="http://granicus.com/lacity/SetSuspendRecordItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MeetingServerWebServiceHttpGet" type="tns:MeetingServerWebServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="LoadMeeting">
+      <http:operation location="/LoadMeeting" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CloseMeeting">
+      <http:operation location="/CloseMeeting" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <http:operation location="/GetDocuments" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <http:operation location="/GetStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartMeeting">
+      <http:operation location="/StartMeeting" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="StopMeeting">
+      <http:operation location="/StopMeeting" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RecordItem">
+      <http:operation location="/RecordItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecordNonIndexedItem">
+      <http:operation location="/RecordNonIndexedItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSuspendRecordItem">
+      <http:operation location="/SetSuspendRecordItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MeetingServerWebServiceHttpPost" type="tns:MeetingServerWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="LoadMeeting">
+      <http:operation location="/LoadMeeting" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CloseMeeting">
+      <http:operation location="/CloseMeeting" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuments">
+      <http:operation location="/GetDocuments" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <http:operation location="/GetStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartMeeting">
+      <http:operation location="/StartMeeting" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="StopMeeting">
+      <http:operation location="/StopMeeting" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RecordItem">
+      <http:operation location="/RecordItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecordNonIndexedItem">
+      <http:operation location="/RecordNonIndexedItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSuspendRecordItem">
+      <http:operation location="/SetSuspendRecordItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MeetingServerWebService">
+    <wsdl:port name="MeetingServerWebServiceSoap" binding="tns:MeetingServerWebServiceSoap">
+      <soap:address location="http://10.100.0.32/outcast/meetingserverwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MeetingServerWebServiceHttpGet" binding="tns:MeetingServerWebServiceHttpGet">
+      <http:address location="http://10.100.0.32/outcast/meetingserverwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MeetingServerWebServiceHttpPost" binding="tns:MeetingServerWebServiceHttpPost">
+      <http:address location="http://10.100.0.32/outcast/meetingserverwebservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
