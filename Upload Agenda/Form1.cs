@@ -26,6 +26,7 @@ namespace UploadAgenda
         private void Form1_Load(object sender, EventArgs e)
         {
             mediamanager = new MediaManager();
+			mediamanager.Proxy = new System.Net.WebProxy("127.0.0.1",8888);
             LoginForm login = new LoginForm(mediamanager);
             DialogResult result = login.ShowDialog();
             if (result == DialogResult.OK)

@@ -76,11 +76,11 @@ namespace UploadAgenda
                 null,
                 _templates[templateBox.SelectedIndex].ID,
                 archiveStatusBox.SelectedItem.ToString(),
-                (int) ((DateTime) durationBox.ValidateText()).TimeOfDay.TotalSeconds,
+                (int) DateTime.Parse(durationBox.Text).TimeOfDay.TotalSeconds,
                 broadcastCheckBox.Checked,
                 recordCheckBox.Checked,
                 autoStartCheckBox.Checked,
-                (DateTime) startTimeBox.ValidateText(),
+                DateTime.Parse(startTimeBox.Text),
                 DateTime.Now,
                 null,
                 null,
@@ -90,7 +90,7 @@ namespace UploadAgenda
                 stateBox.Text,
                 zipBox.Text,
                 eventNameBox.Text,
-                (DateTime) startTimeBox.ValidateText(),
+                DateTime.Parse (startTimeBox.Text),
                 DateTime.Now);
             EventID = _mediamanager.CreateEvent(myevent);
             this._success = true;
