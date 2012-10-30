@@ -5368,10 +5368,6 @@
             }
             set
             {
-                if ((value == null))
-                {
-                    throw new System.ArgumentNullException("Children");
-                }
                 if ((this._Children != value))
                 {
                     this._Children = value;
@@ -6009,10 +6005,6 @@
             }
             set
             {
-                if ((value == null))
-                {
-                    throw new System.ArgumentNullException("MotionTypes");
-                }
                 if ((this._MotionTypes != value))
                 {
                     this._MotionTypes = value;

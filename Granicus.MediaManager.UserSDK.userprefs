@@ -1,30 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Upload Agenda/Form1.cs">
-    <Files>
-      <File FileName="Upload Video/Form1.cs" Line="56" Column="54" />
-      <File FileName="Upload Video/Form1.Designer.cs" Line="104" Column="16" />
-      <File FileName="Upload Video/Form1.resx" Line="1" Column="1" />
-      <File FileName="Upload Video/LoginForm.cs" Line="1" Column="1" />
-      <File FileName="Upload Video/LoginForm.Designer.cs" Line="1" Column="1" />
-      <File FileName="Upload Video/Program.cs" Line="1" Column="1" />
-      <File FileName="Upload Video/UploadProgressDialog.cs" Line="1" Column="1" />
-      <File FileName="Upload Agenda/Form1.resx" Line="122" Column="14" />
-      <File FileName="Upload Agenda/Form1.cs" Line="30" Column="59" />
-      <File FileName="Upload Agenda/Program.cs" Line="1" Column="1" />
-      <File FileName="Upload Agenda/LoginForm.cs" Line="1" Column="1" />
-      <File FileName="Granicus.MediaManager.UserSDK/APIEntities.cs" Line="5990" Column="14" />
-      <File FileName="Upload Agenda/CreateEvent.cs" Line="95" Column="1" />
-      <File FileName="Granicus.MediaManager.UserSDK/MediaManager.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Granicus.MediaManager.SDK" expanded="True" />
-          <Node name="Meeting Simulator" expanded="True">
-            <Node name="Form1.cs" expanded="True" />
-          </Node>
-          <Node name="QuickTestHarness" expanded="True" selected="True" />
+          <Node name="Granicus.MediaManager.SDK" selected="True" />
         </State>
       </Pad>
     </Pads>
