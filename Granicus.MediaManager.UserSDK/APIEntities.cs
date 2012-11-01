@@ -4418,10 +4418,6 @@
             }
             set
             {
-                if ((value == null))
-                {
-                    throw new System.ArgumentNullException("Attendees");
-                }
                 if ((this._Attendees != value))
                 {
                     this._Attendees = value;

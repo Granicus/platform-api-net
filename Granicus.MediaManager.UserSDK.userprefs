@@ -1,10 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Granicus.MediaManager.UserSDK/APIEntities.cs">
+    <Files>
+      <File FileName="Granicus.MediaManager.UserSDK/APIEntities.cs" Line="7815" Column="42" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Granicus.MediaManager.SDK" selected="True" />
+          <Node name="Granicus.MediaManager.SDK" expanded="True" selected="True" />
+          <Node name="Upload Agenda" expanded="True" />
         </State>
       </Pad>
     </Pads>
