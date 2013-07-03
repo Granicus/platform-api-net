@@ -36,6 +36,7 @@ namespace UploadAgenda
                 textBox2.Text = "";
                 textBox3.Text = "";
                 textBox2.Focus();
+                this.DialogResult = DialogResult.Abort;
             }
         }
     }

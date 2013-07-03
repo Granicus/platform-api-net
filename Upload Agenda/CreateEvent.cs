@@ -91,7 +91,8 @@ namespace UploadAgenda
                 zipBox.Text,
                 eventNameBox.Text,
                 DateTime.Parse (startTimeBox.Text),
-                DateTime.Now);
+                DateTime.Now,
+                consentAgendaCheckBox.Checked ? 1 : 0);
             EventID = _mediamanager.CreateEvent(myevent);
             this._success = true;
         }
@@ -100,7 +101,6 @@ namespace UploadAgenda
         {
             this.Close();
         }
-
        
     }
 }

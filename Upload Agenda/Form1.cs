@@ -133,6 +133,7 @@ namespace UploadAgenda
                 MetaDataData meta = new MetaDataData();
                 meta.Name = documentItemNode.SelectSingleNode("Name").InnerText;
                 meta.ForeignID = Int32.Parse(documentItemNode.SelectSingleNode("ForeignID").InnerText);
+                meta.Consent = Int32.Parse(documentItemNode.SelectSingleNode("Consent").InnerText);
                 
                 // process payload
                 switch (documentItemNode.Name)
@@ -194,6 +195,20 @@ namespace UploadAgenda
             {
                 if (item.Text == eventId) item.Selected = true;
             }
+        }
+
+        private void auxilaryDataButton_Click(object sender, EventArgs e)
+        {
+            AuxilaryDataForm adf = new AuxilaryDataForm(mediamanager);
+
+            adf.ShowDialog();
+        }
+
+        private void getClipDataButton_Click(object sender, EventArgs e)
+        {
+            ClipDataForm cdf = new ClipDataForm(mediamanager);
+
+            cdf.ShowDialog();
         }
     }
 }

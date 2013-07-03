@@ -31,13 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mediamanager = new Granicus.MediaManager.SDK.MediaManager();
             this.eventListView = new System.Windows.Forms.ListView();
-            this.idHeader = new System.Windows.Forms.ColumnHeader();
-            this.nameHeader = new System.Windows.Forms.ColumnHeader();
-            this.dateHeader = new System.Windows.Forms.ColumnHeader();
+            this.idHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dateHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.newEventButton = new System.Windows.Forms.Button();
             this.uploadAgendaButton = new System.Windows.Forms.Button();
             this.agendaFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.refreshButton = new System.Windows.Forms.Button();
+            this.auxilaryDataButton = new System.Windows.Forms.Button();
+            this.getClipDataButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mediamanager
@@ -115,11 +117,33 @@
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
+            // auxilaryDataButton
+            // 
+            this.auxilaryDataButton.Location = new System.Drawing.Point(294, 408);
+            this.auxilaryDataButton.Name = "auxilaryDataButton";
+            this.auxilaryDataButton.Size = new System.Drawing.Size(121, 23);
+            this.auxilaryDataButton.TabIndex = 5;
+            this.auxilaryDataButton.Text = "Add auxilary data";
+            this.auxilaryDataButton.UseVisualStyleBackColor = true;
+            this.auxilaryDataButton.Click += new System.EventHandler(this.auxilaryDataButton_Click);
+            // 
+            // getClipDataButton
+            // 
+            this.getClipDataButton.Location = new System.Drawing.Point(430, 437);
+            this.getClipDataButton.Name = "getClipDataButton";
+            this.getClipDataButton.Size = new System.Drawing.Size(119, 23);
+            this.getClipDataButton.TabIndex = 6;
+            this.getClipDataButton.Text = "Get Clip Data";
+            this.getClipDataButton.UseVisualStyleBackColor = true;
+            this.getClipDataButton.Click += new System.EventHandler(this.getClipDataButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(561, 441);
+            this.ClientSize = new System.Drawing.Size(561, 463);
+            this.Controls.Add(this.getClipDataButton);
+            this.Controls.Add(this.auxilaryDataButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.uploadAgendaButton);
             this.Controls.Add(this.newEventButton);
@@ -143,6 +167,8 @@
         private System.Windows.Forms.Button uploadAgendaButton;
         private System.Windows.Forms.OpenFileDialog agendaFileDialog;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Button auxilaryDataButton;
+        private System.Windows.Forms.Button getClipDataButton;
     }
 }
 

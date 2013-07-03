@@ -68,6 +68,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuxilaryDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuxilaryDataForm.Designer.cs">
+      <DependentUpon>AuxilaryDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClipDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClipDataForm.Designer.cs">
+      <DependentUpon>ClipDataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateEvent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AuxilaryDataForm.resx">
+      <DependentUpon>AuxilaryDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClipDataForm.resx">
+      <DependentUpon>ClipDataForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>

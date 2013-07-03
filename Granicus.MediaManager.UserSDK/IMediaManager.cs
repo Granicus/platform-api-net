@@ -1,3 +1,4 @@
+using System;
 namespace Granicus.MediaManager.SDK
 {
     interface IMediaManager
@@ -156,5 +157,11 @@ namespace Granicus.MediaManager.SDK
         void UpdateServer(ServerData server);
         
         int GetPermissionLevel(string AssetType, int AssetID);
+
+        void CreateAttendees(Attendee[] AttendeesData);
+
+        void CreateMotionActions(StringCollection motionActions);
+
+        StringCollection GetMotionActions();
     }
 }

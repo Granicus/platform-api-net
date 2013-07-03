@@ -62,6 +62,7 @@
             this.street2Box = new System.Windows.Forms.TextBox();
             this.street1Box = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.consentAgendaCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -240,6 +241,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.consentAgendaCheckBox);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.archiveStatusBox);
             this.groupBox2.Controls.Add(this.broadcastCheckBox);
@@ -404,6 +406,16 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "Street 2:";
             // 
+            // consentAgendaCheckBox
+            // 
+            this.consentAgendaCheckBox.AutoSize = true;
+            this.consentAgendaCheckBox.Location = new System.Drawing.Point(362, 127);
+            this.consentAgendaCheckBox.Name = "consentAgendaCheckBox";
+            this.consentAgendaCheckBox.Size = new System.Drawing.Size(105, 17);
+            this.consentAgendaCheckBox.TabIndex = 24;
+            this.consentAgendaCheckBox.Text = "Consent Agenda";
+            this.consentAgendaCheckBox.UseVisualStyleBackColor = true;
+            // 
             // CreateEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,5 +476,6 @@
         private System.Windows.Forms.MaskedTextBox zipBox;
         private System.Windows.Forms.MaskedTextBox startTimeBox;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox consentAgendaCheckBox;
     }
 }

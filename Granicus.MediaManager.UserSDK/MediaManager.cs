@@ -281,6 +281,31 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
+        /// Used to initially connect to MediaManager.
+        /// </summary>
+        /// <remarks>
+        /// Before other methods can be called on a MediaManager object, the Connect method must be called.
+        /// If Connect has not been called, and the MediaManager object was not instantiated using an overload
+        /// that supports automated logon, then an exception will be thrown whenever another method is called on the
+        /// MediaManager object.
+        /// </remarks>
+        /// <param name="Server">The MediaManager Host to connect to (e.g. client.granicus.com)</param>
+        /// <param name="Username">The MediaManager username to connect with.</param>
+        /// <param name="Password">The MediaManager password for the given username.</param>
+        /// <example>This sample shows how to call the <see cref="Granicus.MediaManager.SDK.MediaManager.Connect" /> method.
+        /// <code>
+        /// MediaManager mm = new MediaManager();
+        /// mm.Connect("client.granicus.com","myuser","mypassword");
+        /// </code>
+        /// </example>
+        public void ServerConnect(string Server, string Username, string Password)
+        {
+            base.Url = m_SafeServerURL(Server);
+            this.SendChallengeResponse(Username, Password);
+            this.m_Connected = true;
+        }
+        
+        /// <summary>
         /// Disconnects the MediaManager instance from the MediaManager web application.
         /// </summary>
         /// <remarks>
@@ -1626,6 +1651,40 @@ namespace Granicus.MediaManager.SDK
                         AssetType,
                         AssetID});
             return ((int)(results[0]));
+        }
+
+        /// <summary>
+        /// Creates new attendees in the system.
+        /// </summary>
+        /// <param name="AttendeesData">An array of objects <see cref="Granicus.MediaManager.SDK.AttendeeData"/>  that contains the values for new attendees.</param>
+        /// <returns></returns>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#CreateAttendees", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        public void CreateAttendees(Attendee[] AttendeesData)
+        {
+            object[] results = this.Invoke("CreateAttendees", new object[] { AttendeesData });
+        }
+
+        /// <summary>
+        /// Send the definitive list of Motion-Actions to MM.
+        /// </summary>
+        /// <param name="motionActions">A <see cref="Granicus.MediaManager.SDK.StringCollection"/> An array containing all the motion actions.</param>
+        /// <returns></returns>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#CreateMotionActions", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        public void CreateMotionActions(StringCollection motionActions)
+        {
+            this.Invoke("CreateMotionActions", new object[] { motionActions});
+        }
+
+        /// <summary>
+        /// Get the list of Motion-Actions from MM.
+        /// </summary>
+        /// <returns>Motion action string array</returns>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#GetMotionActions", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        [return: System.Xml.Serialization.SoapElementAttribute("motionActions")]
+        public StringCollection GetMotionActions()
+        {
+            object[] results = this.Invoke("GetMotionActions", new object[0]);
+            return ((StringCollection)results[0]);
         }
 
         #endregion

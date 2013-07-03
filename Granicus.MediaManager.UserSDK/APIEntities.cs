@@ -4642,6 +4642,9 @@
         /// <remarks/>
         private bool _Chair;
 
+        /// <remarks/>
+        private string _PersonUID;
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.Attendee"/> class.
         /// </summary>
@@ -4762,6 +4765,25 @@
             }
         }
 
+        /// <summary>
+        /// Whether or not the attendee is the Chair of the meeting body.
+        /// </summary>
+        public string PersonUID
+        {
+            get
+            {
+                return this._PersonUID;
+            }
+            set
+            {
+                if ((this._PersonUID != value))
+                {
+                    this._PersonUID = value;
+                    this.RaisePropertyChanged("PersonUID");
+                }
+            }
+        }
+        
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
@@ -5066,6 +5088,12 @@
         /// <remarks/>
         private bool _AllowComment;
 
+        /// <remarks/>
+        private int _Consent;
+
+        /// <remarks/>
+        private string _ConsentVoteUID;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> class.
         /// </summary>
@@ -5323,6 +5351,44 @@
         }
 
         /// <summary>
+        /// Whether or not item is a consent agenda item.
+        /// </summary>
+        public int Consent
+        {
+            get
+            {
+                return this._Consent;
+            }
+            set
+            {
+                if ((this._Consent != value))
+                {
+                    this._Consent = value;
+                    this.RaisePropertyChanged("Consent");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Guid of a consent vote item, if THIS item was part of a consent vote.
+        /// </summary>
+        public string ConsentVoteUID
+        {
+            get
+            {
+                return this._ConsentVoteUID;
+            }
+            set
+            {
+                if ((this._ConsentVoteUID != value))
+                {
+                    this._ConsentVoteUID = value;
+                    this.RaisePropertyChanged("ConsentVoteUID");
+                }
+            }
+        }
+
+        /// <summary>
         /// The payload of the MetaData.  This is what determines the "type" of metadata (agenda item, rollcall, etc).  
         /// </summary>
         /// <remarks>Valid types that can be assigned to this property are:
@@ -5510,6 +5576,9 @@
         /// <remarks/>
         private int _CommentCloseOffset;
 
+        /// <remarks/>
+        private int _ConsentAgenda;
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.EventData"/> class.
         /// </summary>
@@ -5548,6 +5617,7 @@
         /// <param name="_AgendaTitle">The title of the agenda for the event.</param>
         /// <param name="_MeetingTime">The posted start time of the meeting.</param>
         /// <param name="_AgendaPostedDate">The date on which the agenda for the meeting was posted.</param>
+        /// <param name="_ConsentAgenda">Whether consent agenda is enabled (0-no, 1-yes)</param>
         public EventData(
                     int _ID,
                     string _UID,
@@ -5575,7 +5645,8 @@
                     string _Zip,
                     string _AgendaTitle,
                     DateTime _MeetingTime,
-                    DateTime _AgendaPostedDate)
+                    DateTime _AgendaPostedDate,
+                    int _ConsentAgenda)
         {
             this._ID = _ID;
             this._UID = _UID;
@@ -5604,6 +5675,7 @@
             this._AgendaTitle = _AgendaTitle;
             this._MeetingTime = _MeetingTime;
             this._AgendaPostedDate = _AgendaPostedDate;
+            this._ConsentAgenda = _ConsentAgenda;
         }
 
         /// <summary>
@@ -6218,6 +6290,25 @@
             }
         }
 
+        /// <summary>
+        /// Whether consent agenda is enabled for the event.
+        /// </summary>
+        public int ConsentAgenda
+        {
+            get
+            {
+                return this._ConsentAgenda;
+            }
+            set
+            {
+                if ((this._ConsentAgenda != value))
+                {
+                    this._ConsentAgenda = value;
+                    this.RaisePropertyChanged("ConsentAgenda");
+                }
+            }
+        }
+        
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
