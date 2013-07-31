@@ -105,7 +105,7 @@ namespace UploadVideo
                 uploadFileBackgroundWorker.ReportProgress(100);
                 // the entire file transferred, so register it with MediaManager and move on to the next file
                 mediaVault.FinishUpload(currentBucket);
-                string extension = new FileInfo(file).Extension;
+                string extension = new FileInfo(file).Extension.Substring(1);
                 mediaVault.RegisterUploadedFile(currentBucket, folderId, currentFile.TrimEnd(("." + extension).ToCharArray()), extension);
             }
             e.Result = files.Length + " file(s) uploaded successfully.";

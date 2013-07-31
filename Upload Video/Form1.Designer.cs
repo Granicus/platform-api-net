@@ -30,25 +30,25 @@
         {
             this.uploadFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.folderListView = new System.Windows.Forms.ListView();
-            this.idColumnHeader = new System.Windows.Forms.ColumnHeader();
-            this.nameColumnHeader = new System.Windows.Forms.ColumnHeader();
-            this.descriptionColumnHeader = new System.Windows.Forms.ColumnHeader();
+            this.idColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.descriptionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uploadButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // uploadFileDialog
             // 
-            this.uploadFileDialog.Filter = "Video Files|*.wmv";
+            this.uploadFileDialog.Filter = "Video Files|*.mp4";
             this.uploadFileDialog.Multiselect = true;
             this.uploadFileDialog.Title = "Upload File(s)";
             // 
             // folderListView
             // 
             this.folderListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.folderListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.folderListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.folderListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idColumnHeader,
             this.nameColumnHeader,
