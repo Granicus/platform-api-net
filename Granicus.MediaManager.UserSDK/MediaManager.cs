@@ -603,7 +603,7 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
-        /// Gets a list of all broadcast events in the Granicus system.
+        /// Gets a list of broadcast events in the Granicus system that occur no more than 2 weeks in the past, or 2 months in the future.
         /// </summary>
         /// <returns>An array of <see cref="Granicus.MediaManager.SDK.EventData"/> objects the represent the entire event list.</returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#GetEvents", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
@@ -625,6 +625,21 @@ namespace Granicus.MediaManager.SDK
         {
             object[] results = this.Invoke("GetEventsByForeignID", new object[] {
                         ForeignID});
+            return ((EventData[])(results[0]));
+        }
+
+        /// <summary>
+        /// Gets a list of events between the given date range.
+        /// </summary>
+        /// <param name="StartTime">The start time of the range.</param>
+        /// <param name="EndTime">The end time of the range.</param>
+        /// <returns>A list of <see cref="Granicus.MediaManager.SDK.EventData"/> objects with matching Foreign IDs.</returns>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#GetEventsByForeignID", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        [return: System.Xml.Serialization.SoapElementAttribute("events")]
+        public EventData[] GetEventsByDateRange(DateTime StartTime, DateTime EndTime)
+        {
+            object[] results = this.Invoke("GetEventsByDateRange", new object[] {
+                        StartTime, EndTime});
             return ((EventData[])(results[0]));
         }
 
