@@ -1464,6 +1464,19 @@ namespace Granicus.MediaManager.SDK
         /// <summary>
         /// Updates a user record within the Granicus system.
         /// </summary>
+        /// <param name="UserUID">The UID of the user to assign groups to.</param>
+        /// <param name="GroupUIDs">An array of UIDs representing the groups to be assigned.</param>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SetUserMemberships", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        public void SetUserMemberships(string UserUID, string[] GroupUIDs)
+        {
+            this.Invoke("SetUserMemberships", new object[] {
+                        UserUID,
+                        GroupUIDs});
+        }
+
+        /// <summary>
+        /// Sets the groups for the given user.
+        /// </summary>
         /// <param name="user">The <see cref="Granicus.MediaManager.SDK.UserData"/> object to update.</param>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#UpdateUser", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void UpdateUser(UserData user)

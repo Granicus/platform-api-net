@@ -3434,6 +3434,9 @@
         private int _ID;
 
         /// <remarks/>
+        private string _UID;
+
+        /// <remarks/>
         private string _Name;
 
         /// <remarks/>
@@ -3458,9 +3461,10 @@
         /// <param name="_Name">The name of the group.</param>
         /// <param name="_Description">A short description of the group and it's purpose.</param>
         /// <param name="_CreatedDate">The date the group was created.  This value cannot be changed.</param>
-        public GroupData(int _ID, string _Name, string _Description, System.DateTime _CreatedDate)
+        public GroupData(int _ID, string _UID, string _Name, string _Description, System.DateTime _CreatedDate)
         {
             this._ID = _ID;
+            this._UID = _UID;
             this._Name = _Name;
             this._Description = _Description;
             this._CreatedDate = _CreatedDate;
@@ -3481,6 +3485,25 @@
                 {
                     this._ID = value;
                     this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The UID of the group.
+        /// </summary>
+        public string UID
+        {
+            get
+            {
+                return this._UID;
+            }
+            set
+            {
+                if ((this._UID != value))
+                {
+                    this._UID = value;
+                    this.RaisePropertyChanged("UID");
                 }
             }
         }
