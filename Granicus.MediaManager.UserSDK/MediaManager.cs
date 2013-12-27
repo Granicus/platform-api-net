@@ -1450,14 +1450,14 @@ namespace Granicus.MediaManager.SDK
         /// <summary>
         /// Returns the <see cref="Granicus.MediaManager.SDK.UserData"/> object for a specific user.
         /// </summary>
-        /// <param name="UserID">The ID of the user to be returned.</param>
+        /// <param name="UserUID">The UID of the user to be returned.</param>
         /// <returns>A <see cref="Granicus.MediaManager.SDK.UserData"/> object that represents the requested user.</returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#GetUser", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         [return: System.Xml.Serialization.SoapElementAttribute("user")]
-        public UserData GetUser(int UserID)
+        public UserData GetUser(string UserUID)
         {
             object[] results = this.Invoke("GetUser", new object[] {
-                        UserID});
+                        UserUID});
             return ((UserData)(results[0]));
         }
 

@@ -128,7 +128,7 @@ namespace Granicus.MediaManager.SDK
         
         UserData[] GetUsers();
         
-        UserData GetUser(int UserID);
+        UserData GetUser(string UserUID);
         
         void UpdateUser(UserData user);
         
