@@ -3609,6 +3609,9 @@
 
         /// <remarks/>
         private int _ID;
+        
+        /// <remarks/>
+        private string _UID;
 
         /// <remarks/>
         private string _Username;
@@ -3671,6 +3674,25 @@
                 {
                     this._ID = value;
                     this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        /// <summary>
+        /// The UID of the user. 
+        /// </summary>
+        public string UID
+        {
+            get
+            {
+                return this._UID;
+            }
+            set
+            {
+                if ((this._UID != value))
+                {
+                    this._UID = value;
+                    this.RaisePropertyChanged("UID");
                 }
             }
         }
