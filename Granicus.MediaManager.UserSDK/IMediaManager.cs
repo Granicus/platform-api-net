@@ -120,7 +120,7 @@ namespace Granicus.MediaManager.SDK
         
         void UpdateView(ViewData view);
         
-        int CreateUser(UserData UserData);
+        string CreateUser(UserData UserData);
         
         int GetCurrentUserID();
         
