@@ -1403,12 +1403,12 @@ namespace Granicus.MediaManager.SDK
         /// <param name="UserData">A <see cref="Granicus.MediaManager.SDK.UserData"/> object that contains the values for the new user.</param>
         /// <returns></returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#CreateUser", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
-        [return: System.Xml.Serialization.SoapElementAttribute("UserID")]
-        public int CreateUser(UserData UserData)
+        [return: System.Xml.Serialization.SoapElementAttribute("UserUID")]
+        public string CreateUser(UserData UserData)
         {
             object[] results = this.Invoke("CreateUser", new object[] {
                         UserData});
-            return ((int)(results[0]));
+            return ((string)(results[0]));
         }
 
         /// <summary>
