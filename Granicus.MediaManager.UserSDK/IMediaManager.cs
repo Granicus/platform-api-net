@@ -123,6 +123,8 @@ namespace Granicus.MediaManager.SDK
         string CreateUser(UserData UserData);
         
         int GetCurrentUserID();
+
+        string GetCurrentUserUID();
         
         string GetCurrentUserLogon();
         

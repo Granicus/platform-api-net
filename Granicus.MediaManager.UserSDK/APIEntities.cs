@@ -3617,7 +3617,16 @@
         private string _Password;
 
         /// <remarks/>
-        private string _Fullname;
+        private string _FirstName;
+
+        /// <remarks/>
+        private string _LastName;
+
+        /// <remarks/>
+        private string _MiddleName;
+
+        /// <remarks/>
+        private string _Phone;
 
         /// <remarks/>
         private string _Email;
@@ -3645,12 +3654,14 @@
         /// <param name="_Email">The user's email address.</param>
         /// <param name="_CreatedDate">The date the user was created. Cannot be changed.</param>
         /// <param name="_LastModified">The date the user record was last modified. Cannot be changed.</param>
-        public UserData(int _ID, string _Username, string _Password, string _Fullname, string _Email, System.DateTime _CreatedDate, System.DateTime _LastModified)
+        public UserData(int _ID, string _Username, string _Password, string _FirstName, string _MiddleName, string _LastName, string _Email, System.DateTime _CreatedDate, System.DateTime _LastModified)
         {
             this._ID = _ID;
             this._Username = _Username;
             this._Password = _Password;
-            this._Fullname = _Fullname;
+            this._FirstName = _FirstName;
+            this._MiddleName = _MiddleName;
+            this._LastName = _LastName;
             this._Email = _Email;
             this._CreatedDate = _CreatedDate;
             this._LastModified = _LastModified;
@@ -3714,20 +3725,77 @@
         }
 
         /// <summary>
-        /// The full name of the user.
+        /// The first name of the user.
         /// </summary>
-        public string Fullname
+        public string FirstName
         {
             get
             {
-                return this._Fullname;
+                return this._FirstName;
             }
             set
             {
-                if ((this._Fullname != value))
+                if ((this._FirstName != value))
                 {
-                    this._Fullname = value;
-                    this.RaisePropertyChanged("Fullname");
+                    this._FirstName = value;
+                    this.RaisePropertyChanged("FirstName");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The middle name of the user.
+        /// </summary>
+        public string MiddleName
+        {
+            get
+            {
+                return this._MiddleName;
+            }
+            set
+            {
+                if ((this._MiddleName != value))
+                {
+                    this._MiddleName = value;
+                    this.RaisePropertyChanged("MiddleName");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The last name of the user.
+        /// </summary>
+        public string LastName
+        {
+            get
+            {
+                return this._LastName;
+            }
+            set
+            {
+                if ((this._LastName != value))
+                {
+                    this._LastName = value;
+                    this.RaisePropertyChanged("LastName");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The phone number of the user.
+        /// </summary>
+        public string Phone
+        {
+            get
+            {
+                return this._Phone;
+            }
+            set
+            {
+                if ((this._Phone != value))
+                {
+                    this._Phone = value;
+                    this.RaisePropertyChanged("Phone");
                 }
             }
         }

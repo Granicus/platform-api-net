@@ -1424,6 +1424,18 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
+        /// Returns the UID for the currently logged in user.
+        /// </summary>
+        /// <returns>The numeric user ID.</returns>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#GetCurrentUserUID", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        [return: System.Xml.Serialization.SoapElementAttribute("UserUID")]
+        public string GetCurrentUserUID()
+        {
+            object[] results = this.Invoke("GetCurrentUserUID", new object[0]);
+            return ((string)(results[0]));
+        }
+
+        /// <summary>
         /// Returns the user logon name of the currently logged in user.
         /// </summary>
         /// <returns>The current username.</returns>

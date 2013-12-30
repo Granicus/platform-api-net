@@ -10,10 +10,9 @@ namespace QuickTestHarness
     {
         static void Main(string[] args)
         {
-            MediaManager mm = new MediaManager("enterprise.granicus.com", "granicus", "Gr@nnyBr!ght");
-            ClipData[] clips = mm.GetClips(1);
-            Console.WriteLine(clips.Length);
-            Console.ReadLine();
+            MediaManager mm = new MediaManager("mm.lvh.me", "administrator", "admin");
+            string uid = mm.GetCurrentUserUID();
+            UserData[] users = mm.GetUsers();
         }
     }
 }
