@@ -1,3 +1,5 @@
+[![Build status](http://ci.appveyor.com/api/projects/status/fd0tihdu2i859oay)](http://ci.appveyor.com/project/Granicus/platform-api-net)
+
 Overview
 ===========
 
