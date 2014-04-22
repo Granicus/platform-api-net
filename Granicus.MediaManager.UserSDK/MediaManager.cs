@@ -113,9 +113,9 @@ namespace Granicus.MediaManager.SDK
         /// <returns></returns>
         private string m_SafeServerURL(string Server)
         {
-            if (!Server.StartsWith("http://"))
+            if (!Server.StartsWith("https://") && !Server.StartsWith("http://"))
             {
-                Server = "http://" + Server;
+                Server = "https://" + Server;
             }
             if (!Server.EndsWith("/"))
             {
