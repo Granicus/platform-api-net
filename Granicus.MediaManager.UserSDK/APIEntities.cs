@@ -4956,6 +4956,9 @@
 
         /// <remarks/>
         private System.DateTime _CreatedDate;
+        
+        /// <remarks/>
+        private IntegerCollection _Views
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.FolderData"/> class.
@@ -4974,7 +4977,7 @@
         /// <param name="_Type">The type of the folder.  Current supported values are "Meeting" and "Training".</param>
         /// <param name="_PlayerTemplateID">The numeric ID of the player template used when viewing archives within the folder.</param>
         /// <param name="_CreatedDate">The date the folder was created.  Cannot be updated.</param>
-        public FolderData(int _ID, string _Name, string _Description, string _Type, int _PlayerTemplateID, System.DateTime _CreatedDate)
+        public FolderData(int _ID, string _Name, string _Description, string _Type, int _PlayerTemplateID, System.DateTime _CreatedDate, IntegerCollection _Views)
         {
             this._ID = _ID;
             this._Name = _Name;
@@ -4982,6 +4985,7 @@
             this._Type = _Type;
             this._PlayerTemplateID = _PlayerTemplateID;
             this._CreatedDate = _CreatedDate;
+            this._Views = _Views;
         }
 
         /// <summary>
@@ -5095,6 +5099,29 @@
                 {
                     this._CreatedDate = value;
                     this.RaisePropertyChanged("CreatedDate");
+                }
+            }
+        }
+        
+        /// <summary>
+        /// An <see cref="Granicus.MediaManager.SDK.IntegerCollection"/> containing all of the numeric IDs of the views associated with this folder.
+        /// </summary>
+        public IntegerCollection Views
+        {
+            get
+            {
+                return this._Views;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    throw new System.ArgumentNullException("Views");
+                }
+                if ((this._Views != value))
+                {
+                    this._Views = value;
+                    this.RaisePropertyChanged("Views");
                 }
             }
         }
@@ -5692,6 +5719,9 @@
         /// <remarks/>
         private int _ConsentAgenda;
         
+        /// <remarks/>
+        private IntegerCollection _Views;
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.EventData"/> class.
         /// </summary>
@@ -5759,7 +5789,9 @@
                     string _AgendaTitle,
                     DateTime _MeetingTime,
                     DateTime _AgendaPostedDate,
-                    int _ConsentAgenda)
+                    int _ConsentAgenda,
+                    IntegerCollection _Views;
+                      )
         {
             this._ID = _ID;
             this._UID = _UID;
@@ -5789,6 +5821,8 @@
             this._MeetingTime = _MeetingTime;
             this._AgendaPostedDate = _AgendaPostedDate;
             this._ConsentAgenda = _ConsentAgenda;
+            this._Views =  _Views;
+            
         }
 
         /// <summary>
@@ -6418,6 +6452,29 @@
                 {
                     this._ConsentAgenda = value;
                     this.RaisePropertyChanged("ConsentAgenda");
+                }
+            }
+        }
+        
+        /// <summary>
+        /// An <see cref="Granicus.MediaManager.SDK.IntegerCollection"/> containing all of the numeric IDs of the events associated with this view.
+        /// </summary>
+        public IntegerCollection Views
+        {
+            get
+            {
+                return this._Views;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    throw new System.ArgumentNullException("Views");
+                }
+                if ((this._Views != value))
+                {
+                    this._Views = value;
+                    this.RaisePropertyChanged("Views");
                 }
             }
         }
