@@ -4958,7 +4958,7 @@
         private System.DateTime _CreatedDate;
         
         /// <remarks/>
-        private IntegerCollection _Views
+        private IntegerCollection _Views;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.FolderData"/> class.
@@ -5789,8 +5789,7 @@
                     string _AgendaTitle,
                     DateTime _MeetingTime,
                     DateTime _AgendaPostedDate,
-                    int _ConsentAgenda,
-                    IntegerCollection _Views;
+                    int _ConsentAgenda
                       )
         {
             this._ID = _ID;
@@ -5821,7 +5820,6 @@
             this._MeetingTime = _MeetingTime;
             this._AgendaPostedDate = _AgendaPostedDate;
             this._ConsentAgenda = _ConsentAgenda;
-            this._Views =  _Views;
             
         }
 
