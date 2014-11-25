@@ -94,7 +94,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.AgendaItem.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -104,7 +104,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.AgendaItem.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -201,7 +201,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.MeetingDocumentHeader.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -211,7 +211,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.MeetingDocumentHeader.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -405,7 +405,7 @@
         /// <item><term>Expired</term><description>Timer has expired.</description></item>
         /// <item><term>Paused</term><description>Timer is paused.</description></item>
         /// <item><term>Running</term><description>Timer is running.</description></item>
-        /// <item><term>Stopped</term><description>Timer is stopped.</description></item> 
+        /// <item><term>Stopped</term><description>Timer is stopped.</description></item>
         /// </list>
         /// </remarks>
         [System.Xml.Serialization.XmlElementAttribute(ElementName = "MeetingTimerState")]
@@ -613,7 +613,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.MeetingDocumentHeader.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -623,7 +623,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.EncoderStatus.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -784,7 +784,7 @@
         /// <summary>
         /// Change the attributes of the current CameraData object to hold the specified arguments.  This is the
         /// preferred way to add a new camera.  By default, the ID will be set to 1, but if you create a new camera,
-        /// the ID will be automatically set to a different value.  By default, "Type" is set to "Meeting," 
+        /// the ID will be automatically set to a different value.  By default, "Type" is set to "Meeting,"
         /// Broadcast Port is 8080, and Control Port is 80.
         /// </summary>
         /// <param name="_Name">The name of the camera that will be visible to users.  For example "Council Room Encoder"</param>
@@ -963,7 +963,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.CameraData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -973,7 +973,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.CameraData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -1120,7 +1120,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Motion.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -1130,7 +1130,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Motion.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -1236,7 +1236,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.AttendeeStatus.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -1246,7 +1246,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.AttendeeStatus.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -1299,7 +1299,7 @@
         /// <remarks>
         /// This list of attendees is in the form of a collection of <see cref="Granicus.MediaManager.SDK.AttendeeStatus"/> objects,
         /// which are different from <see cref="Granicus.MediaManager.SDK.Attendee"/> objects in the fact that they contain only the
-        /// full name, and the <see cref="Granicus.MediaManager.SDK.AttendeeStatus.Status"/> of the attendee at the time of the roll 
+        /// full name, and the <see cref="Granicus.MediaManager.SDK.AttendeeStatus.Status"/> of the attendee at the time of the roll
         /// call.
         /// </remarks>
         public AttendeeStatusCollection Attendees
@@ -1327,7 +1327,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Rollcall.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -1337,7 +1337,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Rollcall.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -1463,7 +1463,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.VoteRecord.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -1473,7 +1473,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.VoteRecord.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -1579,7 +1579,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.VoteEntry.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -1589,7 +1589,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.VoteEntry.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -1647,7 +1647,7 @@
         }
 
         /// <summary>
-        /// The text of the note.  
+        /// The text of the note.
         /// </summary>
         /// <remarks>
         /// This text will appear on the minutes if the <see cref="Granicus.MediaManager.SDK.Note.Private"/>
@@ -1712,7 +1712,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Note.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -1722,7 +1722,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Note.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -1876,7 +1876,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Document.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -1886,7 +1886,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Document.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -2037,7 +2037,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Document.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -2047,7 +2047,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Document.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -2119,7 +2119,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.TrainingChapter.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -2129,7 +2129,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.TrainingChapter.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -2200,7 +2200,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.PracticeQuestion.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -2210,7 +2210,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.PracticeQuestion.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -2264,7 +2264,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.ViewData"/> class using the specified 
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.ViewData"/> class using the specified
         /// Foreign ID, Name, Status, Event list and Folder list.
         /// </summary>
         /// <param name="_ID">The numeric ID for the view.  This will be reassigned when using CreateView().</param>
@@ -2410,7 +2410,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.ViewData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -2420,7 +2420,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.ViewData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -2432,7 +2432,7 @@
             }
         }
 
-        /// <summary> 
+        /// <summary>
         /// Returns a string with vital details about the ViewData object.
         /// </summary>
         public override string ToString()
@@ -2536,7 +2536,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.KeyMapping.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -2546,7 +2546,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.KeyMapping.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -2625,7 +2625,7 @@
     //    /// </summary>
     //    /// <remarks>
     //    /// The <see cref="Granicus.MediaManager.SDK.CaptionData.PropertyChanged"/> event can indicate all properties
-    //    /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+    //    /// on the object have changed by using either a null reference or String.Empty as the property name in the
     //    /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
     //    /// </remarks>
     //    public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -2635,7 +2635,7 @@
     //    /// </summary>
     //    /// <remarks>
     //    /// The <see cref="Granicus.MediaManager.SDK.CaptionData.PropertyChanged"/> event can indicate all properties
-    //    /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+    //    /// on the object have changed by using either a null reference or String.Empty as the property name in the
     //    /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
     //    /// <param name="propertyName">The name of the property that was changed.</param>
     //    protected void RaisePropertyChanged(string propertyName)
@@ -2695,7 +2695,7 @@
         }
 
         /// <summary>
-        /// Initiates a new instance of the <see cref="Granicus.MediaManager.SDK.ServerInterfaceData"/> class 
+        /// Initiates a new instance of the <see cref="Granicus.MediaManager.SDK.ServerInterfaceData"/> class
         /// to associate with the given ServerID.
         /// </summary>
         /// <param name="_ID">The numeric ID of the ServerInterface Object.  This will be ignored when you create the ServerInterface.</param>
@@ -2875,7 +2875,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.ServerInterfaceData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -2885,7 +2885,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.ServerInterfaceData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -3169,7 +3169,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.ServerData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -3179,7 +3179,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.ServerData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -3393,7 +3393,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.TemplateData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -3403,7 +3403,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.TemplateData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -3570,7 +3570,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.GroupData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -3580,7 +3580,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.GroupData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -3609,7 +3609,7 @@
 
         /// <remarks/>
         private int _ID;
-        
+
         /// <remarks/>
         private string _UID;
 
@@ -3688,9 +3688,9 @@
                 }
             }
         }
-        
+
         /// <summary>
-        /// The UID of the user. 
+        /// The UID of the user.
         /// </summary>
         public string UID
         {
@@ -3884,7 +3884,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.UserData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -3894,7 +3894,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.UserData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -4324,7 +4324,7 @@
 
         /// <summary>
         /// The physical filename of the video within the Granicus storage architecture.  This value can never be assigned by the
-        /// SDK as it's value is assigned by the storage architecture itself.  
+        /// SDK as it's value is assigned by the storage architecture itself.
         /// </summary>
         public string FileName
         {
@@ -4454,7 +4454,7 @@
         }
 
         /// <summary>
-        /// The status of the video clip, valid values are determined by configuration. 
+        /// The status of the video clip, valid values are determined by configuration.
         /// </summary>
         /// <remarks>
         /// The default valid values are:
@@ -4483,7 +4483,7 @@
         /// The start time of the video.
         /// </summary>
         /// <remarks>
-        /// The start time of the video is used to calculate absolute date time offsets for indexing when absolute times are used, 
+        /// The start time of the video is used to calculate absolute date time offsets for indexing when absolute times are used,
         /// as well as the start time in any generated documents (such as Agendas or Minutes).</remarks>
         public System.DateTime StartTime
         {
@@ -4701,7 +4701,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.ClipData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -4711,7 +4711,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.ClipData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -4757,7 +4757,7 @@
 
         /// <remarks/>
         private string _PersonUID;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.Attendee"/> class.
         /// </summary>
@@ -4766,7 +4766,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.Attendee"/> class with the supplied 
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.Attendee"/> class with the supplied
         /// Name, OrderID, Voting Flag and Chair Flag.  The ID parameter is ignored.
         /// </summary>
         /// <param name="_ID">The numeric ID of the Attendee.  This value is ignored when creating new Attendees.</param>
@@ -4896,13 +4896,13 @@
                 }
             }
         }
-        
+
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Attendee.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -4912,7 +4912,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.Attendee.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -4928,7 +4928,7 @@
 
     #region FolderData
     /// <summary>
-    /// Represents a folder for storing videos within the Granicus system.  
+    /// Represents a folder for storing videos within the Granicus system.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.312")]
     [System.SerializableAttribute()]
@@ -4956,7 +4956,7 @@
 
         /// <remarks/>
         private System.DateTime _CreatedDate;
-        
+
         /// <remarks/>
         private IntegerCollection _Views;
 
@@ -4989,7 +4989,7 @@
         }
 
         /// <summary>
-        /// Numeric ID of the folder.  
+        /// Numeric ID of the folder.
         /// </summary>
         /// <remarks>This value is ignored and a new value will be generated by the system for you.</remarks>
         public int ID
@@ -5102,7 +5102,7 @@
                 }
             }
         }
-        
+
         /// <summary>
         /// An <see cref="Granicus.MediaManager.SDK.IntegerCollection"/> containing all of the numeric IDs of the views associated with this folder.
         /// </summary>
@@ -5131,7 +5131,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.FolderData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -5141,7 +5141,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.FolderData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -5160,7 +5160,7 @@
     /// The foundation for agenda and minutes trees in the Granicus system.
     /// </summary>
     /// <remarks>
-    /// The MetaDataData class is used to create trees of MetaData that are attached to a clip or event. The class serves as a 
+    /// The MetaDataData class is used to create trees of MetaData that are attached to a clip or event. The class serves as a
     /// container for a payload that can be one of the following types:
     /// <list type="bullet">
     /// <item><description><see cref="Granicus.MediaManager.SDK.AgendaItem"/></description></item>
@@ -5173,10 +5173,10 @@
     /// In addition, the class contains a Children property which is a collection of more MetaDataData objects.  This collection can
     /// be used to build a tree structure that can then be attached to the event or clip.  Each MetaDataData object can contain
     /// a timestamp.  This timestamp is used for the purpose of indexing.
-    /// 
+    ///
     /// Once loaded into the Granicus system, the ParentID and ParentUID properties are assigned so that the system is able to flatten
     /// the tree structure into a list, and form it back into a tree, depending on how the data is to be used.
-    /// 
+    ///
     /// Finally, the ForeignID field allows tracking between integrated systems by allowing the assignment of a numeric ID from
     /// an external database.
     /// </remarks>
@@ -5211,7 +5211,7 @@
         private string _Name;
 
         /// <remarks>
-        /// _TimeStamp is set to -1 by default because a default of 0 
+        /// _TimeStamp is set to -1 by default because a default of 0
         /// would mean that the index is actual at 0 seconds
         /// into the video.</remarks>
         private int _TimeStamp = -1;
@@ -5529,7 +5529,7 @@
         }
 
         /// <summary>
-        /// The payload of the MetaData.  This is what determines the "type" of metadata (agenda item, rollcall, etc).  
+        /// The payload of the MetaData.  This is what determines the "type" of metadata (agenda item, rollcall, etc).
         /// </summary>
         /// <remarks>Valid types that can be assigned to this property are:
         /// <list type="bullet">
@@ -5583,7 +5583,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.MetaDataData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -5593,7 +5593,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.MetaDataData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -5634,6 +5634,9 @@
 
         /// <remarks/>
         private string _Name;
+
+        /// <remarks/>
+        private string _Description;
 
         /// <remarks/>
         private int _CameraID;
@@ -5710,7 +5713,7 @@
         /// <remarks/>
         private bool _CommentEnabled;
 
-        /// <remarks/> 
+        /// <remarks/>
         private int _AgendaRolloverID;
 
         /// <remarks/>
@@ -5718,10 +5721,10 @@
 
         /// <remarks/>
         private int _ConsentAgenda;
-        
+
         /// <remarks/>
         private IntegerCollection _Views;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.EventData"/> class.
         /// </summary>
@@ -5737,6 +5740,7 @@
         /// <param name="_UID">A string representation of the Events GUID</param>
         /// <param name="_ForeignID">A numeric foreign ID for association with integrated systems.</param>
         /// <param name="_Name">The name of the event.</param>
+        /// <param name="_Description">The name of the event.</param>
         /// <param name="_CameraID">The camera (encoder) ID for the encoder on which the event will take place.</param>
         /// <param name="_FolderID">The folder in which to place any archived files.</param>
         /// <param name="_Status">The status of the event. This property is read only and will be ignored by the web service if altered.</param>
@@ -5766,6 +5770,7 @@
                     string _UID,
                     int _ForeignID,
                     string _Name,
+                    string _Description,
                     int _CameraID,
                     int _FolderID,
                     string _Status,
@@ -5796,6 +5801,7 @@
             this._UID = _UID;
             this._ForeignID = _ForeignID;
             this._Name = _Name;
+            this._Description = _Description;
             this._CameraID = _CameraID;
             this._FolderID = _FolderID;
             this._Status = _Status;
@@ -5820,7 +5826,7 @@
             this._MeetingTime = _MeetingTime;
             this._AgendaPostedDate = _AgendaPostedDate;
             this._ConsentAgenda = _ConsentAgenda;
-            
+
         }
 
         /// <summary>
@@ -5896,6 +5902,25 @@
                 {
                     this._Name = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The name of the event.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                if ((this._Description != value))
+                {
+                    this._Description = value;
+                    this.RaisePropertyChanged("Description");
                 }
             }
         }
@@ -6453,7 +6478,7 @@
                 }
             }
         }
-        
+
         /// <summary>
         /// An <see cref="Granicus.MediaManager.SDK.IntegerCollection"/> containing all of the numeric IDs of the events associated with this view.
         /// </summary>
@@ -6476,13 +6501,13 @@
                 }
             }
         }
-        
+
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.EventData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -6492,7 +6517,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.EventData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -6519,7 +6544,7 @@
     public partial class Comment : object, System.ComponentModel.INotifyPropertyChanged
     {
         /// <remarks/>
-        private string _UID; 
+        private string _UID;
         /// <remarks/>
         private string _EventUID;
 
@@ -6540,7 +6565,7 @@
         private string _Address;
 
         private string _City;
-        
+
         private string _State;
 
         private string _Zip;
@@ -6881,7 +6906,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.UserData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -6891,7 +6916,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.UserData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -7235,7 +7260,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.UserData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
         /// </remarks>
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -7245,7 +7270,7 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.UserData.PropertyChanged"/> event can indicate all properties
-        /// on the object have changed by using either a null reference or String.Empty as the property name in the 
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
         protected void RaisePropertyChanged(string propertyName)
@@ -7276,7 +7301,7 @@
         /// <summary>
         /// Returns the <see cref="Granicus.MediaManager.SDK.AttendeeStatus"/> object at the given index in the collection.
         /// </summary>
-        /// <param name="idx">The index of the desired <see cref="Granicus.MediaManager.SDK.AttendeeStatus"/> 
+        /// <param name="idx">The index of the desired <see cref="Granicus.MediaManager.SDK.AttendeeStatus"/>
         /// object in the collection.</param>
         /// <returns></returns>
         public AttendeeStatus this[int idx]
@@ -7310,7 +7335,7 @@
         }
 
         /// <summary>
-        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.AttendeeStatus"/> value 
+        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.AttendeeStatus"/> value
         /// in the collection.
         /// </summary>
         /// <param name="value">The <see cref="Granicus.MediaManager.SDK.AttendeeStatus"/> object to locate</param>
@@ -7388,7 +7413,7 @@
         /// <summary>
         /// Returns the <see cref="Granicus.MediaManager.SDK.VoteEntry"/> object at the given index in the collection.
         /// </summary>
-        /// <param name="idx">The index of the desired <see cref="Granicus.MediaManager.SDK.VoteEntry"/> 
+        /// <param name="idx">The index of the desired <see cref="Granicus.MediaManager.SDK.VoteEntry"/>
         /// object in the collection.</param>
         /// <returns></returns>
         public VoteEntry this[int idx]
@@ -7422,7 +7447,7 @@
         }
 
         /// <summary>
-        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.VoteEntry"/> value 
+        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.VoteEntry"/> value
         /// in the collection.
         /// </summary>
         /// <param name="value">The <see cref="Granicus.MediaManager.SDK.VoteEntry"/> object to locate</param>
@@ -7807,7 +7832,7 @@
         }
 
         /// <summary>
-        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> value 
+        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> value
         /// in the collection.
         /// </summary>
         /// <param name="value">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to locate</param>
@@ -7919,7 +7944,7 @@
         }
 
         /// <summary>
-        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> value 
+        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> value
         /// in the collection.
         /// </summary>
         /// <param name="value">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to locate</param>
@@ -8032,7 +8057,7 @@
         }
 
         /// <summary>
-        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> value 
+        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> value
         /// in the collection.
         /// </summary>
         /// <param name="value">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to locate</param>

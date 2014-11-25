@@ -4,18 +4,10 @@
     <Files>
       <File FileName="Granicus.MediaManager.UserSDK/APIEntities.cs" Line="4421" Column="17" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Granicus.MediaManager.SDK" expanded="True" selected="True" />
-          <Node name="Upload Agenda" expanded="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/Javier/projects/platform-api-net/Upload Agenda/CreateEvent.cs" line="95" />
+      <Breakpoint file="/Users/Javier/projects/platform-api-net/Upload Agenda/CreateEvent.cs" line="95" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
