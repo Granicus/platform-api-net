@@ -5740,7 +5740,6 @@
         /// <param name="_UID">A string representation of the Events GUID</param>
         /// <param name="_ForeignID">A numeric foreign ID for association with integrated systems.</param>
         /// <param name="_Name">The name of the event.</param>
-        /// <param name="_Description">The name of the event.</param>
         /// <param name="_CameraID">The camera (encoder) ID for the encoder on which the event will take place.</param>
         /// <param name="_FolderID">The folder in which to place any archived files.</param>
         /// <param name="_Status">The status of the event. This property is read only and will be ignored by the web service if altered.</param>
@@ -5770,7 +5769,6 @@
                     string _UID,
                     int _ForeignID,
                     string _Name,
-                    string _Description,
                     int _CameraID,
                     int _FolderID,
                     string _Status,
