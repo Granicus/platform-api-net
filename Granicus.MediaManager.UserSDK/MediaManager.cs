@@ -60,7 +60,7 @@ namespace Granicus.MediaManager.SDK
         /// </remarks>
         public MediaManager()
         {
-            this.Url = "http://javiervista/SDK/User/index.php";
+            this.Url = "https://javiervista/SDK/User/index.php";
             this.CookieContainer = new CookieContainer();
         }
      
@@ -116,6 +116,8 @@ namespace Granicus.MediaManager.SDK
             if (!Server.StartsWith("https://") && !Server.StartsWith("http://"))
             {
                 Server = "https://" + Server;
+            } else if(Server.StartsWith("http://")) {
+              Server = Server.Replace("http://","https://");
             }
             if (!Server.EndsWith("/"))
             {
