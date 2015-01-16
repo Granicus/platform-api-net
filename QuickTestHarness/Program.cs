@@ -10,41 +10,23 @@ namespace QuickTestHarness
     {
         static void Main(string[] args)
         {
-            MediaManager mm = new MediaManager("mm.lvh.me", "administrator", "admin");
-            UserData user = new UserData()
+            int i = 1;
+            while(true)
             {
-                Username = "javier4",
-                FirstName = "Javier",
-                LastName = "Muniz",
-                Password = "thisisatest",
-                Email = "javier@granicus.com"
-
-            };
-
-            MetaDataData agendaItem = new MetaDataData()
-            {
-                Name = "Test Item",
-                Payload = new AgendaItem()
+                try
                 {
-                    Actions = "Approve",
-                    Department = "Department of Better Technology"
+                    using (MediaManager mm = new MediaManager("http://oregon.granicus.com", "granicus", "Spr1ngT1m3!"))
+                    {
+                        Console.WriteLine("Successfully authed " + i + " times.");
+                        i++;
+                    }
                 }
-            };
-
-            MetaDataData document = new MetaDataData()
-            {
-                Name = "Test Document",
-                Payload = new Document()
+                catch
                 {
-                    Location = "http://documentserver.com/mydocument.pdf"
+                    Console.WriteLine("Auth Failed.");
                 }
-            };
-
-            agendaItem.Children.Add(document);
-
-            MetaDataData[] item_list = new MetaDataData[1];
-            item_list[0] = agendaItem;
-
+               
+            }
         }
     }
 }

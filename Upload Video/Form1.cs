@@ -58,7 +58,7 @@ namespace UploadVideo
             {
                 int folderId = Int32.Parse(folderListView.SelectedItems[0].Text);
                 MediaVault mv = mediamanager.GetMediaVault(folderId);
-                UploadProgressDialog uploadProgressDialog = new UploadProgressDialog(uploadFileDialog.FileNames,mv,folderId,512 * 512);
+                UploadProgressDialog uploadProgressDialog = new UploadProgressDialog(uploadFileDialog.FileNames,mv,folderId,1024 * 1024);
                 uploadProgressDialog.ShowDialog();
             }
         }

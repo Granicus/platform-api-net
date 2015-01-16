@@ -10,7 +10,7 @@ namespace Granicus.MediaManager.SDK
         
         string GetChallenge(string ChallengeCode);
         
-        void SendChallengeResponse(string Challenge, string Response);
+        void SendChallengeResponse(string key, DateTime expiration);
         
         void Logout();
         

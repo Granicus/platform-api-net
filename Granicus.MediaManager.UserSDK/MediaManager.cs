@@ -4,6 +4,7 @@ namespace Granicus.MediaManager.SDK
     using System.Net;
     using System.Web.Services.Protocols;
     using System.Collections;
+    using System.Security.Cryptography;
 
     #region MediaManagerSDKService Class
     /// <summary>
@@ -300,10 +301,10 @@ namespace Granicus.MediaManager.SDK
         /// mm.Connect("client.granicus.com","myuser","mypassword");
         /// </code>
         /// </example>
-        public void ServerConnect(string Server, string Username, string Password)
+        public void ServerConnect(string Server, string key, DateTime expiration)
         {
             base.Url = m_SafeServerURL(Server);
-            this.SendChallengeResponse(Username, Password);
+            this.SendChallengeResponse(key, expiration);
             this.m_Connected = true;
         }
         
@@ -495,9 +496,16 @@ namespace Granicus.MediaManager.SDK
         /// <param name="Challenge">The challenge.</param>
         /// <param name="Response">The challenge reponse.</param>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SendChallengeResponse", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
-        public void SendChallengeResponse(string Challenge, string Response)
+        public void SendChallengeResponse(string key, DateTime expiration)
         {
-            this.Invoke("SendChallengeResponse", new object[] {
+          string json = string.Format("{\"exp\": \"{0}\"}", expiration.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss"));
+          HMACSHA256 hmac = new HMACSHA256(System.Text.Encoding.ASCII.GetBytes(key));
+
+          string Challenge = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(json)).Replace("=", null).Replace('+', '-').Replace('/', '_');
+          string Response = Convert.ToBase64String(hmac.ComputeHash(System.Text.Encoding.ASCII.GetBytes(Challenge))).Replace("=", null).Replace('+', '-').Replace('/', '_');
+
+
+          this.Invoke("SendChallengeResponse", new object[] {
                         Challenge,
                         Response});
         }
