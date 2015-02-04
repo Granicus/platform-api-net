@@ -498,7 +498,7 @@ namespace Granicus.MediaManager.SDK
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SendChallengeResponse", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void SendChallengeResponse(string key, DateTime expiration)
         {
-          string json = string.Format("{\"exp\": \"{0}\"}", expiration.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss"));
+          string json = string.Format("{{\"exp\": \"{0}\"}}", expiration.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss"));
           HMACSHA256 hmac = new HMACSHA256(System.Text.Encoding.ASCII.GetBytes(key));
 
           string Challenge = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(json)).Replace("=", null).Replace('+', '-').Replace('/', '_');
