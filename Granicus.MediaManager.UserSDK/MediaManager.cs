@@ -493,8 +493,8 @@ namespace Granicus.MediaManager.SDK
         /// Send the response to a Challenge that was received using <see cref="Granicus.MediaManager.SDK.MediaManager.GetChallenge"/>.
         /// </summary>
         /// <remarks>Challenge/Response authentication is an authentication method that has been abondoned and should not be used.</remarks>
-        /// <param name="Challenge">The challenge.</param>
-        /// <param name="Response">The challenge reponse.</param>
+        /// <param name="key">The key for the challenge response</param>
+        /// <param name="expiration">The expiration of the response.</param>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SendChallengeResponse", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void SendChallengeResponse(string key, DateTime expiration)
         {
