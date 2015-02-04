@@ -15,7 +15,7 @@ namespace QuickTestHarness
             {
                 try
                 {
-                    using (MediaManager mm = new MediaManager("http://oregon.granicus.com", "granicus", "Spr1ngT1m3!"))
+                    using (MediaManager mm = new MediaManager("http://oregon.granicus.com", "granicus", "secret"))
                     {
                         Console.WriteLine("Successfully authed " + i + " times.");
                         i++;

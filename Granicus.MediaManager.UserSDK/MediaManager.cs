@@ -489,13 +489,6 @@ namespace Granicus.MediaManager.SDK
             return ((string)(results[0]));
         }
 
-        /// <summary>
-        /// Send the response to a Challenge that was received using <see cref="Granicus.MediaManager.SDK.MediaManager.GetChallenge"/>.
-        /// </summary>
-        /// <remarks>Challenge/Response authentication is an authentication method that has been abondoned and should not be used.</remarks>
-        /// <param name="key">The key for the challenge response</param>
-        /// <param name="expiration">The expiration of the response.</param>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SendChallengeResponse", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void SendChallengeResponse(string key, DateTime expiration)
         {
           string json = string.Format("{{\"exp\": \"{0}\"}}", expiration.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss"));
@@ -504,7 +497,18 @@ namespace Granicus.MediaManager.SDK
           string Challenge = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(json)).Replace("=", null).Replace('+', '-').Replace('/', '_');
           string Response = Convert.ToBase64String(hmac.ComputeHash(System.Text.Encoding.ASCII.GetBytes(Challenge))).Replace("=", null).Replace('+', '-').Replace('/', '_');
 
+          SendChallengeResponse(Challenge, Response);
+        }
 
+        /// <summary>
+        /// Send the response to a Challenge that was received using <see cref="Granicus.MediaManager.SDK.MediaManager.GetChallenge"/>.
+        /// </summary>
+        /// <remarks>Challenge/Response authentication is an authentication method that has been abondoned and should not be used.</remarks>
+        /// <param name="key">The key for the challenge response</param>
+        /// <param name="expiration">The expiration of the response.</param>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SendChallengeResponse", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        public void SendChallengeResponse(string Challenge, string Response)
+        {
           this.Invoke("SendChallengeResponse", new object[] {
                         Challenge,
                         Response});

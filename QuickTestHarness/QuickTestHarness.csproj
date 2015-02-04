@@ -54,13 +54,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Granicus.MediaManager.UserSDK\Granicus.MediaManager.SDK.csproj">
-      <Project>{57C7FF27-BEF4-453B-ACD8-3B10254428D7}</Project>
-      <Name>Granicus.MediaManager.SDK</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <ProjectReference Include="..\Granicus.MediaManager.UserSDK\Granicus.MediaManager.SDK.csproj">
+      <Project>{57c7ff27-bef4-453b-acd8-3b10254428d7}</Project>
+      <Name>Granicus.MediaManager.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
