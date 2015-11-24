@@ -368,10 +368,6 @@ namespace Granicus.MediaManager.SDK
         /// <returns>A connected and usable OutcastEncoder instance.</returns>
         public OutcastEncoder GetOutcastEncoder(CameraData Camera)
         {
-            if (!Connected)
-            {
-                throw new InvalidOperationException("You must be connected to MediaManager to perform this operation.");
-            }
             OutcastEncoder encoder = new OutcastEncoder();
             encoder.Connect(Camera, ImpersonationToken);
             return encoder;
