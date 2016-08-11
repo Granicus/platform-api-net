@@ -10,20 +10,28 @@ namespace QuickTestHarness
     {
         static void Main(string[] args)
         {
+            // enter your server username/pass here for quick local testing
+            string USER = "";
+            string PASS = "";
+
             int i = 1;
             while(true)
             {
                 try
                 {
-                    using (MediaManager mm = new MediaManager("http://oregon.granicus.com", "granicus", "secret"))
+                    using(MediaManager mema = new MediaManager("http://mm.lvh.me", USER, PASS))
+                    //using (MediaManager mema = new MediaManager("http://dev.dev.granicus.com", USER, PASS))
+                    //using (MediaManager mema = new MediaManager("http://green.qa.granicus.com", USER, PASS))
                     {
                         Console.WriteLine("Successfully authed " + i + " times.");
                         i++;
+
+                        // ENTER LOCAL TEST CODE
                     }
                 }
-                catch
+                catch(Exception e)
                 {
-                    Console.WriteLine("Auth Failed.");
+                    Console.WriteLine("Auth Failed - " + e.Message);
                 }
                
             }

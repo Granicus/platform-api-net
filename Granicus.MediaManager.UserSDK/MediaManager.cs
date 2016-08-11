@@ -117,7 +117,7 @@ namespace Granicus.MediaManager.SDK
             if (!Server.StartsWith("https://") && !Server.StartsWith("http://"))
             {
                 Server = "https://" + Server;
-            } else if(Server.StartsWith("http://")) {
+            } else if(Server.StartsWith("http://") && !Server.Contains("mm.lvh.me")) {
               Server = Server.Replace("http://","https://");
             }
             if (!Server.EndsWith("/"))
@@ -221,6 +221,18 @@ namespace Granicus.MediaManager.SDK
             ArrayList al = new ArrayList(MetaData);
             MetaDataData[] MetaArray = (MetaDataData[])al.ToArray(typeof(MetaDataData));
             return ImportClipMetaData(ClipID, MetaArray, ClearExisting, AsTree);
+        }
+
+        /// <summary>
+        /// Publishes a clip
+        /// </summary>
+        /// <returns>An array of <see cref="Granicus.MediaManager.SDK.PublishClipResult"/> objects that represent the list of clips in the folder.</returns>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#PublishClip", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        [return: System.Xml.Serialization.SoapElementAttribute("PublishClipResult")]
+        public PublishClipResult PublishClip(PublishClipData PublishClipData)
+        {
+            object[] results = this.Invoke("PublishClip", new object[] { PublishClipData });
+            return ((PublishClipResult)(results[0]));
         }
 
         #endregion

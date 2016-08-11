@@ -97,7 +97,9 @@ namespace Granicus.MediaManager.SDK
         void UpdateClip(ClipData clip);
         
         void DeleteClip(int ClipID);
-        
+
+        PublishClipResult PublishClip(PublishClipData data);
+
         KeyMapping[] AddClipMetaData(int ClipID, MetaDataData MetaDataData);
         
         KeyMapping[] ImportClipMetaData(int ClipID, MetaDataData[] MetaData, bool ClearExisting, bool AsTree);

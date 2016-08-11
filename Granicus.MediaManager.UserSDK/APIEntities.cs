@@ -5155,6 +5155,343 @@
     }
     #endregion
 
+    #region PublishClipData
+    /// <summary>
+    /// Represents a folder for storing videos within the Granicus system.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.312")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace = "http://granicus.com/xsd")]
+    [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    public partial class PublishClipData : object, System.ComponentModel.INotifyPropertyChanged
+    {
+
+        /// <remarks/>
+        private int _ClipID;
+        
+        private bool _Public;
+
+        /// <remarks/>
+        private string _Name;
+
+        /// <remarks/>
+        private string _Title;
+
+        /// <remarks/>
+        private string _TextField;
+
+        /// <remarks/>
+        private int _TemplateID;
+
+        /// <remarks/>
+        private int _MetaID;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.PublishClipData"/> class.
+        /// </summary>
+        public PublishClipData()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.PublishClipData"/> class with the supplied
+        public PublishClipData(int _ClipID, bool _Public, string _Name, string _Title, string _TextField, int _TemplateID, int _MetaID)
+        {
+            this._ClipID = _ClipID;
+            this._Public = _Public;
+            this._Name = _Name;
+            this._Title = _Title;
+            this._TextField = _TextField;
+            this._TemplateID = _TemplateID;
+            this._MetaID = _MetaID;
+        }
+
+        /// <summary>
+        /// Clip ID.
+        /// </summary>
+        /// <remarks></remarks>
+        public int ClipID
+        {
+            get
+            {
+                return this._ClipID;
+            }
+            set
+            {
+                if ((this._ClipID != value))
+                {
+                    this._ClipID = value;
+                    this.RaisePropertyChanged("ClipID");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Clip ID.
+        /// </summary>
+        /// <remarks></remarks>
+        public bool Public
+        {
+            get
+            {
+                return this._Public;
+            }
+            set
+            {
+                if ((this._Public != value))
+                {
+                    this._Public = value;
+                    this.RaisePropertyChanged("Public");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The name of the folder.
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                if ((this._Name != value))
+                {
+                    this._Name = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        public string Title
+        {
+            get
+            {
+                return this._Title;
+            }
+            set
+            {
+                if ((this._Title != value))
+                {
+                    this._Title = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        public string TextField
+        {
+            get
+            {
+                return this._TextField;
+            }
+            set
+            {
+                if ((this._TextField != value))
+                {
+                    this._TextField = value;
+                    this.RaisePropertyChanged("TextField");
+                }
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        public int TemplateID
+        {
+            get
+            {
+                return this._TemplateID;
+            }
+            set
+            {
+                if ((this._TemplateID != value))
+                {
+                    this._TemplateID = value;
+                    this.RaisePropertyChanged("TemplateID");
+                }
+            }
+        }
+        /// <summary>
+        /// </summary>
+        public int MetaID
+        {
+            get
+            {
+                return this._MetaID;
+            }
+            set
+            {
+                if ((this._MetaID != value))
+                {
+                    this._MetaID = value;
+                    this.RaisePropertyChanged("MetaID");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
+        /// <remarks>
+        /// The <see cref="Granicus.MediaManager.SDK.FolderData.PropertyChanged"/> event can indicate all properties
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
+        /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
+        /// </remarks>
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Raises the <see cref="Granicus.MediaManager.SDK.FolderData.PropertyChanged"/> event for the given property.
+        /// </summary>
+        /// <remarks>
+        /// The <see cref="Granicus.MediaManager.SDK.FolderData.PropertyChanged"/> event can indicate all properties
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
+        /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
+        /// <param name="propertyName">The name of the property that was changed.</param>
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null))
+            {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    #endregion
+
+
+    #region PublishClipResult
+    /// <summary>
+    /// Represents a folder for storing videos within the Granicus system.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.312")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace = "http://granicus.com/xsd")]
+    [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    public partial class PublishClipResult : object, System.ComponentModel.INotifyPropertyChanged
+    {
+
+        /// <remarks/>
+        private int _ClipID;
+
+        private string _URL;
+
+        /// <remarks/>
+        private string _PublishPoint;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.PublishClipData"/> class.
+        /// </summary>
+        public PublishClipResult()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.PublishClipData"/> class with the supplied
+        public PublishClipResult(int _ClipID, string _URL, string _PublishPoint)
+        {
+            this._ClipID = _ClipID;
+            this._URL = _URL;
+            this._PublishPoint = _PublishPoint;
+        }
+
+        /// <summary>
+        /// Clip ID.
+        /// </summary>
+        /// <remarks></remarks>
+        public int ClipID
+        {
+            get
+            {
+                return this._ClipID;
+            }
+            set
+            {
+                if ((this._ClipID != value))
+                {
+                    this._ClipID = value;
+                    this.RaisePropertyChanged("ClipID");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The name of the folder.
+        /// </summary>
+        public string URL
+        {
+            get
+            {
+                return this._URL ;
+            }
+            set
+            {
+                if ((this._URL != value))
+                {
+                    this._URL = value;
+                    this.RaisePropertyChanged("URL");
+                }
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        public string PublishPoint
+        {
+            get
+            {
+                return this._PublishPoint;
+            }
+            set
+            {
+                if ((this._PublishPoint != value))
+                {
+                    this._PublishPoint = value;
+                    this.RaisePropertyChanged("PublishPoint");
+                }
+            }
+        }
+        
+
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
+        /// <remarks>
+        /// The <see cref="Granicus.MediaManager.SDK.FolderData.PropertyChanged"/> event can indicate all properties
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
+        /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
+        /// </remarks>
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Raises the <see cref="Granicus.MediaManager.SDK.FolderData.PropertyChanged"/> event for the given property.
+        /// </summary>
+        /// <remarks>
+        /// The <see cref="Granicus.MediaManager.SDK.FolderData.PropertyChanged"/> event can indicate all properties
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
+        /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
+        /// <param name="propertyName">The name of the property that was changed.</param>
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null))
+            {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    #endregion
+
     #region MetaDataData
     /// <summary>
     /// The foundation for agenda and minutes trees in the Granicus system.
@@ -8001,7 +8338,6 @@
         }
     }
     #endregion
-
 
     #region CommentCollection
     /// <summary>
