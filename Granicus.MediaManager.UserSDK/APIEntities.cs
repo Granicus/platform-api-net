@@ -5571,6 +5571,9 @@
         /// <remarks/>
         private string _ConsentVoteUID;
 
+        /// <remarks/>
+        private int _ClosedSession;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> class.
         /// </summary>
@@ -5861,6 +5864,25 @@
                 {
                     this._ConsentVoteUID = value;
                     this.RaisePropertyChanged("ConsentVoteUID");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Whether or not item is a closed session item.
+        /// </summary>
+        public int ClosedSession
+        {
+            get
+            {
+                return this._ClosedSession;
+            }
+            set
+            {
+                if ((this._ClosedSession != value))
+                {
+                    this._ClosedSession = value;
+                    this.RaisePropertyChanged("ClosedSession");
                 }
             }
         }

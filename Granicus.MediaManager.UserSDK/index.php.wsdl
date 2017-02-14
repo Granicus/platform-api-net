@@ -168,6 +168,7 @@
           <element name="Payload" type="xsd:anyType"/>
           <element name="Consent" type="xsd:int"/>
           <element name="ConsentVoteUID" type="xsd:string"/>
+          <element name="ClosedSession" type="xsd:int"/>
           <element name="Children" type="ns5:MetaDataDataCollection"/>
         </all>
       </complexType>
