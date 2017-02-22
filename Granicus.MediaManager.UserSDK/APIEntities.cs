@@ -1844,6 +1844,9 @@
             }
             set
             {
+                if (value.Length > 7000000)
+                    throw new Exception("File size exceeds limit of 7MB supported!");
+
                 if ((this._FileContents != value))
                 {
                     this._FileContents = value;
