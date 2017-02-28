@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Granicus MediaManager SDK")]
-[assembly: AssemblyDescription("SDK Version 1.3 for Granicus MediaManager")]
+[assembly: AssemblyDescription("SDK Version 1.4 for Granicus MediaManager")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Granicus, Inc.")]
 [assembly: AssemblyProduct("Granicus MediaManager SDK")]
-[assembly: AssemblyCopyright("Copyright ©  2010")]
+[assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.4.0.0")]
-[assembly: AssemblyFileVersion("1.4.0.0")]
+[assembly: AssemblyVersion("1.4.0.1")]
+[assembly: AssemblyFileVersion("1.4.0.1")]
