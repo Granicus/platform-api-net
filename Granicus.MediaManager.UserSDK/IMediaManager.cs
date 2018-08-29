@@ -167,5 +167,7 @@ namespace Granicus.MediaManager.SDK
         void CreateMotionActions(StringCollection motionActions);
 
         StringCollection GetMotionActions();
+
+        SettingCollection GetSettings();
     }
 }

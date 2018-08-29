@@ -7641,6 +7641,86 @@
     }
     #endregion
 
+    #region Setting
+    /// <summary>
+    /// Represents a setting.
+    /// </summary>
+    /// <remarks>
+    /// This class is used to represent a setting.</remarks>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.312")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace = "http://granicus.com/xsd")]
+    [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    public partial class Setting : object
+    {
+
+        /// <remarks/>
+        private string _Name;
+
+        /// <remarks/>
+        private string _Value;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.Setting"/> class.
+        /// </summary>
+        public Setting()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.Setting"/> class with the supplied
+        /// Name, Value.
+        /// </summary>
+        /// <param name="_Name">The name of the Setting.</param>
+        /// <param name="_Value">Value of the Setting.</param>
+        public Setting(string _Name, string _Value)
+        {
+            this._Name = _Name;
+            this._Value = _Value;
+        }
+
+        /// <summary>
+        /// The full name of the attendee.
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                if ((this._Name != value))
+                {
+                    this._Name = value;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Value of the setting.
+        /// </summary>
+        public string Value
+        {
+            get
+            {
+                return this._Value;
+            }
+            set
+            {
+                if ((this._Value != value))
+                {
+                    this._Value = value;
+                }
+            }
+        }
+
+    }
+    #endregion
+
     #region AttendeeStatusCollection
     /// <summary>
     /// Represents a collection of <see cref="Granicus.MediaManager.SDK.AttendeeStatus"/> objects.
@@ -8361,9 +8441,9 @@
     }
     #endregion
 
-    #region CommentCollection
+    #region SpeakerCollection
     /// <summary>
-    /// Represents a collection of <see cref="Granicus.MediaManager.SDK.MetaDataData"/> objects.
+    /// Represents a collection of <see cref="Granicus.MediaManager.SDK.Speaker"/> objects.
     /// </summary>
     [System.SerializableAttribute()]
     public class SpeakerCollection : System.Collections.CollectionBase
@@ -8377,16 +8457,16 @@
         }
 
         /// <summary>
-        /// Returns the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object at the given index in the collection.
+        /// Returns the <see cref="Granicus.MediaManager.SDK.Speaker"/> object at the given index in the collection.
         /// </summary>
-        /// <param name="idx">The index of the desired <see cref="Granicus.MediaManager.SDK.MetaDataData"/>
+        /// <param name="idx">The index of the desired <see cref="Granicus.MediaManager.SDK.Speaker"/>
         /// object in the collection.</param>
         /// <returns></returns>
-        public Comment this[int idx]
+        public Speaker this[int idx]
         {
             get
             {
-                return ((Comment)(base.InnerList[idx]));
+                return ((Speaker)(base.InnerList[idx]));
             }
             set
             {
@@ -8399,11 +8479,11 @@
         }
 
         /// <summary>
-        /// Adds a new <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to the end of the collection.
+        /// Adds a new <see cref="Granicus.MediaManager.SDK.Speaker"/> object to the end of the collection.
         /// </summary>
-        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to add.</param>
-        /// <returns>The collection index at which the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object has been added.</returns>
-        public int Add(Comment value)
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Speaker"/> object to add.</param>
+        /// <returns>The collection index at which the <see cref="Granicus.MediaManager.SDK.Speaker"/> object has been added.</returns>
+        public int Add(Speaker value)
         {
             if ((value == null))
             {
@@ -8413,12 +8493,12 @@
         }
 
         /// <summary>
-        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> value
+        /// Returns the zero-based index of the first occurrance of the <see cref="Granicus.MediaManager.SDK.Speaker"/> value
         /// in the collection.
         /// </summary>
-        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to locate</param>
-        /// <returns>The zero-based index of the given <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object.</returns>
-        public int IndexOf(Comment value)
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Speaker"/> object to locate</param>
+        /// <returns>The zero-based index of the given <see cref="Granicus.MediaManager.SDK.Speaker"/> object.</returns>
+        public int IndexOf(Speaker value)
         {
             if ((value == null))
             {
@@ -8428,13 +8508,13 @@
         }
 
         /// <summary>
-        /// Inserts an <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object into the collection at the specified index.
+        /// Inserts an <see cref="Granicus.MediaManager.SDK.Speaker"/> object into the collection at the specified index.
         /// </summary>
-        /// <param name="index">The zero-based index at which the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object should
+        /// <param name="index">The zero-based index at which the <see cref="Granicus.MediaManager.SDK.Speaker"/> object should
         /// be inserted.</param>
-        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to insert. The value
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Speaker"/> object to insert. The value
         /// can be a null reference.</param>
-        public void Insert(int index, Comment value)
+        public void Insert(int index, Speaker value)
         {
             if ((value == null))
             {
@@ -8444,11 +8524,11 @@
         }
 
         /// <summary>
-        /// Removes the first occurance of a specific <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object from
+        /// Removes the first occurance of a specific <see cref="Granicus.MediaManager.SDK.Speaker"/> object from
         /// the collection.
         /// </summary>
-        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to remove from the collection.</param>
-        public void Remove(Comment value)
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Speaker"/> object to remove from the collection.</param>
+        public void Remove(Speaker value)
         {
             if ((value == null))
             {
@@ -8458,11 +8538,11 @@
         }
 
         /// <summary>
-        /// Determines whether a specific <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object is in the collection.
+        /// Determines whether a specific <see cref="Granicus.MediaManager.SDK.Speaker"/> object is in the collection.
         /// </summary>
-        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to locate in the collection.</param>
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Speaker"/> object to locate in the collection.</param>
         /// <returns>True if the item is found in the collection, otherwise; False.</returns>
-        public bool Contains(Comment value)
+        public bool Contains(Speaker value)
         {
             if ((value == null))
             {
@@ -8472,4 +8552,112 @@
         }
     }
     #endregion
+
+    #region SettingCollection
+    /// <summary>
+    /// Represents a collection of <see cref="Granicus.MediaManager.SDK.Setting"/> objects.
+    /// </summary>
+    [System.SerializableAttribute()]
+    public class SettingCollection : System.Collections.CollectionBase
+    {
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.AttendeeCollection"/> class.
+        /// </summary>
+        public SettingCollection()
+        {
+        }
+
+        /// <summary>
+        /// Returns the <see cref="Granicus.MediaManager.SDK.Setting"/> object at the given index in the collection.
+        /// </summary>
+        /// <param name="idx">The index of the <see cref="Granicus.MediaManager.SDK.Setting"/> object in the collection.</param>
+        /// <returns></returns>
+        public Setting this[int idx]
+        {
+            get
+            {
+                return ((Setting)(base.InnerList[idx]));
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    throw new System.ArgumentNullException("value");
+                }
+                base.InnerList[idx] = value;
+            }
+        }
+
+        /// <summary>
+        /// Adds a new <see cref="Granicus.MediaManager.SDK.Setting"/> object to the end of the collection.
+        /// </summary>
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Setting"/> object to add.</param>
+        /// <returns>The collection index at which the <see cref="Granicus.MediaManager.SDK.Setting"/> object has been added.</returns>
+        public int Add(Setting value)
+        {
+            if ((value == null))
+            {
+                throw new System.ArgumentNullException("value");
+            }
+            return base.InnerList.Add(value);
+        }
+
+        /// <summary>
+        /// Returns the zero-based index of the first occurance of a specific <see cref="Granicus.MediaManager.SDK.Setting"/> object in the collection.
+        /// </summary>
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Setting"/> object to locate.</param>
+        /// <returns>The index of the given <see cref="Granicus.MediaManager.SDK.Setting"/> object.</returns>
+        public int IndexOf(Setting value)
+        {
+            if ((value == null))
+            {
+                throw new System.ArgumentNullException("value");
+            }
+            return base.InnerList.IndexOf(value);
+        }
+
+        /// <summary>
+        /// Inserts an <see cref="Granicus.MediaManager.SDK.Setting"/> object into the collection at the specified index.
+        /// </summary>
+        /// <param name="index">The zero-based index at which the <see cref="Granicus.MediaManager.SDK.Setting"/> should be inserted.</param>
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Setting"/> object to insert. The value can be a null reference.</param>
+        public void Insert(int index, Setting value)
+        {
+            if ((value == null))
+            {
+                throw new System.ArgumentNullException("value");
+            }
+            base.InnerList.Insert(index, value);
+        }
+
+        /// <summary>
+        /// Removes the first occurance of a specific <see cref="Granicus.MediaManager.SDK.Setting"/> object from the collection.
+        /// </summary>
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Setting"/> object to remove from the collection.</param>
+        public void Remove(Setting value)
+        {
+            if ((value == null))
+            {
+                throw new System.ArgumentNullException("value");
+            }
+            base.InnerList.Remove(value);
+        }
+
+        /// <summary>
+        /// Determines whether a specific <see cref="Granicus.MediaManager.SDK.Setting"/> object is in the collection.
+        /// </summary>
+        /// <param name="value">The <see cref="Granicus.MediaManager.SDK.Setting"/> to locate in the collection.</param>
+        /// <returns>True if the item is found in the collection; otherwise, False.</returns>
+        public bool Contains(Setting value)
+        {
+            if ((value == null))
+            {
+                throw new System.ArgumentNullException("value");
+            }
+            return base.InnerList.Contains(value);
+        }
+    }
+    #endregion
+
 }
