@@ -23,7 +23,12 @@ namespace UploadAgenda
         {
             try
             {
-                _mediaManager.Connect(textBox1.Text, textBox2.Text, textBox3.Text);
+                string siteID = textBox1.Text;
+                //_mediaManager.Connect("http://" + siteID, textBox2.Text, textBox3.Text);
+                var md5 = System.Security.Cryptography.MD5.Create();
+                string key = BitConverter.ToString(md5.ComputeHash(System.Text.ASCIIEncoding.ASCII.GetBytes(siteID))).Replace("-", "").ToLower();
+                _mediaManager.ServerConnect("http://" + siteID, key, DateTime.Now.AddDays(2));
+
                 if (_mediaManager.Connected)
                 {
                     this.DialogResult = DialogResult.OK;

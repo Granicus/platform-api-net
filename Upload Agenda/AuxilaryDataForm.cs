@@ -124,5 +124,25 @@ namespace UploadAgenda
             }
         }
 
+        private void clearSettingsButton_Click(object sender, EventArgs e)
+        {
+            settingsTextBox.Clear();
+        }
+
+        private void getSettingsButton_Click(object sender, EventArgs e)
+        {
+            String textBoxText = String.Empty;
+            
+            settingsTextBox.Clear();
+            SettingCollection mema_settings = _mediamanager.GetSettings();
+
+            foreach (Setting s in mema_settings)
+                textBoxText += s.Name + "=" + s.Value + Environment.NewLine;
+
+            settingsTextBox.Text = textBoxText;
+
+            MessageBox.Show("Successfully got settings.");
+        }
+
     }
 }
