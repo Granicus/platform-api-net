@@ -1749,6 +1749,18 @@ namespace Granicus.MediaManager.SDK
             return ((StringCollection)results[0]);
         }
 
+        /// <summary>
+        /// Get the list of Settings from MM.
+        /// </summary>
+        /// <returns>Setting collection</returns>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#GetSettings", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        [return: System.Xml.Serialization.SoapElementAttribute("settings")]
+        public SettingCollection GetSettings()
+        {
+            object[] results = this.Invoke("GetSettings", new object[0]);
+            return ((SettingCollection)results[0]);
+        }
+
         #endregion
     }
     #endregion

@@ -42,18 +42,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.motionActionsTextBox = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.cameraListView = new System.Windows.Forms.ListView();
             this.launchLiveManagerButton = new System.Windows.Forms.Button();
+            this.cameraListView = new System.Windows.Forms.ListView();
             this.idColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.identifierColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.internalIPColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.externalIPColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.controlPortColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.settingsTextBox = new System.Windows.Forms.TextBox();
+            this.clearSettingsButton = new System.Windows.Forms.Button();
+            this.getSettingsButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -61,6 +67,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -78,7 +85,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(357, 276);
+            this.tabPage1.Size = new System.Drawing.Size(503, 336);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attendees";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -137,7 +144,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(357, 276);
+            this.tabPage2.Size = new System.Drawing.Size(503, 336);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Motion Actions";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -186,6 +193,7 @@
             this.motionActionsTextBox.Location = new System.Drawing.Point(94, 21);
             this.motionActionsTextBox.Multiline = true;
             this.motionActionsTextBox.Name = "motionActionsTextBox";
+            this.motionActionsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.motionActionsTextBox.Size = new System.Drawing.Size(243, 192);
             this.motionActionsTextBox.TabIndex = 0;
             this.motionActionsTextBox.Text = "approve\r\ncontinue\r\nreject\r\ntable\r\nfree form\r\npostpone\r\nconsent\r\nfilibuster";
@@ -200,6 +208,17 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cameras/Encoders";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // launchLiveManagerButton
+            // 
+            this.launchLiveManagerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.launchLiveManagerButton.Location = new System.Drawing.Point(359, 305);
+            this.launchLiveManagerButton.Name = "launchLiveManagerButton";
+            this.launchLiveManagerButton.Size = new System.Drawing.Size(136, 23);
+            this.launchLiveManagerButton.TabIndex = 1;
+            this.launchLiveManagerButton.Text = "Launch LiveManager";
+            this.launchLiveManagerButton.UseVisualStyleBackColor = true;
+            this.launchLiveManagerButton.Click += new System.EventHandler(this.launchLiveManagerButton_Click);
             // 
             // cameraListView
             // 
@@ -220,17 +239,6 @@
             this.cameraListView.TabIndex = 0;
             this.cameraListView.UseCompatibleStateImageBehavior = false;
             this.cameraListView.View = System.Windows.Forms.View.Details;
-            // 
-            // launchLiveManagerButton
-            // 
-            this.launchLiveManagerButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.launchLiveManagerButton.Location = new System.Drawing.Point(359, 305);
-            this.launchLiveManagerButton.Name = "launchLiveManagerButton";
-            this.launchLiveManagerButton.Size = new System.Drawing.Size(136, 23);
-            this.launchLiveManagerButton.TabIndex = 1;
-            this.launchLiveManagerButton.Text = "Launch LiveManager";
-            this.launchLiveManagerButton.UseVisualStyleBackColor = true;
-            this.launchLiveManagerButton.Click += new System.EventHandler(this.launchLiveManagerButton_Click);
             // 
             // idColumnHeader
             // 
@@ -262,6 +270,56 @@
             this.controlPortColumnHeader.Text = "Control port";
             this.controlPortColumnHeader.Width = 70;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.getSettingsButton);
+            this.tabPage4.Controls.Add(this.clearSettingsButton);
+            this.tabPage4.Controls.Add(this.settingsTextBox);
+            this.tabPage4.Controls.Add(this.label4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(503, 336);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Settings";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Settings:";
+            // 
+            // settingsTextBox
+            // 
+            this.settingsTextBox.Location = new System.Drawing.Point(90, 22);
+            this.settingsTextBox.Multiline = true;
+            this.settingsTextBox.Name = "settingsTextBox";
+            this.settingsTextBox.Size = new System.Drawing.Size(316, 218);
+            this.settingsTextBox.TabIndex = 1;
+            // 
+            // clearSettingsButton
+            // 
+            this.clearSettingsButton.Location = new System.Drawing.Point(197, 268);
+            this.clearSettingsButton.Name = "clearSettingsButton";
+            this.clearSettingsButton.Size = new System.Drawing.Size(75, 23);
+            this.clearSettingsButton.TabIndex = 2;
+            this.clearSettingsButton.Text = "Clear";
+            this.clearSettingsButton.UseVisualStyleBackColor = true;
+            this.clearSettingsButton.Click += new System.EventHandler(this.clearSettingsButton_Click);
+            // 
+            // getSettingsButton
+            // 
+            this.getSettingsButton.Location = new System.Drawing.Point(314, 268);
+            this.getSettingsButton.Name = "getSettingsButton";
+            this.getSettingsButton.Size = new System.Drawing.Size(75, 23);
+            this.getSettingsButton.TabIndex = 3;
+            this.getSettingsButton.Text = "Get Settings";
+            this.getSettingsButton.UseVisualStyleBackColor = true;
+            this.getSettingsButton.Click += new System.EventHandler(this.getSettingsButton_Click);
+            // 
             // AuxilaryDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,6 +334,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -304,5 +364,10 @@
         private System.Windows.Forms.ColumnHeader internalIPColumnHeader;
         private System.Windows.Forms.ColumnHeader externalIPColumnHeader;
         private System.Windows.Forms.ColumnHeader controlPortColumnHeader;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button getSettingsButton;
+        private System.Windows.Forms.Button clearSettingsButton;
+        private System.Windows.Forms.TextBox settingsTextBox;
+        private System.Windows.Forms.Label label4;
     }
 }
