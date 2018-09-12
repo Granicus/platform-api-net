@@ -224,6 +224,84 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
+        /// Upload large (>7MB) minutes documents
+        /// </summary>
+        /// <param name="ClipID">ID of the clip</param>
+        /// <param name="Desciption">Minutes document description</param>
+        /// <param name="FullFilename">Full path to the minutes document including filename</param>
+        /// <param name="Name">Name that will be assigned to minutes document in media manager</param>
+        public void UploadClipMinutesDocumentXL(int ClipID, string Desciption, string FullFilename, string Name)
+        {
+            System.IO.FileInfo fi = new System.IO.FileInfo(FullFilename);
+            int chunkSize = 7000000;
+            string ext = System.IO.Path.GetExtension(FullFilename).Replace(".", string.Empty);
+
+            if (fi.Length > chunkSize)
+            {
+                try
+                {
+                    long bytesLeft = fi.Length;
+                    string id = Guid.NewGuid().ToString();
+
+                    using (System.IO.FileStream fs = System.IO.File.OpenRead(FullFilename))
+                    {
+                        do
+                        {
+                            Document minDoc = new Document();
+                            minDoc.Location = Newtonsoft.Json.JsonConvert.SerializeObject(new 
+                            {
+                                action = "add",
+                                id = id
+                            });
+
+                            minDoc.FileExtension = ext;
+                            minDoc.Description = Desciption;
+
+                            minDoc.FileContents = new byte[Math.Min(chunkSize, bytesLeft)];
+                            int bytesRead = fs.Read(minDoc.FileContents, 0, minDoc.FileContents.Length);
+
+                            bytesLeft -= bytesRead;
+                            if (bytesLeft <= 0)
+                            {
+                                minDoc.Location = Newtonsoft.Json.JsonConvert.SerializeObject(new
+                                {
+                                    action = "finish",
+                                    id = id
+                                });
+                            }
+
+                            if (bytesRead > 0)
+                            {
+                                UploadClipMinutesDocument(ClipID, minDoc, Name);
+                            }
+                            else
+                            {
+                                Console.WriteLine("I READ ZERO BYTES!!!");
+                            }
+                        } while (bytesLeft > 0);
+                    }
+                }
+                catch (Exception ex) { Console.WriteLine(ex); }
+            }
+            else
+            {
+                Document minDoc = new Document();
+                minDoc.Location = string.Empty;
+                minDoc.FileExtension = ext;
+                minDoc.Description = Desciption;
+
+                try
+                {
+                    minDoc.FileContents = System.IO.File.ReadAllBytes(FullFilename);
+                }
+                catch { }
+
+                UploadClipMinutesDocument(ClipID, minDoc, Name);
+            }
+
+        }
+
+        /// <summary>
         /// Publishes a clip
         /// </summary>
         /// <returns>An array of <see cref="Granicus.MediaManager.SDK.PublishClipResult"/> objects that represent the list of clips in the folder.</returns>
@@ -1189,7 +1267,7 @@ namespace Granicus.MediaManager.SDK
         /// </summary>
         /// <param name="ClipID">The clip ID to assign the URL to.</param>
         /// <param name="URL">The URL that will become the new location of the minutes document.</param>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SetClipMinutesURLWithName", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#UploadClipMinutesDocument", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void UploadClipMinutesDocument(int ClipID, Document Document, string Name)
         {
             this.Invoke("UploadClipMinutesDocument", new object[] {
