@@ -76,8 +76,8 @@
             Actions="
                 AddFiles: $(OutputDirectory)\version.xml;
                 
-                AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Granicus.MediaManager.UserSDK.dll;
-                AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Granicus.MediaManager.UserSDK.xml;
+                AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Granicus.MediaManager.SDK.dll;
+                AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Granicus.MediaManager.SDK.xml;
                 AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Newtonsoft.Json.dll;
                 AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Newtonsoft.Json.xml;
 
