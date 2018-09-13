@@ -17,8 +17,15 @@ namespace UploadAgenda
         private CameraData[] _cameras;
         private TemplateData[] _templates;
 
-        public int EventID;
+        private int _EventID;
 
+        public int EventID
+        {
+            get
+            {
+                return _EventID;
+            }
+        }
         
         public CreateEvent(MediaManager mediamanager)
         {
@@ -93,7 +100,7 @@ namespace UploadAgenda
                 DateTime.Parse (startTimeBox.Text),
                 DateTime.Now,
                 consentAgendaCheckBox.Checked ? 1 : 0);
-            EventID = _mediamanager.CreateEvent(myevent);
+            _EventID = _mediamanager.CreateEvent(myevent);
             this._success = true;
         }
 

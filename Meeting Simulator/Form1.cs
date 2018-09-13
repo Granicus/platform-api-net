@@ -103,7 +103,7 @@ namespace MeetingSimulator
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Simulation failed, please make sure your MediaManager site is properly configured and running at least version 3.5.");
+                MessageBox.Show("Simulation failed, please make sure your MediaManager site is properly configured and running at least version 3.5. Exception: " + ex.Message);
             }
         }
 

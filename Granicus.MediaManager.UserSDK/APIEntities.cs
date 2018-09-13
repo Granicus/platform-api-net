@@ -3458,6 +3458,7 @@
         /// values for name and description.
         /// </summary>
         /// <param name="_ID">The numeric ID of the group.  This value is assigned for you and cannot be changed.</param>
+        /// <param name="_UID">The unique ID of the group.</param>
         /// <param name="_Name">The name of the group.</param>
         /// <param name="_Description">A short description of the group and it's purpose.</param>
         /// <param name="_CreatedDate">The date the group was created.  This value cannot be changed.</param>
@@ -3653,7 +3654,9 @@
         /// <param name="_ID">The numeric ID of the user.  This ID is assigned by the system and cannot be changed.</param>
         /// <param name="_Username">The unique logon name of the user.</param>
         /// <param name="_Password">The password the user may use to login.</param>
-        /// <param name="_Fullname">The full name of the user.</param>
+        /// <param name="_FirstName">The First name of the user.</param>
+        /// <param name="_MiddleName">The Middle name of the user.</param>
+        /// <param name="_LastName">The Last name of the user.</param>
         /// <param name="_Email">The user's email address.</param>
         /// <param name="_CreatedDate">The date the user was created. Cannot be changed.</param>
         /// <param name="_LastModified">The date the user record was last modified. Cannot be changed.</param>
@@ -4021,6 +4024,7 @@
         /// </summary>
         /// <param name="_ID">The numeric ID of the Clip (this is ignored by the system when creating new clips and a new ID will be assigned for you).</param>
         /// <param name="_UID">The new Unique ID string (GUID) of the clip.</param>
+        /// <param name="_EventUID">Unique ID string (GUID) of the event related to clip</param>
         /// <param name="_ForeignID">The Foreign ID of the clip.</param>
         /// <param name="_Type">The type of clip (e.g. Training, Meeting, PSA, etc)</param>
         /// <param name="_Name">The name of the clip.</param>
@@ -4977,6 +4981,7 @@
         /// <param name="_Type">The type of the folder.  Current supported values are "Meeting" and "Training".</param>
         /// <param name="_PlayerTemplateID">The numeric ID of the player template used when viewing archives within the folder.</param>
         /// <param name="_CreatedDate">The date the folder was created.  Cannot be updated.</param>
+        /// <param name="_Views">Views for the folder</param>
         public FolderData(int _ID, string _Name, string _Description, string _Type, int _PlayerTemplateID, System.DateTime _CreatedDate, IntegerCollection _Views)
         {
             this._ID = _ID;
@@ -5197,6 +5202,7 @@
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.PublishClipData"/> class with the supplied
+        /// </summary>
         public PublishClipData(int _ClipID, bool _Public, string _Name, string _Title, string _TextField, int _TemplateID, int _MetaID)
         {
             this._ClipID = _ClipID;
@@ -5398,6 +5404,7 @@
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.PublishClipData"/> class with the supplied
+        /// </summary>
         public PublishClipResult(int _ClipID, string _URL, string _PublishPoint)
         {
             this._ClipID = _ClipID;
@@ -6158,7 +6165,7 @@
             this._UID = _UID;
             this._ForeignID = _ForeignID;
             this._Name = _Name;
-            this._Description = _Description;
+            this._Description = string.Empty; // UT[09/13/2018] Description is not in the list of params, so using string.empty for now
             this._CameraID = _CameraID;
             this._FolderID = _FolderID;
             this._Status = _Status;
@@ -6944,7 +6951,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.UserData"/> class with the supplied values.
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.Comment"/> class with the supplied values.
         /// </summary>
         /// <param name="_UID">The unique ID of the comment.</param>
         /// <param name="_EventUID">The numeric ID of the user.  This ID is assigned by the system and cannot be changed.</param>
@@ -6954,6 +6961,13 @@
         /// <param name="_CommentText">The user's email address.</param>
         /// <param name="_Email">The date the user was created. Cannot be changed.</param>
         /// <param name="_Address">The date the user record was last modified. Cannot be changed.</param>
+        /// <param name="_City"></param>
+        /// <param name="_State"></param>
+        /// <param name="_Zip"></param>
+        /// <param name="_Area"></param>
+        /// <param name="_Position"></param>
+        /// <param name="_HasVideo"></param>
+        /// <param name="_CreatedDate"></param>
         public Comment(string _UID, string _EventUID, string _MetaDataUID, string _FirstName, string _LastName, string _CommentText, string _Email, string _Address, string _City, string _State, string _Zip, string _Area, string _Position, bool _HasVideo, System.DateTime _CreatedDate)
         {
             this._UID = _UID;
@@ -7339,8 +7353,9 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.UserData"/> class with the supplied values.
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.Speaker"/> class with the supplied values.
         /// </summary>
+        /// <param name="_UID"></param>
         /// <param name="_EventUID">The numeric ID of the user.  This ID is assigned by the system and cannot be changed.</param>
         /// <param name="_MetaDataUID">The unique logon name of the user.</param>
         /// <param name="_FirstName">The password the user may use to login.</param>
@@ -7348,6 +7363,13 @@
         /// <param name="_CommentText">The user's email address.</param>
         /// <param name="_Email">The date the user was created. Cannot be changed.</param>
         /// <param name="_Address">The date the user record was last modified. Cannot be changed.</param>
+        /// <param name="_City"></param>
+        /// <param name="_State"></param>
+        /// <param name="_Zip"></param>
+        /// <param name="_Area"></param>
+        /// <param name="_Position"></param>
+        /// <param name="_HasVideo"></param>
+        /// <param name="_CreatedDate"></param>
         public Speaker(string _UID, string _EventUID, string _MetaDataUID, string _FirstName, string _LastName, string _CommentText, string _Email, string _Address, string _City, string _State, string _Zip, string _Area, string _Position, bool _HasVideo, System.DateTime _CreatedDate)
         {
             this._UID = _UID;
