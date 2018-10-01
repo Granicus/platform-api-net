@@ -224,7 +224,7 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
-        /// Upload large (>7MB) minutes documents
+        /// Upload large (>7MB) minutes documents (document size is limited to 1GB).
         /// </summary>
         /// <param name="ClipID">ID of the clip</param>
         /// <param name="Desciption">Minutes document description</param>
@@ -234,9 +234,14 @@ namespace Granicus.MediaManager.SDK
         {
             System.IO.FileInfo fi = new System.IO.FileInfo(FullFilename);
             int chunkSize = 7000000;
+            int filesizeLimit = 1000 * 1000 * 1000; //1GB
             string ext = System.IO.Path.GetExtension(FullFilename).Replace(".", string.Empty);
 
-            if (fi.Length > chunkSize)
+            if (fi.Length > filesizeLimit)
+            {
+                throw new Exception("Upload file size limit exceeded!");
+            }
+            else if (fi.Length > chunkSize)
             {
                 try
                 {
