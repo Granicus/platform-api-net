@@ -31,7 +31,7 @@
             this.secondsTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ExtendButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancellationButton = new System.Windows.Forms.Button();
             this.outcastencoder = new Granicus.MediaManager.SDK.OutcastEncoder();
             this.SuspendLayout();
             // 
@@ -65,14 +65,14 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Location = new System.Drawing.Point(12, 60);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 16;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancellationButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancellationButton.Location = new System.Drawing.Point(12, 60);
+            this.CancellationButton.Name = "CancelButton";
+            this.CancellationButton.Size = new System.Drawing.Size(75, 23);
+            this.CancellationButton.TabIndex = 16;
+            this.CancellationButton.Text = "Cancel";
+            this.CancellationButton.UseVisualStyleBackColor = true;
+            this.CancellationButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // outcastencoder
             // 
@@ -86,7 +86,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 95);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancellationButton);
             this.Controls.Add(this.ExtendButton);
             this.Controls.Add(this.secondsTextBox);
             this.Controls.Add(this.label1);
@@ -102,7 +102,7 @@
         private System.Windows.Forms.TextBox secondsTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ExtendButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancellationButton;
         private Granicus.MediaManager.SDK.OutcastEncoder outcastencoder;
     }
 }

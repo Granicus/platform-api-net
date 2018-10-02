@@ -1,0 +1,323 @@
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <UsingTask TaskName="Zip" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+        <ParameterGroup>
+            <Actions />
+            <ZipFile Required="true" />
+        </ParameterGroup>
+        <Task>
+            <Reference Include="System.IO.Compression" />
+            <Reference Include="System.IO.Compression.FileSystem" />
+            <Code Type="Class" Language="cs">
+                <![CDATA[
+                    using Microsoft.Build.Framework;
+                    using Microsoft.Build.Utilities;
+
+                    using System.Collections.Generic;
+                    using System;
+                    using System.IO;
+                    using System.IO.Compression;
+                    using System.Linq;
+                    using System.Text.RegularExpressions;
+                    
+                    public class Zip : Task
+                    {
+                        public string Actions { get; set; }
+
+                        [Required]
+                        public string ZipFile { get; set; }
+
+                        public override bool Execute()
+                        {
+                            var zipItemList = new ZipItemList();
+                            zipItemList.SetLogger(this.Log);
+                            zipItemList.PerformActions(Actions);
+                            zipItemList.AddToZip(ZipFile);
+                            return true;
+                        }
+                    }
+                    
+                    public class ZipItemList
+                    {
+                        private const char ItemSeparator = ';';
+                        private const char SectionSeparator = '|';
+                        private SortedDictionary<string, string> ZipItems;
+
+                        private TaskLoggingHelper Logger = null;
+
+                        public ZipItemList()
+                        {
+                            ZipItems = new SortedDictionary<string, string>();
+                        }
+
+                        public ZipItemList(string itemList)
+                        {
+                            ZipItems = ExpandZipItems(itemList);
+                        }
+
+                        public void SetLogger(TaskLoggingHelper logger)
+                        {
+                            Logger = logger;
+                        }
+                            
+                        public void AddFiles(string inputFiles, string zipFolder=null)
+                        {
+                            foreach (var filePath in ExpandFiles(inputFiles))
+                            {
+                                var destination = string.IsNullOrWhiteSpace(zipFolder) ? Path.GetFileName(filePath) : Path.Combine(zipFolder, Path.GetFileName(filePath));
+                                AddItem(filePath, destination);
+                            }
+                        }
+
+                        public void AddFolderContents(string inputFolder, string zipFolder=null)
+                        {
+                            var baseFolder = Path.GetFullPath(inputFolder);
+                            var baseFolderLength = baseFolder.Length + 1;
+
+                            // Glob input folder files
+                            foreach (var filePath in Directory.GetFiles(inputFolder, "*", SearchOption.AllDirectories))
+                            {
+                                var fullFilePath = Path.GetFullPath(filePath);
+                                var fileSubPath = fullFilePath.Substring(baseFolderLength);
+                                var destination = string.IsNullOrWhiteSpace(zipFolder) ? fileSubPath : Path.Combine(zipFolder, fileSubPath);
+
+                                AddItem(fullFilePath, destination);
+                            }
+                        }
+
+                        public void RemoveFiles(string removeFiles)
+                        {
+                            // From http://stackoverflow.com/a/4146349
+                            var testRegex = new Regex("^" + Regex.Escape(removeFiles).Replace(@"\*", ".*").Replace(@"\?", ".") + "$",
+                                    RegexOptions.IgnoreCase | RegexOptions.Singleline);
+
+                            var entriesToDelete =
+                                from entry in ZipItems.Keys
+                                where testRegex.IsMatch(entry)
+                                select entry;
+
+                            foreach (var entry in entriesToDelete.ToArray())
+                            {
+                                LogMessage("Removing entry: " + entry);
+                                ZipItems.Remove(entry);
+                            }
+                        }
+
+                        public void RemoveFolder(string zipFolder)
+                        {
+                            var entriesToDelete =
+                                from entry in ZipItems.Keys
+                                where entry.StartsWith(zipFolder + "\\")
+                                select entry;
+
+                            foreach (var entry in entriesToDelete.ToArray())
+                            {
+                                LogMessage("Removing entry: " + entry);
+                                ZipItems.Remove(entry);
+                            }
+                        }
+
+                        // Action1:Arguments1a,Arguments1b;Action2:Arguments2
+                        private const char ActionSeparator = ';';
+                        private const char ActionNameSeparator = ':';
+                        private const char ArgumentSeparator = ',';
+                        
+                        private static readonly HashSet<string> ValidActionNames = new HashSet<string>() { "addfiles", "addfoldercontents", "removefiles", "removefolder"};
+                        
+                        public void PerformActions(string actions)
+                        {
+                            if (string.IsNullOrWhiteSpace(actions))
+                            {
+                                return;
+                            }
+
+                            foreach (var action in actions.Split(ActionSeparator))
+                            {
+                                if (string.IsNullOrWhiteSpace(action))
+                                {
+                                    continue;
+                                }
+
+                                var actionParts = action.Split(ActionNameSeparator);
+                                var actionName = actionParts[0].Trim();
+                                var actionNameLower = actionName.ToLower();
+
+                                if (!ValidActionNames.Contains(actionNameLower))
+                                {
+                                    LogError(string.Format("Unsupported action type: {0}", actionName));
+                                    continue;
+                                }
+
+                                var actionArguments = actionParts.Length > 1 ? actionParts[1].Split(ArgumentSeparator).Select(argument => argument.Trim()).ToArray() : null;
+                                var argumentString = actionArguments != null ? string.Join(", ", actionArguments) : "";
+
+                                LogMessage(string.Format("Performing action: {0} ({1})", actionName, argumentString));
+
+                                var numArgs = actionArguments != null ? actionArguments.Length : 0;
+                                if (numArgs == 0 || numArgs > 2)
+                                {
+                                    LogError(string.Format("Unsupported number of arguments: {0} ({1})", actionName, argumentString));
+                                    continue;
+                                }
+
+                                string firstArg = numArgs >= 1 ? actionArguments[0] : null;
+                                string secondArg = numArgs >= 2 ? actionArguments[1] : null;
+
+                                if (string.IsNullOrWhiteSpace(firstArg))
+                                {
+                                    LogError(string.Format("Unsupported empty arguments: {0} ({1})", actionName, argumentString));
+                                    continue;
+                                }
+
+                                switch (actionNameLower)
+                                {
+                                    case "addfiles":
+                                        this.AddFiles(firstArg, secondArg);
+                                        break;
+                                    case "addfoldercontents":
+                                        this.AddFolderContents(firstArg, secondArg);
+                                        break;
+                                    case "removefiles":
+                                        this.RemoveFiles(firstArg);
+                                        break;
+                                    case "removefolder":
+                                        this.RemoveFolder(firstArg);
+                                        break;
+                                    default:
+                                        LogError(string.Format("Unsupported action type: {0}", actionName));
+                                        break;
+                                }
+                            }
+                        }
+
+                        public static void CreateZipFromActions(string zipFile, string actions)
+                        {
+                            var zipList = new ZipItemList();
+                            zipList.PerformActions(actions);
+                            zipList.AddToZip(zipFile);
+                        }
+
+                        public void AddToZip(string zipFile)
+                        {
+                            using (FileStream zipToOpen = new FileStream(zipFile, FileMode.OpenOrCreate))
+                            {
+                                using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
+                                {
+                                    foreach (var item in ZipItems)
+                                    {
+                                        var source = item.Value;
+                                        var destination = item.Key;
+
+                                        // Treat the zip like a folder - any existing file at that same location should be removed.
+                                        // This prevents duplicate zip entries with the same path, which is valid, but causes error on extraction.
+                                        var existingEntry = archive.GetEntry(destination);
+                                        if (existingEntry != null)
+                                        {
+                                            LogWarning(zipFile + ": Removing entry: " + existingEntry.FullName);
+                                            existingEntry.Delete();
+                                        }
+
+                                        archive.CreateEntryFromFile(source, destination);
+                                        LogMessage(zipFile + ": " + destination + " <- " + source);
+                                    }
+                                    
+                                    LogMessage(zipFile + ": Finalizing...");
+                                }
+                            }
+                        }
+
+                        public override string ToString()
+                        {
+                            return string.Join(ItemSeparator.ToString(), ZipItems.Select(zipItem => string.Format("{0}{1}{2}", zipItem.Key, SectionSeparator, zipItem.Value).ToArray()));
+                        }
+
+                        private void LogMessage(string message)
+                        {
+                            if (Logger != null)
+                            {
+                                Logger.LogMessage(message);
+                            }
+                            else
+                            {
+                                Console.WriteLine(message);
+                            }
+                        }
+
+                        private void LogWarning(string message)
+                        {
+                            if (Logger != null)
+                            {
+                                Logger.LogWarning(message);
+                            }
+                            else
+                            {
+                                Console.WriteLine("WARNING: " + message);
+                            }
+                        }
+
+                        private void LogError(string message)
+                        {
+                            if (Logger != null)
+                            {
+                                Logger.LogError(message);
+                            }
+                            else
+                            {
+                                Console.WriteLine("ERROR: " + message);
+                            }
+                        }
+
+                        private void AddItem(string source, string destination)
+                        {
+                            // Treat the zip like a folder - any existing file at that same location should be removed.
+                            // This prevents duplicate zip entries with the same path, which is valid, but causes error on extraction.
+                            if (ZipItems.ContainsKey(destination))
+                            {
+                                var originalSource = ZipItems[destination];
+
+                                if (originalSource != source)
+                                {
+                                    // Replacing existing entry.
+                                    LogMessage(string.Format("Removing: {0}->{1}", originalSource, destination));
+                                    ZipItems.Remove(destination);
+                                }
+                            }
+
+                            if (!ZipItems.ContainsKey(destination))
+                            {
+                                ZipItems[destination] = source;
+                                LogMessage(source + " -> " + destination);
+                            }
+                        }
+
+                        private static string[] ExpandFiles(string fileSpec)
+                        {
+                            var folderPart = Path.GetDirectoryName(fileSpec);
+                            if (string.IsNullOrEmpty(folderPart))
+                            {
+                                folderPart = Environment.CurrentDirectory;
+                            }
+                            var filePart = Path.GetFileName(fileSpec);
+
+                            return Directory.GetFiles(folderPart, filePart);
+                        }
+                        
+                        private static SortedDictionary<string, string> ExpandZipItems(string zipItems)
+                        {
+                            SortedDictionary<string, string> allItems;
+                            if (string.IsNullOrWhiteSpace(zipItems))
+                            {
+                                allItems = new SortedDictionary<string, string>();
+                            }
+                            else
+                            {
+                                allItems = new SortedDictionary<string, string>(zipItems.Split(ItemSeparator).ToDictionary(item => item.Split(SectionSeparator)[0]));
+                            }
+
+                            return allItems;
+                        }
+                    }
+                ]]>
+            </Code>
+        </Task>
+    </UsingTask>
+ </Project>

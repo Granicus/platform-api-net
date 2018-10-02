@@ -1,0 +1,98 @@
+﻿<Project DefaultTargets="Build;Deploy;Publish" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="MSBuild_Zip_Utils.targets" /> 
+    <PropertyGroup>
+        <Configuration>Release</Configuration>
+        <Platform>x86</Platform>
+        <ProductName>platform-api-net</ProductName>
+        <OutputDirectory>artifact</OutputDirectory>
+    </PropertyGroup>
+    <Target Name="Build" Outputs="@(BuildOutput)">
+        <Message Text="Building..." />
+        <MSBuild Targets="Build"
+                 Projects="Granicus.MediaManager.UserSDK.sln"
+                 Properties="Configuration=$(Configuration); Platform=$(Platform); BuildingSolutionFile=true;"
+				 BuildInParallel="true">
+            <Output TaskParameter="TargetOutputs" ItemName="BuildOutput" />
+        </MSBuild>
+        <Message Text="Done building" />
+    </Target>
+    <Target Name="Clean">
+        <Message Text="Cleaning..." />
+        <MSBuild Targets="Clean"
+                 Projects="Granicus.MediaManager.UserSDK.sln"
+                 Properties="Configuration=$(Configuration); Platform=$(Platform); BuildingSolutionFile=true;"
+				 BuildInParallel="true">
+            <Output TaskParameter="TargetOutputs" ItemName="BuildOutput" />
+        </MSBuild>
+        <RemoveDir Directories="$(OutputDirectory)" Condition="Exists('$(OutputDirectory)')" />
+        <Message Text="Done cleaning" />
+    </Target>
+    <Target Name="Deploy">
+        <Message Text="Deploying..." />
+        <PropertyGroup>
+            <OutputProductDirectory>$(OutputDirectory)\$(ProductName)</OutputProductDirectory>
+            <BinPlatformConfiguration>bin\$(Platform)\$(Configuration)</BinPlatformConfiguration>
+            <OutputProductZip>$(OutputDirectory)\$(ProductName).zip</OutputProductZip>
+            <ProjectToolsVersion>12.0</ProjectToolsVersion>
+            <Branch>unknown</Branch>
+            <Version>0.0.0.00000</Version>
+            <SourcePath>$(MSBuildProjectDirectory)</SourcePath>
+            <ChangeSet>0000000000000000000000000000000000000000</ChangeSet>
+            <PublishDate>$([System.DateTime]::Now.ToString("G"))</PublishDate>
+            <Publisher>$(USERNAME) - $(USERNAME)@$(computername)</Publisher>
+            <Comment>Initiated locally</Comment>
+            <BuildNumber>0</BuildNumber>
+        </PropertyGroup>
+        <PropertyGroup Condition="'$(APPVEYOR_BUILD_FOLDER)' != ''">
+            <Branch>$(APPVEYOR_REPO_BRANCH)</Branch>
+            <Version>$(APPVEYOR_BUILD_VERSION)</Version>
+            <ChangeSet>$(APPVEYOR_REPO_COMMIT)</ChangeSet>
+            <PublishDate>$(APPVEYOR_REPO_COMMIT_TIMESTAMP)</PublishDate>
+            <Publisher>$(APPVEYOR_REPO_COMMIT_AUTHOR) - $(APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL)</Publisher>
+            <Comment>$(APPVEYOR_REPO_COMMIT_MESSAGE)</Comment>
+            <BuildNumber>$(Appveyor_ProjectBuildNumber)</BuildNumber>
+        </PropertyGroup>
+        <ItemGroup>
+            <VersionXmlLine Include="line01"><Text>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line02"><Text>&lt;version_info&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line03"><Text>&lt;label&gt;$(ProductName)&lt;/label&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line04"><Text>&lt;branch&gt;$(Branch)&lt;/branch&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line05"><Text>&lt;version&gt;$(Version)&lt;/version&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line06"><Text>&lt;sourcepath&gt;$(SourcePath)&lt;/sourcepath&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line07"><Text>&lt;changeset&gt;$(ChangeSet)&lt;/changeset&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line08"><Text>&lt;published&gt;$(PublishDate)&lt;/published&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line09"><Text>&lt;publisher&gt;$(Publisher)&lt;/publisher&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line10"><Text>&lt;comment&gt;$(Comment)&lt;/comment&gt;</Text></VersionXmlLine>
+            <VersionXmlLine Include="line11"><Text>&lt;/version_info&gt;</Text></VersionXmlLine>
+        </ItemGroup>
+
+        <RemoveDir Directories="$(OutputDirectory)" Condition="Exists('$(OutputDirectory)')" />
+        <MakeDir Directories="$(OutputDirectory)" />
+       
+        <Message Text="Creating temporary file &quot;$(OutputDirectory)\version.xml&quot;." />
+        <WriteLinesToFile File="$(OutputDirectory)\version.xml" Lines="@(VersionXmlLine->'%(Text)')" Overwrite="true" />
+
+      <Zip ZipFile="$(OutputProductZip)" 
+            Actions="
+                AddFiles: $(OutputDirectory)\version.xml;
+                
+                AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Granicus.MediaManager.SDK.dll;
+                AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Granicus.MediaManager.SDK.xml;
+                AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Newtonsoft.Json.dll;
+                AddFiles: Granicus.MediaManager.UserSDK\$(BinPlatformConfiguration)\Newtonsoft.Json.xml;
+
+                "
+        />
+
+        <Delete Files="$(OutputDirectory)\version.xml" />
+        
+        <Message Text="Done deploying to: $(OutputProductZip)" />
+    </Target>
+    <Target Name="Publish">
+        <Message Text="Build is not on AppVeyor - skipping publish." Condition="'$(APPVEYOR_BUILD_FOLDER)' == ''" />
+        <Message Text="Publishing..." Condition="'$(APPVEYOR_BUILD_FOLDER)' != ''" />
+        <Exec Command="PowerShell.exe –NonInteractive –ExecutionPolicy Unrestricted -Command &quot;&amp; {Push-AppveyorArtifact .\artifact\platform-api-net.zip -FileName platform-api-net/$(APPVEYOR_BUILD_VERSION)/platform-api-net.zip}&quot;" Condition="'$(APPVEYOR_BUILD_FOLDER)' != ''" />
+
+      <Message Text="Done publishing to: platform-api-net/$(APPVEYOR_BUILD_VERSION)/platform-api-net.zip" Condition="'$(APPVEYOR_BUILD_FOLDER)' != ''" />
+    </Target>
+</Project>

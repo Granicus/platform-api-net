@@ -224,6 +224,89 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
+        /// Upload large (>7MB) minutes documents (document size is limited to 1GB).
+        /// </summary>
+        /// <param name="ClipID">ID of the clip</param>
+        /// <param name="Description">Minutes document description</param>
+        /// <param name="FullFilename">Full path to the minutes document including filename</param>
+        /// <param name="Name">Name that will be assigned to minutes document in media manager</param>
+        public void UploadClipMinutesDocumentXL(int ClipID, string Description, string FullFilename, string Name)
+        {
+            System.IO.FileInfo fi = new System.IO.FileInfo(FullFilename);
+            int chunkSize = 7000000;
+            int filesizeLimit = 1000 * 1000 * 1000; //1GB
+            string ext = System.IO.Path.GetExtension(FullFilename).Replace(".", string.Empty);
+
+            if (fi.Length > filesizeLimit)
+            {
+                throw new Exception("Upload file size limit exceeded!");
+            }
+            else if (fi.Length > chunkSize)
+            {
+                try
+                {
+                    long bytesLeft = fi.Length;
+                    string id = Guid.NewGuid().ToString();
+
+                    using (System.IO.FileStream fs = System.IO.File.OpenRead(FullFilename))
+                    {
+                        do
+                        {
+                            Document minDoc = new Document();
+                            minDoc.Location = Newtonsoft.Json.JsonConvert.SerializeObject(new 
+                            {
+                                action = "add",
+                                id = id
+                            });
+
+                            minDoc.FileExtension = ext;
+                            minDoc.Description = Description;
+
+                            minDoc.FileContents = new byte[Math.Min(chunkSize, bytesLeft)];
+                            int bytesRead = fs.Read(minDoc.FileContents, 0, minDoc.FileContents.Length);
+
+                            bytesLeft -= bytesRead;
+                            if (bytesLeft <= 0)
+                            {
+                                minDoc.Location = Newtonsoft.Json.JsonConvert.SerializeObject(new
+                                {
+                                    action = "finish",
+                                    id = id
+                                });
+                            }
+
+                            if (bytesRead > 0)
+                            {
+                                UploadClipMinutesDocument(ClipID, minDoc, Name);
+                            }
+                            else
+                            {
+                                Console.WriteLine("I READ ZERO BYTES!!!");
+                            }
+                        } while (bytesLeft > 0);
+                    }
+                }
+                catch (Exception ex) { Console.WriteLine(ex); }
+            }
+            else
+            {
+                Document minDoc = new Document();
+                minDoc.Location = string.Empty;
+                minDoc.FileExtension = ext;
+                minDoc.Description = Description;
+
+                try
+                {
+                    minDoc.FileContents = System.IO.File.ReadAllBytes(FullFilename);
+                }
+                catch { }
+
+                UploadClipMinutesDocument(ClipID, minDoc, Name);
+            }
+
+        }
+
+        /// <summary>
         /// Publishes a clip
         /// </summary>
         /// <returns>An array of <see cref="Granicus.MediaManager.SDK.PublishClipResult"/> objects that represent the list of clips in the folder.</returns>
@@ -305,8 +388,8 @@ namespace Granicus.MediaManager.SDK
         /// MediaManager object.
         /// </remarks>
         /// <param name="Server">The MediaManager Host to connect to (e.g. client.granicus.com)</param>
-        /// <param name="Username">The MediaManager username to connect with.</param>
-        /// <param name="Password">The MediaManager password for the given username.</param>
+        /// <param name="key">Connection key</param>
+        /// <param name="expiration">Expiration</param>
         /// <example>This sample shows how to call the <see cref="Granicus.MediaManager.SDK.MediaManager.Connect" /> method.
         /// <code>
         /// MediaManager mm = new MediaManager();
@@ -497,6 +580,11 @@ namespace Granicus.MediaManager.SDK
             return ((string)(results[0]));
         }
 
+        /// <summary>
+        /// Sends challengeResponse based on Key/Expiration
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="expiration"></param>
         public void SendChallengeResponse(string key, DateTime expiration)
         {
           string json = string.Format("{{\"exp\": \"{0}\"}}", expiration.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss"));
@@ -512,8 +600,8 @@ namespace Granicus.MediaManager.SDK
         /// Send the response to a Challenge that was received using <see cref="Granicus.MediaManager.SDK.MediaManager.GetChallenge"/>.
         /// </summary>
         /// <remarks>Challenge/Response authentication is an authentication method that has been abondoned and should not be used.</remarks>
-        /// <param name="key">The key for the challenge response</param>
-        /// <param name="expiration">The expiration of the response.</param>
+        /// <param name="Challenge">The key for the challenge response</param>
+        /// <param name="Response">The expiration of the response.</param>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SendChallengeResponse", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void SendChallengeResponse(string Challenge, string Response)
         {
@@ -1175,7 +1263,7 @@ namespace Granicus.MediaManager.SDK
         /// </summary>
         /// <param name="ClipID">The clip ID to assign the URL to.</param>
         /// <param name="URL">The URL that will become the new location of the minutes document.</param>
-        /// <param name="name">The Name to use for the new minutes document.</param>
+        /// <param name="Name">The Name to use for the new minutes document.</param>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SetClipMinutesURLWithName", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void SetClipMinutesURLWithName(int ClipID, string URL, string Name)
         {
@@ -1188,8 +1276,9 @@ namespace Granicus.MediaManager.SDK
         /// Uploads a minutes document for a clip, and includes the name of the document.
         /// </summary>
         /// <param name="ClipID">The clip ID to assign the URL to.</param>
-        /// <param name="URL">The URL that will become the new location of the minutes document.</param>
-        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#SetClipMinutesURLWithName", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        /// <param name="Document">Minutes Document.</param>
+        /// <param name="Name">Name for the minutes document</param>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#UploadClipMinutesDocument", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void UploadClipMinutesDocument(int ClipID, Document Document, string Name)
         {
             this.Invoke("UploadClipMinutesDocument", new object[] {
@@ -1213,7 +1302,7 @@ namespace Granicus.MediaManager.SDK
         /// <summary>
         /// Deletes a minutes document associated with a clip.
         /// </summary>
-        /// <param name="clip">The unique id of the minutes document to delete.</param>
+        /// <param name="UID">The unique id (UID) of the minutes document to delete.</param>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#DeleteMinutesDocument", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void DeleteMinutesDocument(string UID)
         {
@@ -1718,7 +1807,7 @@ namespace Granicus.MediaManager.SDK
         /// <summary>
         /// Creates new attendees in the system.
         /// </summary>
-        /// <param name="AttendeesData">An array of objects <see cref="Granicus.MediaManager.SDK.AttendeeData"/>  that contains the values for new attendees.</param>
+        /// <param name="AttendeesData">An array of objects <see cref="Granicus.MediaManager.SDK.Attendee"/>  that contains the values for new attendees.</param>
         /// <returns></returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#CreateAttendees", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void CreateAttendees(Attendee[] AttendeesData)
