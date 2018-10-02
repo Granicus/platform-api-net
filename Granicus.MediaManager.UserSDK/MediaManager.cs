@@ -227,10 +227,10 @@ namespace Granicus.MediaManager.SDK
         /// Upload large (>7MB) minutes documents (document size is limited to 1GB).
         /// </summary>
         /// <param name="ClipID">ID of the clip</param>
-        /// <param name="Desciption">Minutes document description</param>
+        /// <param name="Description">Minutes document description</param>
         /// <param name="FullFilename">Full path to the minutes document including filename</param>
         /// <param name="Name">Name that will be assigned to minutes document in media manager</param>
-        public void UploadClipMinutesDocumentXL(int ClipID, string Desciption, string FullFilename, string Name)
+        public void UploadClipMinutesDocumentXL(int ClipID, string Description, string FullFilename, string Name)
         {
             System.IO.FileInfo fi = new System.IO.FileInfo(FullFilename);
             int chunkSize = 7000000;
@@ -260,7 +260,7 @@ namespace Granicus.MediaManager.SDK
                             });
 
                             minDoc.FileExtension = ext;
-                            minDoc.Description = Desciption;
+                            minDoc.Description = Description;
 
                             minDoc.FileContents = new byte[Math.Min(chunkSize, bytesLeft)];
                             int bytesRead = fs.Read(minDoc.FileContents, 0, minDoc.FileContents.Length);
@@ -293,7 +293,7 @@ namespace Granicus.MediaManager.SDK
                 Document minDoc = new Document();
                 minDoc.Location = string.Empty;
                 minDoc.FileExtension = ext;
-                minDoc.Description = Desciption;
+                minDoc.Description = Description;
 
                 try
                 {
