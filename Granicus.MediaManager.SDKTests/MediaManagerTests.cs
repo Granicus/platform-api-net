@@ -185,7 +185,7 @@ namespace Granicus.MediaManager.SDK.Tests
             {
                 var cameraID = _mema.CreateCamera(new CameraData()
                 {
-                    Name = _unitTestFolder,
+                    Name = _unitTestCamera,
                     Type = "Meeting"
                 });
                 ret = _mema.GetCamera(cameraID);
