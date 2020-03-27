@@ -105,6 +105,8 @@
     <Compile Include="MediaManager.cs" />
     <Compile Include="OutcastEncoder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecurityProtocolTypeExtensions.cs" />
+    <Compile Include="SslProtocolsExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="index.php.wsdl" />
