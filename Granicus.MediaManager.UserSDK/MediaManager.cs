@@ -61,6 +61,7 @@ namespace Granicus.MediaManager.SDK
         /// </remarks>
         public MediaManager()
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolTypeExtensions.Tls12;
             this.Url = "https://javiervista/SDK/User/index.php";
             this.CookieContainer = new CookieContainer();
         }
@@ -76,6 +77,7 @@ namespace Granicus.MediaManager.SDK
         /// <param name="Password">The password (e.g. secret) that matches the given username record.</param>
         public MediaManager(string Server, string Username, string Password)
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolTypeExtensions.Tls12;
             this.CookieContainer = new CookieContainer();
             this.Connect(Server, Username, Password);
         }
