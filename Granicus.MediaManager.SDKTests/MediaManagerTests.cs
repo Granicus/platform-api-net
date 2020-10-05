@@ -103,6 +103,13 @@ namespace Granicus.MediaManager.SDK.Tests
             }
         }
 
+        [TestMethod()]
+        public void ViewGet()
+        {
+            var views = _mema.GetViews();
+            Assert.IsTrue(views.Any());
+        }
+
         public ClipData CreateTestClipFromEvent(EventData testEvent)
         {
             ClipData ret = null;
