@@ -27,6 +27,12 @@ namespace Granicus.MediaManager.SDK.Tests
             _mema = new MediaManager(_memaSite, _memaUser, _memaPass);
         }
 
+        [TestMethod()]
+        public void LogMessageTest()
+        {
+            MediaManager mediaManager = _mema;
+            Assert.AreEqual(mediaManager.LogMessage("Testing", _memaSite, "Debug", 1), 1);
+        }
 
         [TestMethod()]
         public void UploadEventAgendaAndAddToClip()
