@@ -23,7 +23,7 @@ namespace DownloadMinutes
         {
             try
             {
-                _mediaManager.Connect(textBox1.Text, textBox2.Text, textBox3.Text);
+                _mediaManager.ServerConnect(textBox1.Text, textBox2.Text, textBox3.Text);
                 if (_mediaManager.Connected)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -37,6 +37,11 @@ namespace DownloadMinutes
                 textBox3.Text = "";
                 textBox2.Focus();
             }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

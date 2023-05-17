@@ -74,11 +74,14 @@ namespace DownloadMinutes
                 FolderData[] folders = mediamanager.GetFolders();
                 foreach (FolderData folder in folders)
                 {
+                    if(folder == null) continue;
                     TreeNode foldernode = treeView1.Nodes.Add(folder.Name);
                     ClipData[] clips = mediamanager.GetClips(folder.ID);
+                    if(clips == null) continue;
                     foreach (ClipData clip in clips)
                     {
-                        foldernode.Nodes.Add(clip.ID.ToString(), clip.Name + " - " + clip.ID);
+                        if (clip == null) continue;
+                        foldernode.Nodes.Add(clip.ID.ToString(), clip.Name + " - " + clip.ID + " - " + clip.UID);
                     }
                 }
             }
@@ -159,7 +162,7 @@ namespace DownloadMinutes
                     writer.WriteEndElement();
                 }
             }
-            else
+            else if (payload != null)
             {
                 System.Reflection.PropertyInfo[] props = payload.GetType().GetProperties();
                 foreach (System.Reflection.PropertyInfo property in props)
@@ -168,7 +171,7 @@ namespace DownloadMinutes
                     {
                         // primitive and system types can be output directly
                         writer.WriteStartElement(property.Name);
-                        writer.WriteValue(property.GetValue(payload, null));
+                        writer.WriteValue(property.GetValue(payload, null) == null ? " ": property.GetValue(payload, null));
                         writer.WriteEndElement();
                     }
                     else

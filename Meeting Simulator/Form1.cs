@@ -20,6 +20,7 @@ namespace MeetingSimulator
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            mediamanager = new MediaManager();
             LoginForm login = new LoginForm(mediamanager);
             DialogResult result = login.ShowDialog();
             if (result == DialogResult.OK)

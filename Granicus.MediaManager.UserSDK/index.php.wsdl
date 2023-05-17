@@ -1377,6 +1377,15 @@
         <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
       </output>
     </operation>
+	<operation name="AuthenticateApp">
+		<soap:operation soapAction="urn:UserSDK#UserWebservice#AuthenticateApp"/>
+		<input>
+			<soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</input>
+		<output>
+			<soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		</output>
+	</operation>
     <operation name="Logout">
       <soap:operation soapAction="urn:UserSDK#UserWebservice#Logout"/>
       <input>
