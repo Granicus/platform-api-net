@@ -5,6 +5,8 @@ namespace Granicus.MediaManager.SDK
     using System.Web.Services.Protocols;
     using System.Collections;
     using System.Security.Cryptography;
+    using System.IO;
+    using System.Threading;
 
     #region MediaManagerSDKService Class
     /// <summary>
@@ -90,6 +92,9 @@ namespace Granicus.MediaManager.SDK
 
         #region Private Member Variables
         private bool m_Connected = false;
+        private const int RETRY_INTERVAL = 2000;
+        private const int MAXIMUM_RETRIES = 3;
+        private const int MESSAGE_COMPLEXITY = 128;
         #endregion
 
         #region Base Class Overrides
@@ -404,7 +409,19 @@ namespace Granicus.MediaManager.SDK
             this.SendChallengeResponse(key, expiration);
             this.m_Connected = true;
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Server"></param>
+        /// <param name="key"></param>
+        /// <param name="message"></param>
+        public void ServerConnect(string Server, string key, string message)
+        {
+            base.Url = m_SafeServerURL(Server);
+            this.SecureChallengeResponse(key, message);
+            this.m_Connected = true;
+        }
+
         /// <summary>
         /// Disconnects the MediaManager instance from the MediaManager web application.
         /// </summary>
@@ -598,6 +615,81 @@ namespace Granicus.MediaManager.SDK
           SendChallengeResponse(Challenge, Response);
         }
 
+        /// <summary>
+        /// Provides a more secure authentication method than the one based on Key/Expiration
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="message"></param>
+        /// <param name="retry"></param>
+        public void SecureChallengeResponse(string key, string message, int retry = 0)
+        {
+            byte[] encrypted;
+            string initVector;
+            string application = message;//save the application name
+            byte[] randomMessageContent = new byte[MESSAGE_COMPLEXITY];
+            var generator = new RNGCryptoServiceProvider();
+            generator.GetBytes(randomMessageContent);//generate a random byte string of length 'MESSAGE_COMPLEXITY
+            message = message + BitConverter.ToString(randomMessageContent);//convert random bytes and append to string to create complex message
+            DateTime currentTime = DateTime.Now;
+            long currentUnixTime = ((DateTimeOffset)currentTime).ToUnixTimeSeconds();
+            currentUnixTime >>= 8;//Shift out the 8 low-order bits. This will give a value that is valid for approx. 4 min.
+
+            string passKey = key + currentUnixTime.ToString();//our passkey will be secret + Unix time as modified above
+            string encryptKey = passKey;//the key used for message encryption must be limited to 32 characters
+            //the passkey is not subject to length constraints
+            using (Aes aesAlg = Aes.Create())
+            {
+                int keyMinSize = aesAlg.LegalKeySizes.First().MinSize / 8;//key sizes are in bits, need to convert to bytes
+                int keyMaxSize = aesAlg.LegalKeySizes.First().MaxSize / 8;
+
+                if (encryptKey.Length > keyMaxSize)
+                {
+                    encryptKey = encryptKey.Substring(encryptKey.Length - keyMaxSize);
+                }
+                if (encryptKey.Length < keyMinSize)
+                {
+                    encryptKey = encryptKey.PadLeft(keyMinSize, 'X');
+                }
+
+                // Specify the key, but allow the library to randomly generate an initialization vector
+                aesAlg.Key = System.Text.Encoding.ASCII.GetBytes(encryptKey);
+
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                // Create the streams used for encryption.
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+                            //Write all data to the stream.
+                            swEncrypt.Write(message);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                        initVector = Convert.ToBase64String(aesAlg.IV);
+                    }
+                }
+            }
+
+            HMACSHA512 hmac = new HMACSHA512(System.Text.Encoding.ASCII.GetBytes(passKey));
+
+            string encryptedMessage = Convert.ToBase64String(encrypted);
+            string authHash = Convert.ToBase64String(hmac.ComputeHash(System.Text.Encoding.ASCII.GetBytes(message)));
+            try
+            {
+                AuthenticateApp(encryptedMessage, authHash, initVector, application);
+            }
+            catch (Exception e)
+            {
+                if (retry < MAXIMUM_RETRIES)//set to 3
+                {
+                    Thread.Sleep(RETRY_INTERVAL * ++retry);//interval of 2 gives retries at 2,4,6 seconds
+                    SecureChallengeResponse(key, application, retry);//application holds the original value of 'message'
+                }
+            }
+
+        }
         /// <summary>
         /// Send the response to a Challenge that was received using <see cref="Granicus.MediaManager.SDK.MediaManager.GetChallenge"/>.
         /// </summary>
