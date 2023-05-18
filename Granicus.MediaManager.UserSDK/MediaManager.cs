@@ -8,6 +8,7 @@ namespace Granicus.MediaManager.SDK
     using System.IO;
     using System.Threading;
 
+
     #region MediaManagerSDKService Class
     /// <summary>
     /// Deprecated class. Do not use.
@@ -630,17 +631,19 @@ namespace Granicus.MediaManager.SDK
             var generator = new RNGCryptoServiceProvider();
             generator.GetBytes(randomMessageContent);//generate a random byte string of length 'MESSAGE_COMPLEXITY
             message = message + BitConverter.ToString(randomMessageContent);//convert random bytes and append to string to create complex message
-            DateTime currentTime = DateTime.Now;
-            long currentUnixTime = ((DateTimeOffset)currentTime).ToUnixTimeSeconds();
+           
+            Int32 currentUnixTime = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             currentUnixTime >>= 8;//Shift out the 8 low-order bits. This will give a value that is valid for approx. 4 min.
 
             string passKey = key + currentUnixTime.ToString();//our passkey will be secret + Unix time as modified above
             string encryptKey = passKey;//the key used for message encryption must be limited to 32 characters
             //the passkey is not subject to length constraints
-            using (Aes aesAlg = Aes.Create())
+            using (Rijndael aesAlg = Rijndael.Create())
             {
-                int keyMinSize = aesAlg.LegalKeySizes.First().MinSize / 8;//key sizes are in bits, need to convert to bytes
-                int keyMaxSize = aesAlg.LegalKeySizes.First().MaxSize / 8;
+                int keyMinSize = aesAlg.LegalKeySizes[0].MinSize / 8;//key sizes are in bits, need to convert to bytes
+                int keyMaxSize = aesAlg.LegalKeySizes[0].MaxSize / 8;
+
+                Console.WriteLine("Min: " + keyMinSize + "   Max: " + keyMaxSize);
 
                 if (encryptKey.Length > keyMaxSize)
                 {
@@ -702,6 +705,23 @@ namespace Granicus.MediaManager.SDK
           this.Invoke("SendChallengeResponse", new object[] {
                         Challenge,
                         Response});
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Message"></param>
+        /// <param name="AuthHash"></param>
+        /// <param name="InitVector"></param>
+        /// <param name="Application"></param>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#AuthenticateApp", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        public void AuthenticateApp(string Message, string AuthHash, string InitVector, string Application)
+        {
+            this.Invoke("AuthenticateApp", new object[] {
+                        Message,
+                        AuthHash,
+                        InitVector,
+                        Application});
         }
 
         /// <summary>

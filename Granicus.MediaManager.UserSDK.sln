@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.33529.398
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA081450-497D-4C10-A990-91B03858C536}"
 	ProjectSection(SolutionItems) = preProject
@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CBECB5
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granicus.MediaManager.SDKTests", "Granicus.MediaManager.SDKTests\Granicus.MediaManager.SDKTests.csproj", "{4AE579E8-D923-4C8D-A22B-64AAB0D102BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKTester", "SDKTester\SDKTester.csproj", "{48694C51-1D5C-445F-88B7-49BC8DA2436B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -143,9 +145,24 @@ Global
 		{4AE579E8-D923-4C8D-A22B-64AAB0D102BA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4AE579E8-D923-4C8D-A22B-64AAB0D102BA}.Release|x86.ActiveCfg = Release|x86
 		{4AE579E8-D923-4C8D-A22B-64AAB0D102BA}.Release|x86.Build.0 = Release|x86
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Debug|x86.Build.0 = Debug|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Release|x86.ActiveCfg = Release|Any CPU
+		{48694C51-1D5C-445F-88B7-49BC8DA2436B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30E6045B-3B35-4D4A-BB43-E9787812EE91}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Granicus.MediaManager.UserSDK2.vsmdi
