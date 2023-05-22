@@ -638,12 +638,11 @@ namespace Granicus.MediaManager.SDK
             string passKey = key + currentUnixTime.ToString();//our passkey will be secret + Unix time as modified above
             string encryptKey = passKey;//the key used for message encryption must be limited to 32 characters
             //the passkey is not subject to length constraints
-            using (Rijndael aesAlg = Rijndael.Create())
+            using (Rijndael aesAlg = Rijndael.Create())//Rijndael was AES before AES was cool
             {
                 int keyMinSize = aesAlg.LegalKeySizes[0].MinSize / 8;//key sizes are in bits, need to convert to bytes
                 int keyMaxSize = aesAlg.LegalKeySizes[0].MaxSize / 8;
 
-                Console.WriteLine("Min: " + keyMinSize + "   Max: " + keyMaxSize);
 
                 if (encryptKey.Length > keyMaxSize)
                 {
@@ -666,7 +665,7 @@ namespace Granicus.MediaManager.SDK
                     {
                         using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
                         {
-                            //Write all data to the stream.
+                            //Write data to the stream.
                             swEncrypt.Write(message);
                         }
                         encrypted = msEncrypt.ToArray();
