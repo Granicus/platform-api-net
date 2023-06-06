@@ -1003,6 +1003,16 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="event"></param>
+        /// <param name="videoUrl"></param>
+        /// <param name="videoId"></param>
+        public void UpdateEvent(EventData @event, string videoUrl, int videoId)
+        {
+
+        }
+        /// <summary>
         /// Updates an event.
         /// </summary>
         /// <param name="event">The <see cref="Granicus.MediaManager.SDK.EventData"/> object to update.</param>

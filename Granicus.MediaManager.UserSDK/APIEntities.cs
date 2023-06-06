@@ -6091,6 +6091,9 @@
         /// <remarks/>
         private IntegerCollection _Views;
 
+        /// <remarks/>
+        private string _LinkedVideoStreamUrl;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.EventData"/> class.
         /// </summary>
@@ -6130,6 +6133,7 @@
         /// <param name="_MeetingTime">The posted start time of the meeting.</param>
         /// <param name="_AgendaPostedDate">The date on which the agenda for the meeting was posted.</param>
         /// <param name="_ConsentAgenda">Whether consent agenda is enabled (0-no, 1-yes)</param>
+        /// <param name="_LinkedVideoStreamUrl">URL for events with externally linked videos</param>
         public EventData(
                     int _ID,
                     string _UID,
@@ -6158,7 +6162,8 @@
                     string _AgendaTitle,
                     DateTime _MeetingTime,
                     DateTime _AgendaPostedDate,
-                    int _ConsentAgenda
+                    int _ConsentAgenda,
+                    string _LinkedVideoStreamUrl
                       )
         {
             this._ID = _ID;
@@ -6190,6 +6195,7 @@
             this._MeetingTime = _MeetingTime;
             this._AgendaPostedDate = _AgendaPostedDate;
             this._ConsentAgenda = _ConsentAgenda;
+            this._LinkedVideoStreamUrl = _LinkedVideoStreamUrl;
 
         }
 
@@ -6842,6 +6848,27 @@
                 }
             }
         }
+
+        /// <summary>
+        /// Video URL for events with externally linked videos
+        /// </summary>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable = true)]
+        public string LinkedVideoStreamUrl
+        {
+            get
+            {
+                return this._LinkedVideoStreamUrl;
+            }
+            set
+            {
+                if ((this._LinkedVideoStreamUrl != value))
+                {
+                    this._LinkedVideoStreamUrl = value;
+                    this.RaisePropertyChanged("LinkedVideoStreamUrl");
+                }
+            }
+        }
+
 
         /// <summary>
         /// An <see cref="Granicus.MediaManager.SDK.IntegerCollection"/> containing all of the numeric IDs of the events associated with this view.

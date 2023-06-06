@@ -34,6 +34,7 @@
           <element name="NextStartDate" type="xsd:dateTime"/>
           <element name="AgendaRolloverID" type="xsd:int"/>
           <element name="ConsentAgenda" type="xsd:int"/>
+          <element name="LinkedVideoStreamUrl" type="xsd:int"/>
           <element name="Views" type="ns5:IntegerCollection"/>
         </all>
       </complexType>
