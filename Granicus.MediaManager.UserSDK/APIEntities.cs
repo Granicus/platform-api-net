@@ -7359,6 +7359,8 @@
 
         private System.DateTime _CreatedDate;
 
+        private System.DateTime _VideoDate;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.LinkedVideoData"/> class.
         /// </summary>
@@ -7378,6 +7380,7 @@
         /// <param name="_AgendaUrl">The location of the Agenda associated with this linked video.</param>
         /// <param name="_AgendaPacketUrl">The location of the agenda packet associated with this linked video</param>
         /// <param name="_CreatedDate">The date the linked video was created. Cannot be changed.</param>
+        /// <param name="_VideoDate">The meeting date</param>
         public LinkedVideoData(
             int _ID,
             string _Name,
@@ -7387,7 +7390,8 @@
             string _MinutesUrl,
             string _AgendaUrl,
             string _AgendaPacketUrl,
-            System.DateTime _CreatedDate)
+            System.DateTime _CreatedDate,
+            System.DateTime _VideoDate)
         {
             this._ID = _ID;
             this._Name = _Name;
@@ -7398,6 +7402,7 @@
             this._AgendaUrl = _AgendaUrl;
             this._AgendaPacketUrl = _AgendaPacketUrl;
             this._CreatedDate = _CreatedDate;
+            this._VideoDate = _VideoDate;
         }
 
         /// <summary>
@@ -7509,7 +7514,7 @@
                 if ((this._MinutesUrl != value))
                 {
                     this._MinutesUrl = value;
-                    this.RaisePropertyChanged("ID");
+                    this.RaisePropertyChanged("MinutesUrl");
                 }
             }
         }
@@ -7570,7 +7575,24 @@
             }
         }
 
-
+        /// <summary>
+        /// The date of the meeting
+        /// </summary>
+        public System.DateTime VideoDate
+        {
+            get
+            {
+                return this._VideoDate;
+            }
+            set
+            {
+                if ((this._VideoDate != value))
+                {
+                    this._VideoDate = value;
+                    this.RaisePropertyChanged("VideoDate");
+                }
+            }
+        }
         /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
