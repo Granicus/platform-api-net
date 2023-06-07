@@ -1005,13 +1005,41 @@ namespace Granicus.MediaManager.SDK
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="event"></param>
+        /// <param name="eventId"></param>
         /// <param name="videoUrl"></param>
-        /// <param name="videoId"></param>
-        public void UpdateEvent(EventData @event, string videoUrl, int videoId)
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#CreateLinkedVideoFromEvent", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        public void CreateLinkedVideoFromEvent(int eventId, string videoUrl)
         {
-
+            this.Invoke("CreateLinkedVideoFromEvent", new object[]
+            {
+                eventId,
+                videoUrl
+            });
         }
+
+        /// <summary>
+        /// Updates a linked video object
+        /// </summary>
+        /// <param name="linkedVideoData"></param>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#UpdateLinkedVideo", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        public void UpdateLinkedVideo(LinkedVideoData @linkedVideoData)
+        {
+            this.Invoke("UpdateLinkedVideo", new object[]
+            {
+                @linkedVideoData
+            });
+        }
+
+
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#CreateLinkedVideo", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        public void CreateLinkedVideo(LinkedVideoData @linkedVideoData)
+        {
+            this.Invoke("CreateLinkedVideo", new object[]
+            {
+                @linkedVideoData
+            });
+        }
+
         /// <summary>
         /// Updates an event.
         /// </summary>
@@ -1021,6 +1049,7 @@ namespace Granicus.MediaManager.SDK
         {
             this.Invoke("UpdateEvent", new object[] {
                         @event});
+
         }
 
         /// <summary>
