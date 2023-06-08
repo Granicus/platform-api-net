@@ -5175,7 +5175,7 @@
 
         /// <remarks/>
         private int _ClipID;
-        
+
         private bool _Public;
 
         /// <remarks/>
@@ -5468,7 +5468,7 @@
                 }
             }
         }
-        
+
 
         /// <summary>
         /// Occurs when a property value changes.
@@ -7345,9 +7345,9 @@
 
         private string _Name;
 
-        private int _EventId;
+        private int _EventID;
 
-        private int _FolderId;
+        private int _FolderID;
 
         private string _Url;
 
@@ -7369,12 +7369,12 @@
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="_ID">The numeric ID of the linked video.  This property is assigned automatically by the system and will be ignored.</param>
         /// <param name="_Name">The name of the linked video</param>
-        /// <param name="_EventId">The numeric ID of the event associated with the linked video.</param>
-        /// <param name="_FolderId">The numeric ID of the folder containing the linked video</param>
+        /// <param name="_EventID">The numeric ID of the event associated with the linked video.</param>
+        /// <param name="_FolderID">The numeric ID of the folder containing the linked video</param>
         /// <param name="_Url">The URL of the linked video</param>
         /// <param name="_MinutesUrl">The URL of the associated minutes document</param>
         /// <param name="_AgendaUrl">The location of the Agenda associated with this linked video.</param>
@@ -7384,8 +7384,8 @@
         public LinkedVideoData(
             int _ID,
             string _Name,
-            int _EventId,
-            int _FolderId,
+            int _EventID,
+            int _FolderID,
             string _Url,
             string _MinutesUrl,
             string _AgendaUrl,
@@ -7395,8 +7395,8 @@
         {
             this._ID = _ID;
             this._Name = _Name;
-            this._EventId = _EventId;
-            this._FolderId = _FolderId;
+            this._EventID = _EventID;
+            this._FolderID = _FolderID;
             this._Url = _Url;
             this._MinutesUrl = _MinutesUrl;
             this._AgendaUrl = _AgendaUrl;
@@ -7446,18 +7446,18 @@
         /// <summary>
         /// The numeric ID of the event associated with the linked video
         /// </summary>
-        public int EventId
+        public int EventID
         {
             get
             {
-                return this._EventId;
+                return this._EventID;
             }
             set
             {
-                if ((this._EventId != value))
+                if ((this._EventID != value))
                 {
-                    this._EventId = value;
-                    this.RaisePropertyChanged("EventId");
+                    this._EventID = value;
+                    this.RaisePropertyChanged("EventID");
                 }
             }
         }
@@ -7465,18 +7465,18 @@
         /// <summary>
         /// The numeric ID of the folder containing the linked video
         /// </summary>
-        public int FolderId
+        public int FolderID
         {
             get
             {
-                return this._FolderId;
+                return this._FolderID;
             }
             set
             {
-                if ((this._FolderId != value))
+                if ((this._FolderID != value))
                 {
-                    this._FolderId = value;
-                    this.RaisePropertyChanged("FolderId");
+                    this._FolderID = value;
+                    this.RaisePropertyChanged("FolderID");
                 }
             }
         }

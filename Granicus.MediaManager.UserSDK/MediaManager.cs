@@ -21,7 +21,7 @@ namespace Granicus.MediaManager.SDK
 
     #region MediaManager Class
     /// <summary>
-    /// Allows interaction with the MediaManager web-based application. 
+    /// Allows interaction with the MediaManager web-based application.
     /// </summary>
     /// <remarks>
     /// <para>
@@ -59,7 +59,7 @@ namespace Granicus.MediaManager.SDK
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.MediaManager"/> class.
         /// </summary>
         /// <remarks>
-        /// This constructor does not connect you to an instance of MediaManager and therefore is not usable 
+        /// This constructor does not connect you to an instance of MediaManager and therefore is not usable
         /// until the <see cref="Granicus.MediaManager.SDK.MediaManager.Connect"/> method has been called.
         /// </remarks>
         public MediaManager()
@@ -68,7 +68,7 @@ namespace Granicus.MediaManager.SDK
             this.Url = "https://javiervista/SDK/User/index.php";
             this.CookieContainer = new CookieContainer();
         }
-     
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.MediaManager"/> class and connects it
         /// to the provided MediaManager site.
@@ -100,7 +100,7 @@ namespace Granicus.MediaManager.SDK
 
         #region Base Class Overrides
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
@@ -177,13 +177,13 @@ namespace Granicus.MediaManager.SDK
         #endregion
 
         #region Public Utility Methods
-        
+
         /// <summary>
         /// Converts a list of metadata as returned by GetClipMetaData or GetEventMetaData and converts it to
         /// tree form that can be used to write back into MediaManager via ImportClipMetaData or ImportEventMetaData.
         /// </summary>
         /// <param name="MetaData">The array of metadata to be converted to tree form.</param>
-        /// 
+        ///
         public void ConvertToMetaTree(ref MetaDataData[] MetaData)
         {
             ArrayList al = new ArrayList(m_BuildMetaBranch(MetaData, 0));
@@ -195,7 +195,7 @@ namespace Granicus.MediaManager.SDK
         /// tree form that can be used to write back into MediaManager via ImportClipMetaData or ImportEventMetaData.
         /// </summary>
         /// <param name="MetaData">The collection of metadata to be converted to tree form.</param>
-        /// 
+        ///
         public void ConvertToMetaTree(ref MetaDataDataCollection MetaData)
         {
             MetaData = m_BuildMetaBranch(MetaData, 0);
@@ -261,7 +261,7 @@ namespace Granicus.MediaManager.SDK
                         do
                         {
                             Document minDoc = new Document();
-                            minDoc.Location = Newtonsoft.Json.JsonConvert.SerializeObject(new 
+                            minDoc.Location = Newtonsoft.Json.JsonConvert.SerializeObject(new
                             {
                                 action = "add",
                                 id = id
@@ -411,7 +411,7 @@ namespace Granicus.MediaManager.SDK
             this.m_Connected = true;
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Server"></param>
         /// <param name="key"></param>
@@ -427,7 +427,7 @@ namespace Granicus.MediaManager.SDK
         /// Disconnects the MediaManager instance from the MediaManager web application.
         /// </summary>
         /// <remarks>
-        /// Once disconnect has been called you must call <see cref="Granicus.MediaManager.SDK.MediaManager.Connect"/> 
+        /// Once disconnect has been called you must call <see cref="Granicus.MediaManager.SDK.MediaManager.Connect"/>
         /// before the MediaManager instance is usable again.
         /// </remarks>
         public void Disconnect()
@@ -631,7 +631,7 @@ namespace Granicus.MediaManager.SDK
             var generator = new RNGCryptoServiceProvider();
             generator.GetBytes(randomMessageContent);//generate a random byte string of length 'MESSAGE_COMPLEXITY
             message = message + BitConverter.ToString(randomMessageContent);//convert random bytes and append to string to create complex message
-           
+
             Int32 currentUnixTime = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             currentUnixTime >>= 8;//Shift out the 8 low-order bits. This will give a value that is valid for approx. 4 min.
 
@@ -707,7 +707,7 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Message"></param>
         /// <param name="AuthHash"></param>
@@ -1003,7 +1003,7 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
-        /// 
+        /// Creates a linked video object AND adds video stream url to connected Event
         /// </summary>
         /// <param name="eventId"></param>
         /// <param name="videoUrl"></param>
@@ -1030,13 +1030,29 @@ namespace Granicus.MediaManager.SDK
             });
         }
 
-
+        /// <summary>
+        /// Creates a linked video object
+        /// </summary>
+        /// <param name="linkedVideoData"></param>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#CreateLinkedVideo", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         public void CreateLinkedVideo(LinkedVideoData @linkedVideoData)
         {
             this.Invoke("CreateLinkedVideo", new object[]
             {
                 @linkedVideoData
+            });
+        }
+
+        /// <summary>
+        /// Deletes a linked video object
+        /// </summary>
+        /// <param name="linkedVideoId"></param>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#DeleteLinkedVideo", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        public void DeleteLinkedVideo(int @linkedVideoId)
+        {
+            this.Invoke("DeleteLinkedVideo", new object[]
+            {
+                @linkedVideoId
             });
         }
 
@@ -1069,13 +1085,13 @@ namespace Granicus.MediaManager.SDK
         /// <param name="EventID">The ID of the event to add MetaData to.</param>
         /// <remarks>
         /// This method can be used to add a single MetaDataData object or a tree of MetaDataData objects
-        /// (using the <see cref="Granicus.MediaManager.SDK.MetaDataData.Children"/> property) to an event.  This method respects the 
+        /// (using the <see cref="Granicus.MediaManager.SDK.MetaDataData.Children"/> property) to an event.  This method respects the
         /// <see cref="Granicus.MediaManager.SDK.MetaDataData.ParentID"/> and <see cref="Granicus.MediaManager.SDK.MetaDataData.ParentUID"/>
         /// properties of the root level <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object that is passed in allowing the
         /// caller to specify the place in the MetaData tree where the object should be added.
         /// </remarks>
         /// <param name="MetaDataData">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to add.</param>
-        /// <returns>An array of <see cref="Granicus.MediaManager.SDK.KeyMapping"/> objects that can be used to get the 
+        /// <returns>An array of <see cref="Granicus.MediaManager.SDK.KeyMapping"/> objects that can be used to get the
         /// IDs of the newly added <see cref="Granicus.MediaManager.SDK.MetaDataData"/> objects.</returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#AddEventMetaData", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         [return: System.Xml.Serialization.SoapElementAttribute("KeyTable")]
@@ -1166,7 +1182,7 @@ namespace Granicus.MediaManager.SDK
         /// Retreives an upload interface for a given Folder.
         /// </summary>
         /// <remarks>
-        /// While it is possible to use this method to connect to a MediaVault, it is recommended that you use the 
+        /// While it is possible to use this method to connect to a MediaVault, it is recommended that you use the
         /// <see cref="Granicus.MediaManager.SDK.MediaManager.GetMediaVault(Int32)"/> method instead.</remarks>
         /// <param name="FolderID">The ID of the folder that you wish to upload to.</param>
         /// <returns>A <see cref="Granicus.MediaManager.SDK.ServerInterfaceData"/> object that can be used to connect a new MediaVault object.</returns>
@@ -1368,7 +1384,7 @@ namespace Granicus.MediaManager.SDK
             return ((string)(results[0]));
         }
 
-        
+
         /// <summary>
         /// Retreive the transcript (captions) for a given clip.
         /// </summary>
@@ -1490,13 +1506,13 @@ namespace Granicus.MediaManager.SDK
         /// <param name="ClipID">The ID of the event to add MetaData to.</param>
         /// <remarks>
         /// This method can be used to add a single MetaDataData object or a tree of MetaDataData objects
-        /// (using the <see cref="Granicus.MediaManager.SDK.MetaDataData.Children"/> property) to an event.  This method respects the 
+        /// (using the <see cref="Granicus.MediaManager.SDK.MetaDataData.Children"/> property) to an event.  This method respects the
         /// <see cref="Granicus.MediaManager.SDK.MetaDataData.ParentID"/> and <see cref="Granicus.MediaManager.SDK.MetaDataData.ParentUID"/>
         /// properties of the root level <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object that is passed in allowing the
         /// caller to specify the place in the MetaData tree where the object should be added.
         /// </remarks>
         /// <param name="MetaDataData">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to add.</param>
-        /// <returns>An array of <see cref="Granicus.MediaManager.SDK.KeyMapping"/> objects that can be used to get the 
+        /// <returns>An array of <see cref="Granicus.MediaManager.SDK.KeyMapping"/> objects that can be used to get the
         /// IDs of the newly added <see cref="Granicus.MediaManager.SDK.MetaDataData"/> objects.</returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#AddClipMetaData", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
         [return: System.Xml.Serialization.SoapElementAttribute("KeyTable")]
@@ -1647,8 +1663,8 @@ namespace Granicus.MediaManager.SDK
             return ((ViewData)(results[0]));
         }
 
-        
-        /// <summary> 
+
+        /// <summary>
         /// Updates a view record in the system.
         /// </summary>
         /// <param name="view">A <see cref="Granicus.MediaManager.SDK.ViewData"/> object that contains the new values for the record.</param>
