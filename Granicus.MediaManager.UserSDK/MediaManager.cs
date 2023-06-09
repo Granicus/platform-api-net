@@ -1007,53 +1007,61 @@ namespace Granicus.MediaManager.SDK
         /// </summary>
         /// <param name="eventId"></param>
         /// <param name="videoUrl"></param>
+        /// <returns>The new unique ID of the created linkedvideo.</returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#CreateLinkedVideoFromEvent", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
-        public void CreateLinkedVideoFromEvent(int eventId, string videoUrl)
+        public int CreateLinkedVideoFromEvent(int eventId, string videoUrl)
         {
-            this.Invoke("CreateLinkedVideoFromEvent", new object[]
+            object[] results = this.Invoke("CreateLinkedVideoFromEvent", new object[]
             {
                 eventId,
                 videoUrl
             });
+            return ((int)(results[0]));
         }
 
         /// <summary>
         /// Updates a linked video object
         /// </summary>
         /// <param name="linkedVideoData"></param>
+        /// <returns>The ID of the updated linkedvideo</returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#UpdateLinkedVideo", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
-        public void UpdateLinkedVideo(LinkedVideoData @linkedVideoData)
+        public int UpdateLinkedVideo(LinkedVideoData @linkedVideoData)
         {
-            this.Invoke("UpdateLinkedVideo", new object[]
+            object[] results = this.Invoke("UpdateLinkedVideo", new object[]
             {
                 @linkedVideoData
             });
+            return ((int)(results[0]));
         }
 
         /// <summary>
         /// Creates a linked video object
         /// </summary>
         /// <param name="linkedVideoData"></param>
+        /// <returns>The new unique ID of the created linkedvideo.</returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#CreateLinkedVideo", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
-        public void CreateLinkedVideo(LinkedVideoData @linkedVideoData)
+        public int CreateLinkedVideo(LinkedVideoData @linkedVideoData)
         {
-            this.Invoke("CreateLinkedVideo", new object[]
+            object[] results = this.Invoke("CreateLinkedVideo", new object[]
             {
                 @linkedVideoData
             });
+            return ((int)(results[0]));
         }
 
         /// <summary>
         /// Deletes a linked video object
         /// </summary>
         /// <param name="linkedVideoId"></param>
+        /// <returns>The ID of the deleted linkedvideo</returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#DeleteLinkedVideo", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
-        public void DeleteLinkedVideo(int @linkedVideoId)
+        public int DeleteLinkedVideo(int @linkedVideoId)
         {
-            this.Invoke("DeleteLinkedVideo", new object[]
+            object[] results = this.Invoke("DeleteLinkedVideo", new object[]
             {
                 @linkedVideoId
             });
+            return ((int)(results[0]));
         }
 
         /// <summary>
