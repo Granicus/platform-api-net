@@ -44,8 +44,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CBECB5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granicus.MediaManager.SDKTests", "Granicus.MediaManager.SDKTests\Granicus.MediaManager.SDKTests.csproj", "{4AE579E8-D923-4C8D-A22B-64AAB0D102BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKTester", "SDKTester\SDKTester.csproj", "{48694C51-1D5C-445F-88B7-49BC8DA2436B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
