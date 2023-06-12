@@ -1065,6 +1065,20 @@ namespace Granicus.MediaManager.SDK
         }
 
         /// <summary>
+        /// Get a linked video object by ID
+        /// </summary>
+        /// <param name="LinkedVideoID"></param>
+        /// <returns>A linked video object</returns>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#GetLinkedVideo", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]
+        [return: System.Xml.Serialization.SoapElementAttribute("linkedVideo")]
+        public LinkedVideoData GetLinkedVideo(int LinkedVideoID)
+        {
+            object[] results = this.Invoke("GetLinkedVideo", new object[] {
+                        LinkedVideoID});
+            return ((LinkedVideoData)(results[0]));
+        }
+
+        /// <summary>
         /// Updates an event.
         /// </summary>
         /// <param name="event">The <see cref="Granicus.MediaManager.SDK.EventData"/> object to update.</param>

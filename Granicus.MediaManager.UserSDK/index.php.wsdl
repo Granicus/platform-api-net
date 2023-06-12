@@ -590,6 +590,12 @@
   <message name="CreateLinkedVideoResponse">
     <part name="LinkedVideoID" type="xsd:int"/>
   </message>
+  <message name="GetLinkedVideoRequest">
+    <part name="LinkedVideoID" type="xsd:int"/>
+  </message>
+  <message name="GetLinkedVideoResponse">
+    <part name="linkedVideo" type="ns5:LinkedVideoData"/>
+  </message>
   <message name="DeleteEventRequest">
     <part name="EventID" type="xsd:int"/>
   </message>
@@ -1089,6 +1095,10 @@
     <operation name="CreateLinkedVideo">
       <input message="tns:CreateLinkedVideoRequest"/>
       <output message="CreateLinkedVideoResponse"/>
+    </operation>
+    <operation name="GetLinkedVideo">
+      <input message="tns:GetLinkedVideoRequest"/>
+      <output message="GetLinkedVideoResponse"/>
     </operation>
     <operation name="DeleteEvent">
       <input message="tns:DeleteEventRequest"/>
@@ -1644,6 +1654,15 @@
     </operation>
     <operation name="CreateLinkedVideo">
       <soap:operation soapAction="urn:UserSDK#UserWebservice#CreateLinkedVideo"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="GetLinkedVideo">
+      <soap:operation soapAction="urn:UserSDK#UserWebservice#GetLinkedVideo"/>
       <input>
         <soap:body use="encoded" namespace="urn:UserSDK" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
       </input>
