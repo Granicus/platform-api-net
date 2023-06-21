@@ -410,7 +410,8 @@ namespace Granicus.MediaManager.SDK
             this.SendChallengeResponse(key, expiration);
             this.m_Connected = true;
         }
-    
+        /// <summary>
+        ///
         /// </summary>
         /// <param name="Server"></param>
         /// <param name="key"></param>
@@ -704,6 +705,8 @@ namespace Granicus.MediaManager.SDK
                         Response});
         }
 
+        /// <summary>
+        ///
         /// </summary>
         /// <param name="Message"></param>
         /// <param name="AuthHash"></param>
