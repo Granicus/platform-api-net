@@ -99,7 +99,8 @@ namespace UploadAgenda
                 eventNameBox.Text,
                 DateTime.Parse (startTimeBox.Text),
                 DateTime.Now,
-                consentAgendaCheckBox.Checked ? 1 : 0);
+                consentAgendaCheckBox.Checked ? 1 : 0,
+                null);
             _EventID = _mediamanager.CreateEvent(myevent);
             this._success = true;
         }

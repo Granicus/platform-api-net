@@ -5175,7 +5175,7 @@
 
         /// <remarks/>
         private int _ClipID;
-        
+
         private bool _Public;
 
         /// <remarks/>
@@ -5468,7 +5468,7 @@
                 }
             }
         }
-        
+
 
         /// <summary>
         /// Occurs when a property value changes.
@@ -6091,6 +6091,9 @@
         /// <remarks/>
         private IntegerCollection _Views;
 
+        /// <remarks/>
+        private string _LinkedVideoStreamUrl;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.EventData"/> class.
         /// </summary>
@@ -6130,6 +6133,7 @@
         /// <param name="_MeetingTime">The posted start time of the meeting.</param>
         /// <param name="_AgendaPostedDate">The date on which the agenda for the meeting was posted.</param>
         /// <param name="_ConsentAgenda">Whether consent agenda is enabled (0-no, 1-yes)</param>
+        /// <param name="_LinkedVideoStreamUrl">URL for events with externally linked videos</param>
         public EventData(
                     int _ID,
                     string _UID,
@@ -6158,7 +6162,8 @@
                     string _AgendaTitle,
                     DateTime _MeetingTime,
                     DateTime _AgendaPostedDate,
-                    int _ConsentAgenda
+                    int _ConsentAgenda,
+                    string _LinkedVideoStreamUrl
                       )
         {
             this._ID = _ID;
@@ -6190,6 +6195,7 @@
             this._MeetingTime = _MeetingTime;
             this._AgendaPostedDate = _AgendaPostedDate;
             this._ConsentAgenda = _ConsentAgenda;
+            this._LinkedVideoStreamUrl = _LinkedVideoStreamUrl;
 
         }
 
@@ -6844,6 +6850,27 @@
         }
 
         /// <summary>
+        /// Video URL for events with externally linked videos
+        /// </summary>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable = true)]
+        public string LinkedVideoStreamUrl
+        {
+            get
+            {
+                return this._LinkedVideoStreamUrl;
+            }
+            set
+            {
+                if ((this._LinkedVideoStreamUrl != value))
+                {
+                    this._LinkedVideoStreamUrl = value;
+                    this.RaisePropertyChanged("LinkedVideoStreamUrl");
+                }
+            }
+        }
+
+
+        /// <summary>
         /// An <see cref="Granicus.MediaManager.SDK.IntegerCollection"/> containing all of the numeric IDs of the events associated with this view.
         /// </summary>
         public IntegerCollection Views
@@ -7287,6 +7314,300 @@
         /// </summary>
         /// <remarks>
         /// The <see cref="Granicus.MediaManager.SDK.UserData.PropertyChanged"/> event can indicate all properties
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
+        /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
+        /// <param name="propertyName">The name of the property that was changed.</param>
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null))
+            {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    #endregion
+
+    #region LinkedVideoData
+    /// <summary>
+    /// Represents an externally linked video.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.312")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.SoapTypeAttribute(Namespace = "http://granicus.com/xsd")]
+    [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    public partial class LinkedVideoData : object, System.ComponentModel.INotifyPropertyChanged
+    {
+
+        private int _ID;
+
+        private string _Name;
+
+        private int _EventID;
+
+        private int _FolderID;
+
+        private string _Url;
+
+        private string _MinutesUrl;
+
+        private string _AgendaUrl;
+
+        private string _AgendaPacketUrl;
+
+        private System.DateTime _CreatedDate;
+
+        private System.DateTime _VideoDate;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.LinkedVideoData"/> class.
+        /// </summary>
+        public LinkedVideoData()
+        {
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="_ID">The numeric ID of the linked video.  This property is assigned automatically by the system and will be ignored.</param>
+        /// <param name="_Name">The name of the linked video</param>
+        /// <param name="_EventID">The numeric ID of the event associated with the linked video.</param>
+        /// <param name="_FolderID">The numeric ID of the folder containing the linked video</param>
+        /// <param name="_Url">The URL of the linked video</param>
+        /// <param name="_MinutesUrl">The URL of the associated minutes document</param>
+        /// <param name="_AgendaUrl">The location of the Agenda associated with this linked video.</param>
+        /// <param name="_AgendaPacketUrl">The location of the agenda packet associated with this linked video</param>
+        /// <param name="_CreatedDate">The date the linked video was created. Cannot be changed.</param>
+        /// <param name="_VideoDate">The meeting date</param>
+        public LinkedVideoData(
+            int _ID,
+            string _Name,
+            int _EventID,
+            int _FolderID,
+            string _Url,
+            string _MinutesUrl,
+            string _AgendaUrl,
+            string _AgendaPacketUrl,
+            System.DateTime _CreatedDate,
+            System.DateTime _VideoDate)
+        {
+            this._ID = _ID;
+            this._Name = _Name;
+            this._EventID = _EventID;
+            this._FolderID = _FolderID;
+            this._Url = _Url;
+            this._MinutesUrl = _MinutesUrl;
+            this._AgendaUrl = _AgendaUrl;
+            this._AgendaPacketUrl = _AgendaPacketUrl;
+            this._CreatedDate = _CreatedDate;
+            this._VideoDate = _VideoDate;
+        }
+
+        /// <summary>
+        /// The numeric ID of the linked video.  This property is assigned automatically by the system and will be ignored
+        /// </summary>
+        public int ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                if ((this._ID != value))
+                {
+                    this._ID = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The name of the linked video
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                if ((this._Name != value))
+                {
+                    this._Name = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The numeric ID of the event associated with the linked video
+        /// </summary>
+        public int EventID
+        {
+            get
+            {
+                return this._EventID;
+            }
+            set
+            {
+                if ((this._EventID != value))
+                {
+                    this._EventID = value;
+                    this.RaisePropertyChanged("EventID");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The numeric ID of the folder containing the linked video
+        /// </summary>
+        public int FolderID
+        {
+            get
+            {
+                return this._FolderID;
+            }
+            set
+            {
+                if ((this._FolderID != value))
+                {
+                    this._FolderID = value;
+                    this.RaisePropertyChanged("FolderID");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The URL of the linked video
+        /// </summary>
+        public string Url
+        {
+            get
+            {
+                return this._Url;
+            }
+            set
+            {
+                if ((this._Url != value))
+                {
+                    this._Url = value;
+                    this.RaisePropertyChanged("Url");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The URL of the associated minutes document
+        /// </summary>
+        public string MinutesUrl
+        {
+            get
+            {
+                return this._MinutesUrl;
+            }
+            set
+            {
+                if ((this._MinutesUrl != value))
+                {
+                    this._MinutesUrl = value;
+                    this.RaisePropertyChanged("MinutesUrl");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The location of the Agenda associated with this linked video
+        /// </summary>
+        public string AgendaUrl
+        {
+            get
+            {
+                return this._AgendaUrl;
+            }
+            set
+            {
+                if ((this._AgendaUrl != value))
+                {
+                    this._AgendaUrl = value;
+                    this.RaisePropertyChanged("AgendaUrl");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The location of the agenda packet associated with this linked video
+        /// </summary>
+        public string AgendaPacketUrl
+        {
+            get
+            {
+                return this._AgendaPacketUrl;
+            }
+            set
+            {
+                if ((this._AgendaPacketUrl != value))
+                {
+                    this._AgendaPacketUrl = value;
+                    this.RaisePropertyChanged("AgendaPacket");
+                }
+            }
+        }
+        /// <summary>
+        /// The date the user was created. Cannot be changed
+        /// </summary>
+        public System.DateTime CreatedDate
+        {
+            get
+            {
+                return this._CreatedDate;
+            }
+            set
+            {
+                if ((this._CreatedDate != value))
+                {
+                    this._CreatedDate = value;
+                    this.RaisePropertyChanged("CreatedDate");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The date of the meeting
+        /// </summary>
+        public System.DateTime VideoDate
+        {
+            get
+            {
+                return this._VideoDate;
+            }
+            set
+            {
+                if ((this._VideoDate != value))
+                {
+                    this._VideoDate = value;
+                    this.RaisePropertyChanged("VideoDate");
+                }
+            }
+        }
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
+        /// <remarks>
+        /// The <see cref="Granicus.MediaManager.SDK.LinkedVideoData.PropertyChanged"/> event can indicate all properties
+        /// on the object have changed by using either a null reference or String.Empty as the property name in the
+        /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/>
+        /// </remarks>
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Raises the <see cref="Granicus.MediaManager.SDK.LinkedVideoData.PropertyChanged"/> event for the given property.
+        /// </summary>
+        /// <remarks>
+        /// The <see cref="Granicus.MediaManager.SDK.LinkedVideoData.PropertyChanged"/> event can indicate all properties
         /// on the object have changed by using either a null reference or String.Empty as the property name in the
         /// <see cref="System.ComponentModel.PropertyChangedEventArgs"/></remarks>
         /// <param name="propertyName">The name of the property that was changed.</param>
