@@ -410,8 +410,7 @@ namespace Granicus.MediaManager.SDK
             this.SendChallengeResponse(key, expiration);
             this.m_Connected = true;
         }
-        /// <summary>
-        ///
+    
         /// </summary>
         /// <param name="Server"></param>
         /// <param name="key"></param>
@@ -631,7 +630,6 @@ namespace Granicus.MediaManager.SDK
             var generator = new RNGCryptoServiceProvider();
             generator.GetBytes(randomMessageContent);//generate a random byte string of length 'MESSAGE_COMPLEXITY
             message = message + BitConverter.ToString(randomMessageContent);//convert random bytes and append to string to create complex message
-
             Int32 currentUnixTime = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             currentUnixTime >>= 8;//Shift out the 8 low-order bits. This will give a value that is valid for approx. 4 min.
 
@@ -706,8 +704,6 @@ namespace Granicus.MediaManager.SDK
                         Response});
         }
 
-        /// <summary>
-        ///
         /// </summary>
         /// <param name="Message"></param>
         /// <param name="AuthHash"></param>
