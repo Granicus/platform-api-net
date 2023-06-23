@@ -5570,6 +5570,9 @@
         private MetaDataDataCollection _Children;
 
         /// <remarks/>
+        private string _Visibility;
+
+        /// <remarks/>
         private bool _AllowComment;
 
         /// <remarks/>
@@ -5945,6 +5948,25 @@
         }
 
         /// <summary>
+        /// Indicates the level of confidentiality of the item
+        /// </summary>
+        public string Visibility
+        {
+            get
+            {
+                return this._Visibility;
+            }
+            set
+            {
+                if ((this._Visibility != value))
+                {
+                    this._Visibility = value;
+                    this.RaisePropertyChanged("Visibility");
+                }
+            }
+        }
+
+        /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
         /// <remarks>
@@ -6163,7 +6185,7 @@
                     DateTime _MeetingTime,
                     DateTime _AgendaPostedDate,
                     int _ConsentAgenda,
-                    string _LinkedVideoStreamUrl
+                    string _LinkedVideoStreamUrl = ""//this needs to optional for backwards compatibility
                       )
         {
             this._ID = _ID;
