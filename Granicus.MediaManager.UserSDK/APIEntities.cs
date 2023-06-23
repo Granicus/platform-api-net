@@ -6185,7 +6185,7 @@
                     DateTime _MeetingTime,
                     DateTime _AgendaPostedDate,
                     int _ConsentAgenda,
-                    string _LinkedVideoStreamUrl = ""//this needs to optional for backwards compatibility
+                    string _LinkedVideoStreamUrl = ""//this parameter needs to be optional for backwards compatibility
                       )
         {
             this._ID = _ID;
