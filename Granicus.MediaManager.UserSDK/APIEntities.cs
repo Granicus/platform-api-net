@@ -5662,6 +5662,7 @@
         /// <param name="_OrderID">The order index of the MetaData object in the tree.</param>
         /// <param name="_Payload">The payload of the MetaData, which determines it's type.</param>
         /// <param name="_Children">Collection of <see cref="Granicus.MediaManager.SDK.MetaDataData"/> that represents the child nodes of the MetaData.</param>
+        /// <param name="_Visibility">Indicates item confidentiality</param>
         public MetaDataData(int _ID, string _UID, int _ParentID, string _ParentUID, int _ForeignID, int _SourceID, string _Name, int _TimeStamp, int _OrderID, object _Payload, MetaDataDataCollection _Children, string _Visibility)
         {
             this._ID = _ID;
