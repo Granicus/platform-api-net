@@ -38,6 +38,21 @@
           <element name="Views" type="ns5:IntegerCollection"/>
         </all>
       </complexType>
+      <complexType name="LinkedVideoData">
+        <all>
+          <element name="ID" type="xsd:int"/>
+          <element name="EventID" type="xsd:int"/>
+          <element name="FolderID" type="xsd:int"/>
+          <element name="Url" type="xsd:string"/>
+          <element name="MinutesUrl" type="xsd:string"/>
+          <element name="AgendaUrl" type="xsd:string"/>
+          <element name="AgendaPacketUrl" type="xsd:string"/>
+          <element name="VideoDate" type="xsd:dateTime"/>
+          <element name="Created" type="xsd:dateTime"/>
+          <element name="LastModified" type="xsd:dateTime"/>
+          <element name="Name" type="xsd:string"/>
+        </all>
+      </complexType>
       <complexType name="FolderData">
         <all>
           <element name="ID" type="xsd:int"/>
@@ -170,6 +185,7 @@
           <element name="Consent" type="xsd:int"/>
           <element name="ConsentVoteUID" type="xsd:string"/>
           <element name="ClosedSession" type="xsd:int"/>
+          <element name="Visibility" type="xsd:string"/>
           <element name="Children" type="ns5:MetaDataDataCollection"/>
         </all>
       </complexType>
