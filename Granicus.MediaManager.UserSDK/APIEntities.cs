@@ -5648,6 +5648,37 @@
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.MetaDataData"/> class using the supplied values
+        /// for ID, UID, ForeignID, SourceID, Name, TimeStamp, OrderID, Payload, and Children.
+        /// </summary>
+        /// <param name="_ID">The numeric ID of the MetaData, this value is ignored when creating MetaData.</param>
+        /// <param name="_UID">The unique ID (UID) of the MetaData.</param>
+        /// <param name="_ParentID">The ID of the parent node of this MetaData.</param>
+        /// <param name="_ParentUID">The unique ID (UID) of the parent node of this MetaData.</param>
+        /// <param name="_ForeignID">The ID of the MetaData in an integrated system.</param>
+        /// <param name="_SourceID">The ID of the MetaData that this MetaData was copied from, if this is a copy.</param>
+        /// <param name="_Name">The name field of the MetaData.</param>
+        /// <param name="_TimeStamp">The time (in seconds) at which this MetaData was timestamped.</param>
+        /// <param name="_OrderID">The order index of the MetaData object in the tree.</param>
+        /// <param name="_Payload">The payload of the MetaData, which determines it's type.</param>
+        /// <param name="_Children">Collection of <see cref="Granicus.MediaManager.SDK.MetaDataData"/> that represents the child nodes of the MetaData.</param>
+        /// <param name="_Visibility">Indicates item confidentiality</param>
+        public MetaDataData(int _ID, string _UID, int _ParentID, string _ParentUID, int _ForeignID, int _SourceID, string _Name, int _TimeStamp, int _OrderID, object _Payload, MetaDataDataCollection _Children, string _Visibility)
+        {
+            this._ID = _ID;
+            this._UID = _UID;
+            this._ParentID = _ParentID;
+            this._ParentUID = _ParentUID;
+            this._ForeignID = _ForeignID;
+            this._SourceID = _SourceID;
+            this._Name = _Name;
+            this._TimeStamp = _TimeStamp;
+            this._OrderID = _OrderID;
+            this._Payload = _Payload;
+            this._Children = _Children;
+            this._Visibility = _Visibility;//this does not need to be optional because the previous constructor overload handles the case where visibility is missing
+        }
+        /// <summary>
         /// The numeric Granicus ID for the object.  This value is automatically generated and cannot be changed.
         /// </summary>
         public int ID
@@ -7379,9 +7410,11 @@
 
         private string _AgendaPacketUrl;
 
-        private System.DateTime _CreatedDate;
+        private System.DateTime _Created;
 
         private System.DateTime _VideoDate;
+
+        private System.DateTime _LastModified;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.LinkedVideoData"/> class.
@@ -7401,8 +7434,9 @@
         /// <param name="_MinutesUrl">The URL of the associated minutes document</param>
         /// <param name="_AgendaUrl">The location of the Agenda associated with this linked video.</param>
         /// <param name="_AgendaPacketUrl">The location of the agenda packet associated with this linked video</param>
-        /// <param name="_CreatedDate">The date the linked video was created. Cannot be changed.</param>
+        /// <param name="_Created">The date the linked video was created. Cannot be changed.</param>
         /// <param name="_VideoDate">The meeting date</param>
+        /// <param name="_LastModified"></param>
         public LinkedVideoData(
             int _ID,
             string _Name,
@@ -7412,8 +7446,9 @@
             string _MinutesUrl,
             string _AgendaUrl,
             string _AgendaPacketUrl,
-            System.DateTime _CreatedDate,
-            System.DateTime _VideoDate)
+            System.DateTime _Created,
+            System.DateTime _VideoDate,
+            System.DateTime _LastModified)
         {
             this._ID = _ID;
             this._Name = _Name;
@@ -7423,8 +7458,9 @@
             this._MinutesUrl = _MinutesUrl;
             this._AgendaUrl = _AgendaUrl;
             this._AgendaPacketUrl = _AgendaPacketUrl;
-            this._CreatedDate = _CreatedDate;
+            this._Created = _Created;
             this._VideoDate = _VideoDate;
+            this._LastModified = _LastModified;
         }
 
         /// <summary>
@@ -7581,18 +7617,18 @@
         /// <summary>
         /// The date the user was created. Cannot be changed
         /// </summary>
-        public System.DateTime CreatedDate
+        public System.DateTime Created
         {
             get
             {
-                return this._CreatedDate;
+                return this._Created;
             }
             set
             {
-                if ((this._CreatedDate != value))
+                if ((this._Created != value))
                 {
-                    this._CreatedDate = value;
-                    this.RaisePropertyChanged("CreatedDate");
+                    this._Created = value;
+                    this.RaisePropertyChanged("Created");
                 }
             }
         }
@@ -7612,6 +7648,25 @@
                 {
                     this._VideoDate = value;
                     this.RaisePropertyChanged("VideoDate");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The last time this Linked Video was modified
+        /// </summary>
+        public System.DateTime LastModified
+        {
+            get
+            {
+                return this._LastModified;
+            }
+            set
+            {
+                if ((this._LastModified != value))
+                {
+                    this._LastModified = value;
+                    this.RaisePropertyChanged("LastModified");
                 }
             }
         }
