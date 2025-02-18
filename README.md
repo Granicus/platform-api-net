@@ -6,7 +6,7 @@ Overview
 About Granicus Platform API
 -------------
 
-Granicus is a platform for government transparency and citizen engagement in use by over 900 government organizations, from small towns to the US Congress. This Ruby wrapper allows for integration with the SOAP web service that can be used to automate backend tasks in the system.
+Granicus is a platform for government transparency and citizen engagement in use by over 900 government organizations, from small towns to the US Congress. This .NET wrapper allows for integration with the SOAP web service that can be used to automate backend tasks in the system.
 
 ### Usage
   
