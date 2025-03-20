@@ -4,7 +4,7 @@ namespace Granicus.MediaManager.SDK
     using System.Net;
     using System.Web.Services.Protocols;
     using System.IO;
-    
+
 
     #region Async Method Event Handlers and EventArgs Classes
     /// <summary>
@@ -79,7 +79,7 @@ namespace Granicus.MediaManager.SDK
             get
             {
                 this.RaiseExceptionIfNecessary();
-                // TrimClip returns void, so we won't have any results. 
+                // TrimClip returns void, so we won't have any results.
                 return null;
             }
         }
@@ -92,7 +92,7 @@ namespace Granicus.MediaManager.SDK
     /// Allows interaction with a MediaVault.
     /// </summary>
     /// <remarks>
-    /// The <see cref="Granicus.MediaManager.SDK.MediaVault"/> class is used for an and all interaction with the MediaVault 
+    /// The <see cref="Granicus.MediaManager.SDK.MediaVault"/> class is used for an and all interaction with the MediaVault
     /// architecture component.  The <see cref="Granicus.MediaManager.SDK.MediaVault"/> object allows you to upload new files
     /// to the system and work with video files directly.</remarks>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.312")]
@@ -143,7 +143,7 @@ namespace Granicus.MediaManager.SDK
         #endregion
 
         #region Events
-        
+
         /// <summary>
         /// This event indicates when an asynchronous call to <see cref="Granicus.MediaManager.SDK.MediaVault.UploadFile(int,string,string)"/> has completed.
         /// </summary>
@@ -158,7 +158,7 @@ namespace Granicus.MediaManager.SDK
         #endregion
 
         #region Constructors
-         
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Granicus.MediaManager.SDK.MediaVault"/> class.
         /// </summary>
@@ -170,7 +170,7 @@ namespace Granicus.MediaManager.SDK
 
         #region Base Class Overrides
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="uri"></param>
         /// <returns></returns>
@@ -201,10 +201,17 @@ namespace Granicus.MediaManager.SDK
         /// <returns></returns>
         private string m_SafeServerURL(ServerInterfaceData Server)
         {
-            if (!Server.Host.StartsWith("http://"))
+            // This is a solution specific for the Data Migration team. Here we
+            // are enforcing https, but that is likely not what is needed in
+            // general for most MediaVault use cases.
+            if (!Server.Host.StartsWith("http://") && !Server.Host.StartsWith("https://"))
             {
-                Server.Host = "http://" + Server.Host;
+                Server.Host = "https://" + Server.Host;
+            } else if (Server.Host.StartsWith("http://"))
+            {
+                Server.Host = Server.Host.Replace("http://", "https://");
             }
+
             if (Server.Host.EndsWith("/"))
             {
                 Server.Host.TrimEnd("/".ToCharArray());
@@ -225,15 +232,15 @@ namespace Granicus.MediaManager.SDK
                 return this.m_Connected;
             }
         }
- 
+
         /// <summary>
-        /// Connects the MediaVault instance to the given ServerInterface on the given MediaManager site using the given 
+        /// Connects the MediaVault instance to the given ServerInterface on the given MediaManager site using the given
         /// ImpersonationToken.
         /// </summary>
         /// <remarks>
-        /// It is recommended that you use 
-        /// <see cref="Granicus.MediaManager.SDK.MediaManager.GetMediaVault(Granicus.MediaManager.SDK.ServerInterfaceData)"/> 
-        /// or <see cref="Granicus.MediaManager.SDK.MediaManager.GetMediaVault(int)"/> to connect to 
+        /// It is recommended that you use
+        /// <see cref="Granicus.MediaManager.SDK.MediaManager.GetMediaVault(Granicus.MediaManager.SDK.ServerInterfaceData)"/>
+        /// or <see cref="Granicus.MediaManager.SDK.MediaManager.GetMediaVault(int)"/> to connect to
         /// a MediaVault rather than connecting it manually yourself.
         /// </remarks>
         /// <param name="Server">The ServerInterface that the MediaVault object should be connected to.</param>
@@ -471,7 +478,7 @@ namespace Granicus.MediaManager.SDK
             }
         }
 
-        #endregion 
+        #endregion
     }
     #endregion
 }
