@@ -1,4 +1,6 @@
-﻿namespace MeetingSimulator
+﻿using System;
+
+namespace MeetingSimulator
 {
     partial class Form1
     {
