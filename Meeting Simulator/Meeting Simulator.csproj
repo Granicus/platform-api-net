@@ -87,6 +87,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Event.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Event.Designer.cs">
+      <DependentUpon>Event.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Event.resx">
+      <DependentUpon>Event.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +120,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartUpSelection.resx">
+      <DependentUpon>StartUpSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UploadProgressDialog.resx">
       <DependentUpon>UploadProgressDialog.cs</DependentUpon>
@@ -128,6 +140,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="StartUpSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartUpSelection.Designer.cs">
+      <DependentUpon>StartUpSelection.cs</DependentUpon>
     </Compile>
     <Compile Include="UploadProgressDialog.cs">
       <SubType>Form</SubType>
