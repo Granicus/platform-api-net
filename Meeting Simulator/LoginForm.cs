@@ -13,6 +13,8 @@ namespace MeetingSimulator
     public partial class LoginForm : Form
     {
         private MediaManager _mediaManager;
+        public MediaManager MediaManagerInstance => _mediaManager;
+        
         public LoginForm(MediaManager mediamanager)
         {
             _mediaManager = mediamanager;
@@ -23,10 +25,16 @@ namespace MeetingSimulator
         {
             try
             {
+                if (_mediaManager == null)
+                {
+                    _mediaManager = new MediaManager();
+                }
+
                 _mediaManager.Connect(textBox1.Text, textBox2.Text, textBox3.Text);
                 if (_mediaManager.Connected)
                 {
                     this.DialogResult = DialogResult.OK;
+                    //MessageBox.Show("Connected!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
             }
@@ -37,6 +45,10 @@ namespace MeetingSimulator
                 textBox3.Text = "";
                 textBox2.Focus();
             }
+        }
+        private void LoginForm_FormClosed(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

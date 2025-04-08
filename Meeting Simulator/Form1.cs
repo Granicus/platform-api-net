@@ -11,6 +11,8 @@ namespace MeetingSimulator
 {
     public partial class Form1 : Form
     {
+        private MediaManager _mediaManager;
+
         EventData[] _events;
 
         public Form1()
@@ -20,11 +22,15 @@ namespace MeetingSimulator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoginForm login = new LoginForm(mediamanager);
+            MediaManager mediaManager = new MediaManager();
+            LoginForm login = new LoginForm(mediaManager);
+            login.StartPosition = FormStartPosition.CenterScreen;
+
             DialogResult result = login.ShowDialog();
             if (result == DialogResult.OK)
             {
-                _events = mediamanager.GetEvents();
+                _mediaManager = mediaManager;
+                _events = _mediaManager.GetEvents();
                 foreach (EventData eventdata in _events)
                 {
                     string[] details = { eventdata.ID.ToString(), eventdata.Name };
@@ -59,13 +65,13 @@ namespace MeetingSimulator
                 {
                     EventData sim_event = _events[eventListView.SelectedIndices[0]];
 
-                    MediaVault mv = mediamanager.GetMediaVault(sim_event.FolderID);
+                    MediaVault mv = _mediaManager.GetMediaVault(sim_event.FolderID);
                     UploadProgressDialog uploadProgressDialog = new UploadProgressDialog(uploadFileDialog.FileNames, mv, sim_event.FolderID, 512 * 512);
                     uploadProgressDialog.ShowDialog();
 
                     // update the new archive's properties to match the event
                     int clipId = uploadProgressDialog.ArchiveIDs[0];
-                    ClipData clip = mediamanager.GetClip(clipId);
+                    ClipData clip = _mediaManager.GetClip(clipId);
                     clip.Name = sim_event.Name;
                     clip.ForeignID = sim_event.ForeignID;
                     clip.Date = sim_event.StartTime;
@@ -80,10 +86,10 @@ namespace MeetingSimulator
                     clip.State = sim_event.State;
                     clip.Zip = sim_event.Zip;
                     clip.CameraID = sim_event.CameraID;
-                    mediamanager.UpdateClip(clip);
+                    _mediaManager.UpdateClip(clip);
 
                     // transfer the event metadata to the clip
-                    MetaDataData[] meta_array = mediamanager.GetEventMetaData(sim_event.ID);
+                    MetaDataData[] meta_array = _mediaManager.GetEventMetaData(sim_event.ID);
 
                     // scrub out the UIDs and assign source_id
                     foreach (MetaDataData meta in meta_array)
@@ -93,10 +99,10 @@ namespace MeetingSimulator
                     }
 
                     // tree-ify
-                    mediamanager.ConvertToMetaTree(ref meta_array);
+                    _mediaManager.ConvertToMetaTree(ref meta_array);
 
                     // upload metadata into the archive
-                    mediamanager.ImportClipMetaData(clipId, meta_array, true, true);
+                    _mediaManager.ImportClipMetaData(clipId, meta_array, true, true);
 
                     MessageBox.Show("Meeting simulated successfully.");
                 }
@@ -106,7 +112,10 @@ namespace MeetingSimulator
                 MessageBox.Show("Simulation failed, please make sure your MediaManager site is properly configured and running at least version 3.5. Exception: " + ex.Message);
             }
         }
+        private void Form1_FormClosed(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-        
     }
 }
