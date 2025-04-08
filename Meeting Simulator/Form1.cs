@@ -112,10 +112,6 @@ namespace MeetingSimulator
                 MessageBox.Show("Simulation failed, please make sure your MediaManager site is properly configured and running at least version 3.5. Exception: " + ex.Message);
             }
         }
-        private void Form1_FormClosed(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
     }
 }

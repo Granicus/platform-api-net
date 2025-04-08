@@ -93,7 +93,6 @@ namespace MeetingSimulator
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.eventListView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Closed += new System.EventHandler(this.Form1_FormClosed);
             this.Name = "Form1";
             this.Text = "Meeting Simulator Sample Application";
             this.Load += new System.EventHandler(this.Form1_Load);
