@@ -52,7 +52,7 @@ namespace MeetingSimulator
             if (_mediaManager != null)
             {
                 SetDefaultEventDetails();
-                this.txtStatus.Text = $"-- Connected to Media Manager {_mediaManager.Url}";
+                this.txtStatus.Text = String.Format("-- Connected to Media Manager: {0}", _mediaManager.Url);
 
             }
             else
@@ -66,7 +66,7 @@ namespace MeetingSimulator
         {
             _eventDetailsCounter++;
             var now = DateTime.Now;
-            this.txtEventName.Text = $"{_eventDetailsCounter} - Simulator Test Event - {now.ToString("g")}";
+            this.txtEventName.Text = string.Format("{0} - Simulator Test Event - {1}", _eventDetailsCounter, now.ToString("g"));
             this.txtEventDate.Text = now.ToString("g");
             this.txtLinkedVideoStreamUrl.Text = "https://friendly.new.swagit.com/events/xyz";
         }
@@ -116,8 +116,8 @@ namespace MeetingSimulator
             
             if (testEvent != null)
             {
-                strMsg = $"-- Event Created: {testEvent.Name} - {testEvent.ID}";
-                this.txtStatus.Text += $"{Environment.NewLine}{strMsg}";
+                strMsg = String.Format("-- Event Created: {0} - {1}", testEvent.Name, testEvent.ID);
+                this.txtStatus.Text += String.Format("{0}{1}", Environment.NewLine, strMsg);
                 MessageBox.Show(strMsg, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // re-set defaults for another event creation
@@ -126,7 +126,7 @@ namespace MeetingSimulator
             else
             {
                 strMsg = "-- Event creation failed!";
-                this.txtStatus.Text += $"{Environment.NewLine}{strMsg}";
+                this.txtStatus.Text += String.Format("{0}{1}", Environment.NewLine, strMsg);
                 MessageBox.Show(strMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -187,7 +187,6 @@ namespace MeetingSimulator
                     _mediaManager.DeleteFolder(folderId);
                 }
             }
-            this.Close();
         }
     }
 }
