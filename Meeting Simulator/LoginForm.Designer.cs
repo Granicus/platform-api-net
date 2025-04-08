@@ -112,7 +112,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Closed += new System.EventHandler(this.LoginForm_FormClosed);
             this.Name = "LoginForm";
             this.Text = "Login";
             this.ResumeLayout(false);
