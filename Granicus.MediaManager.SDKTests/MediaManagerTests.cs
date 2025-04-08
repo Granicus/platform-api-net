@@ -13,13 +13,15 @@ namespace Granicus.MediaManager.SDK.Tests
     public class MediaManagerTests
     {
 
-        private string _memaSite = "mm.lvh.me"; // mm.lvh.me
-        private string _memaUser = "";
-        private string _memaPass = "";
+        private string _memaSite = "https://green.qa.granicus.com/"; // "mm.lvh.me"; // mm.lvh.me
+        private string _memaUser = "UnitTest";
+        private string _memaPass = "UnitTest2025!";
         private MediaManager _mema;
 
         private string _unitTestFolder = "Unit Test Folder";
         private string _unitTestCamera = "Unit Test Camera";
+
+        private List<int> _eventIds = new List<int>();
 
         [TestInitialize]
         public void Init()
@@ -151,7 +153,7 @@ namespace Granicus.MediaManager.SDK.Tests
             return ret;
         }
 
-        private EventData CreateTestEvent(string eventName, DateTime eventTime)
+        private EventData CreateTestEvent(string eventName, DateTime eventTime, string eventLinkedVideoStreamUrl = "")
         {
             EventData ret = null;
 
@@ -167,6 +169,8 @@ namespace Granicus.MediaManager.SDK.Tests
             newEvent.Duration = 2 * 60 * 60;
             newEvent.Record = true;
             newEvent.Broadcast = true;
+
+            newEvent.LinkedVideoStreamUrl = eventLinkedVideoStreamUrl;
 
             var eventID = _mema.CreateEvent(newEvent);
             ret = _mema.GetEvent(eventID);
@@ -225,7 +229,51 @@ namespace Granicus.MediaManager.SDK.Tests
             };
         }
 
+        [TestMethod()]
+        public void ValidateLinkedVideoStreamUrlUponCreateTestEvent()
+        {
+            var testCases = new[]
+            {
+                new { LinkedVideoStreamUrl = "https://friendly.new.swagit.com/events/xyz", ExpectedIsValid = true },
+                new { LinkedVideoStreamUrl = "http://friendly.new.swagit.com/events/xyz", ExpectedIsValid = true },
+                new { LinkedVideoStreamUrl = "http://www.google.com", ExpectedIsValid = true },
+                new { LinkedVideoStreamUrl = "friendly.new.swagit.com/events/xyz", ExpectedIsValid = false },
+                new { LinkedVideoStreamUrl = "invalid-url", ExpectedIsValid = false },
+                new { LinkedVideoStreamUrl = "google.com", ExpectedIsValid = false },
+                new { LinkedVideoStreamUrl = "www.google.com", ExpectedIsValid = false },
+                new { LinkedVideoStreamUrl = "ftp://example.com", ExpectedIsValid = false },
+                new { LinkedVideoStreamUrl = "file.pdf", ExpectedIsValid = false }
+            };
 
+            foreach (var testCase in testCases)
+            {
+                var eventDate = DateTime.Now;
+                var eventName = string.Format("Unit Test Event - {0}", eventDate.ToString("g"));
+                var eventLinkedVideoStreamUrl = testCase.LinkedVideoStreamUrl;
+
+                var testEvent = CreateTestEvent(eventName, eventDate);
+
+                _eventIds.Add(testEvent.ID);
+
+                Assert.AreEqual(testCase.ExpectedIsValid, testEvent != null);
+            }
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+
+            if (_eventIds != null && _eventIds.Count > 0)
+            {
+                foreach (var eventId in _eventIds)
+                {
+                    _mema.DeleteEvent(eventId);
+                }
+            }
+
+            _mema.Disconnect();
+            _mema = null;
+        }
 
     }
 }
