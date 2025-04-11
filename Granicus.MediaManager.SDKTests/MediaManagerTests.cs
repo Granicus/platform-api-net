@@ -12,10 +12,10 @@ namespace Granicus.MediaManager.SDK.Tests
     [TestClass()]
     public class MediaManagerTests
     {
-
         private string _memaSite = "http://mm.lvh.me"; // mm.lvh.me
         private string _memaUser = "";
         private string _memaPass = "";
+
         private MediaManager _mema;
 
         private string _unitTestFolder = "Unit Test Folder";
@@ -259,6 +259,7 @@ namespace Granicus.MediaManager.SDK.Tests
                 var eventLinkedVideoStreamUrl = testCase.LinkedVideoStreamUrl;
 
                 var testEvent = CreateTestEvent(eventName, eventDate, eventLinkedVideoStreamUrl);
+
 
                 _eventIds.Add(testEvent.ID);
 
