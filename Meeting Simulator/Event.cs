@@ -112,7 +112,17 @@ namespace MeetingSimulator
                 return;
             }
 
-            var testEvent = CreateTestEvent(txtEventName.Text, eventDate, txtLinkedVideoStreamUrl.Text);
+            EventData testEvent = null;
+
+            try
+            {
+                testEvent = CreateTestEvent(txtEventName.Text, eventDate, txtLinkedVideoStreamUrl.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("An error occurred while creating Event: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             
             if (testEvent != null)
             {

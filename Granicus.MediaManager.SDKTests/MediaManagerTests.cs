@@ -12,10 +12,10 @@ namespace Granicus.MediaManager.SDK.Tests
     [TestClass()]
     public class MediaManagerTests
     {
+        private string _memaSite = "http://mm.lvh.me"; // mm.lvh.me
+        private string _memaUser = "";
+        private string _memaPass = "";
 
-        private string _memaSite = "https://green.qa.granicus.com/"; // "mm.lvh.me"; // mm.lvh.me
-        private string _memaUser = "UnitTest";
-        private string _memaPass = "UnitTest2025!";
         private MediaManager _mema;
 
         private string _unitTestFolder = "Unit Test Folder";
@@ -229,9 +229,16 @@ namespace Granicus.MediaManager.SDK.Tests
             };
         }
 
+        /// <summary>
+        /// Validates the LinkedVideoStreamUrl upon creating a test Event with various URLs
+        /// THIS IS NOT A GOOD IDEA TO TEST WITH LIVE MEDIA MANAGER IN AN INTERGRATION TESTS STYLE
+        /// ONLY execute this test MANUALLY by providing values for the _memaUser and _memaPass at the begining of the class
+        /// </summary>
         [TestMethod()]
+        [Ignore]
         public void ValidateLinkedVideoStreamUrlUponCreateTestEvent()
         {
+            // Test cases for validating LinkedVideoStreamUrl
             var testCases = new[]
             {
                 new { LinkedVideoStreamUrl = "https://friendly.new.swagit.com/events/xyz", ExpectedIsValid = true },
@@ -251,7 +258,8 @@ namespace Granicus.MediaManager.SDK.Tests
                 var eventName = string.Format("Unit Test Event - {0}", eventDate.ToString("g"));
                 var eventLinkedVideoStreamUrl = testCase.LinkedVideoStreamUrl;
 
-                var testEvent = CreateTestEvent(eventName, eventDate);
+                var testEvent = CreateTestEvent(eventName, eventDate, eventLinkedVideoStreamUrl);
+
 
                 _eventIds.Add(testEvent.ID);
 
