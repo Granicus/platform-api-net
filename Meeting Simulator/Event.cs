@@ -120,7 +120,7 @@ namespace MeetingSimulator
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while creating the event: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("An error occurred while creating Event: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             
