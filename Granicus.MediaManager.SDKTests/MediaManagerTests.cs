@@ -267,11 +267,11 @@ namespace Granicus.MediaManager.SDK.Tests
                 }
                 catch (Exception ex)
                 {
-                    TestContext.WriteLine($"Exception: {ex.Message}");
+                    TestContext.WriteLine(String.Format("Exception: {0}", ex.Message));
                     testEvent = null;
                 }   
 
-                TestContext.WriteLine($"Testing URL: {eventLinkedVideoStreamUrl}, Expected: {testCase.ExpectedIsValid}, Result: {testEvent != null}");
+                TestContext.WriteLine(String.Format("Testing URL: {0}, Expected: {1}, Result: {2}", eventLinkedVideoStreamUrl, testCase.ExpectedIsValid, testEvent != null));
 
                 if (testEvent != null) _eventIds.Add(testEvent.ID);
 
