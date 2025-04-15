@@ -120,7 +120,9 @@ namespace MeetingSimulator
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("An error occurred while creating Event: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                strMsg = String.Format("-- Error on Event Create: {0}", ex.Message);
+                this.txtStatus.Text += String.Format("{0}{1}", Environment.NewLine, strMsg);
+                MessageBox.Show(strMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             
@@ -197,6 +199,8 @@ namespace MeetingSimulator
                     _mediaManager.DeleteFolder(folderId);
                 }
             }
+
+            _mediaManager.Disconnect(); 
         }
     }
 }

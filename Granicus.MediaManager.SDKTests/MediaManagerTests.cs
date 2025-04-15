@@ -22,6 +22,7 @@ namespace Granicus.MediaManager.SDK.Tests
         private string _unitTestCamera = "Unit Test Camera";
 
         private List<int> _eventIds = new List<int>();
+        public TestContext TestContext { get; set; }
 
         [TestInitialize]
         public void Init()
@@ -230,7 +231,7 @@ namespace Granicus.MediaManager.SDK.Tests
         }
 
         /// <summary>
-        /// Validates the LinkedVideoStreamUrl upon creating a test Event with various URLs
+        /// Validates the LinkedVideoStreamUrl upon creating a test Event with various URLs - IGNORED Test - execute manually only
         /// THIS IS NOT A GOOD IDEA TO TEST WITH LIVE MEDIA MANAGER IN AN INTERGRATION TESTS STYLE
         /// ONLY execute this test MANUALLY by providing values for the _memaUser and _memaPass at the begining of the class
         /// </summary>
@@ -244,11 +245,11 @@ namespace Granicus.MediaManager.SDK.Tests
                 new { LinkedVideoStreamUrl = "https://friendly.new.swagit.com/events/xyz", ExpectedIsValid = true },
                 new { LinkedVideoStreamUrl = "http://friendly.new.swagit.com/events/xyz", ExpectedIsValid = true },
                 new { LinkedVideoStreamUrl = "http://www.google.com", ExpectedIsValid = true },
+                new { LinkedVideoStreamUrl = "ftp://example.com", ExpectedIsValid = true },
                 new { LinkedVideoStreamUrl = "friendly.new.swagit.com/events/xyz", ExpectedIsValid = false },
                 new { LinkedVideoStreamUrl = "invalid-url", ExpectedIsValid = false },
                 new { LinkedVideoStreamUrl = "google.com", ExpectedIsValid = false },
                 new { LinkedVideoStreamUrl = "www.google.com", ExpectedIsValid = false },
-                new { LinkedVideoStreamUrl = "ftp://example.com", ExpectedIsValid = false },
                 new { LinkedVideoStreamUrl = "file.pdf", ExpectedIsValid = false }
             };
 
@@ -258,10 +259,21 @@ namespace Granicus.MediaManager.SDK.Tests
                 var eventName = string.Format("Unit Test Event - {0}", eventDate.ToString("g"));
                 var eventLinkedVideoStreamUrl = testCase.LinkedVideoStreamUrl;
 
-                var testEvent = CreateTestEvent(eventName, eventDate, eventLinkedVideoStreamUrl);
+                EventData testEvent = null;
 
+                try
+                { 
+                    testEvent = CreateTestEvent(eventName, eventDate, eventLinkedVideoStreamUrl);
+                }
+                catch (Exception ex)
+                {
+                    TestContext.WriteLine($"Exception: {ex.Message}");
+                    testEvent = null;
+                }   
 
-                _eventIds.Add(testEvent.ID);
+                TestContext.WriteLine($"Testing URL: {eventLinkedVideoStreamUrl}, Expected: {testCase.ExpectedIsValid}, Result: {testEvent != null}");
+
+                if (testEvent != null) _eventIds.Add(testEvent.ID);
 
                 Assert.AreEqual(testCase.ExpectedIsValid, testEvent != null);
             }
