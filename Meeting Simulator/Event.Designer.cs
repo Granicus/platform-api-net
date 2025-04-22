@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Event));
             this.btnCreateEvent = new System.Windows.Forms.Button();
             this.lblEventDate = new System.Windows.Forms.Label();
             this.txtEventDate = new System.Windows.Forms.TextBox();
@@ -148,6 +149,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 317);
             this.Controls.Add(this.pnlEvent);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Event";
             this.Text = "Event";
             this.Closed += new System.EventHandler(this.Event_FormClosed);
