@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartUpSelection));
             this.lblSelect = new System.Windows.Forms.Label();
             this.cboAvailableForms = new System.Windows.Forms.ComboBox();
             this.btnLaunch = new System.Windows.Forms.Button();
@@ -71,6 +72,7 @@
             this.Controls.Add(this.btnLaunch);
             this.Controls.Add(this.cboAvailableForms);
             this.Controls.Add(this.lblSelect);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StartUpSelection";
             this.Text = "StartUp Form Selection";
             this.ResumeLayout(false);

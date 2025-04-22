@@ -33,15 +33,14 @@ namespace MeetingSimulator
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mediamanager = new Granicus.MediaManager.SDK.MediaManager();
             this.eventListView = new System.Windows.Forms.ListView();
+            this.idColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.runButton = new System.Windows.Forms.Button();
-            this.idColumnHeader = new System.Windows.Forms.ColumnHeader();
-            this.nameColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.uploadFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // mediamanager
             // 
-            this.mediamanager.CookieContainer = ((System.Net.CookieContainer)(resources.GetObject("mediamanager.CookieContainer")));
             this.mediamanager.Credentials = null;
             this.mediamanager.Url = "http://javiervista/SDK/User/index.php";
             this.mediamanager.UseDefaultCredentials = false;
@@ -52,6 +51,7 @@ namespace MeetingSimulator
             this.idColumnHeader,
             this.nameColumnHeader});
             this.eventListView.FullRowSelect = true;
+            this.eventListView.HideSelection = false;
             this.eventListView.Location = new System.Drawing.Point(12, 12);
             this.eventListView.MultiSelect = false;
             this.eventListView.Name = "eventListView";
@@ -60,6 +60,15 @@ namespace MeetingSimulator
             this.eventListView.UseCompatibleStateImageBehavior = false;
             this.eventListView.View = System.Windows.Forms.View.Details;
             this.eventListView.SelectedIndexChanged += new System.EventHandler(this.eventListView_SelectedIndexChanged);
+            // 
+            // idColumnHeader
+            // 
+            this.idColumnHeader.Text = "Event ID";
+            // 
+            // nameColumnHeader
+            // 
+            this.nameColumnHeader.Text = "Event Name";
+            this.nameColumnHeader.Width = 517;
             // 
             // runButton
             // 
@@ -71,15 +80,6 @@ namespace MeetingSimulator
             this.runButton.Text = "Run Simulation";
             this.runButton.UseVisualStyleBackColor = true;
             this.runButton.Click += new System.EventHandler(this.runButton_Click);
-            // 
-            // idColumnHeader
-            // 
-            this.idColumnHeader.Text = "Event ID";
-            // 
-            // nameColumnHeader
-            // 
-            this.nameColumnHeader.Text = "Event Name";
-            this.nameColumnHeader.Width = 517;
             // 
             // uploadFileDialog
             // 
@@ -93,6 +93,7 @@ namespace MeetingSimulator
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.eventListView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Meeting Simulator Sample Application";
             this.Load += new System.EventHandler(this.Form1_Load);
