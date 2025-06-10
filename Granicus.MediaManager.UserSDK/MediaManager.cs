@@ -124,9 +124,16 @@ namespace Granicus.MediaManager.SDK
         {
             if (!Server.StartsWith("https://") && !Server.StartsWith("http://"))
             {
-                Server = "https://" + Server;
-            } else if(Server.StartsWith("http://") && !Server.Contains("mm.lvh.me")) {
-              Server = Server.Replace("http://","https://");
+                System.Net.IPAddress ipAddress;
+                bool isIp = System.Net.IPAddress.TryParse(Server, out ipAddress);
+                if (isIp)
+                {
+                    Server = "http://" + Server;
+                }
+                else
+                {
+                    Server = "https://" + Server;
+                }
             }
             if (!Server.EndsWith("/"))
             {
@@ -1456,7 +1463,7 @@ namespace Granicus.MediaManager.SDK
         /// properties of the root level <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object that is passed in allowing the
         /// caller to specify the place in the MetaData tree where the object should be added.
         /// </remarks>
-        /// <param name="MetaDataData">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to add.</param>
+        /// <param name="MetaDataData">The <see cref="Granicus.MediaManager.SDK.MetaDataData"/> object to
         /// <returns>An array of <see cref="Granicus.MediaManager.SDK.KeyMapping"/> objects that can be used to get the
         /// IDs of the newly added <see cref="Granicus.MediaManager.SDK.MetaDataData"/> objects.</returns>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("urn:UserSDK#userwebservice#AddClipMetaData", RequestNamespace = "urn:UserSDK", ResponseNamespace = "urn:UserSDK")]

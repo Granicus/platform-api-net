@@ -201,9 +201,18 @@ namespace Granicus.MediaManager.SDK
         /// <returns></returns>
         private string m_SafeServerURL(ServerInterfaceData Server)
         {
-            if (!Server.Host.StartsWith("http://"))
+            if (!Server.Host.StartsWith("http://") && !Server.Host.StartsWith("https://"))
             {
-                Server.Host = "http://" + Server.Host;
+                System.Net.IPAddress ipAddress;
+                bool isIp = System.Net.IPAddress.TryParse(Server.Host, out ipAddress);
+                if (isIp)
+                {
+                    Server.Host = "http://" + Server.Host;
+                }
+                else
+                {
+                    Server.Host = "https://" + Server.Host;
+                }
             }
             if (Server.Host.EndsWith("/"))
             {
