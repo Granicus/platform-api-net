@@ -96,7 +96,6 @@ namespace Granicus.MediaManager.SDK
         private const int RETRY_INTERVAL = 2000;
         private const int MAXIMUM_RETRIES = 3;
         private const int MESSAGE_COMPLEXITY = 128;
-        private readonly string logFilePath = "C:\\Program Files\\Bakers_MediaManager.log";
         #endregion
 
         #region Base Class Overrides
@@ -114,16 +113,6 @@ namespace Granicus.MediaManager.SDK
         }
         #endregion
 
-
-        private void LogToFile(string message)
-        {
-            try
-            {
-                System.IO.File.AppendAllText(logFilePath, $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}\r\n");
-            }
-            catch { /* Ignore logging errors */ }
-        }
-
         #region Private Utility Methods
         /// <summary>
         /// Converts server name (i.e. streaming.granicus.com) into complete url useful to base
@@ -133,36 +122,24 @@ namespace Granicus.MediaManager.SDK
         /// <returns></returns>
         private string m_SafeServerURL(string Server)
         {
-            LogToFile($"m_SafeServerURL called with Server='{Server}'");
             if (!Server.StartsWith("https://") && !Server.StartsWith("http://"))
             {
-                LogToFile($"m_SafeServerURL reached if conditon='{Server}'");
                 string serverHost = Server.Split(':')[0]; // Remove port if present
-                LogToFile($"m_SafeServerURL serverHost ='{serverHost}'");
                 System.Net.IPAddress ipAddress;
                 bool isIp = System.Net.IPAddress.TryParse(serverHost, out ipAddress);
-                LogToFile($"m_SafeServerURL isIp ='{isIp}'");
                 if (isIp)
                 {
-                    LogToFile($"m_SafeServerURL reached into isIp if conditon='{isIp}'");
                     Server = "http://" + Server;
-                    LogToFile($"Detected IP. Using http. Result: '{Server}'");
                 }
                 else
                 {
-                    LogToFile($"m_SafeServerURL reached into isIp else conditon='{isIp}'");
                     Server = "https://" + Server;
-                    LogToFile($"Detected DNS. Using https. Result: '{Server}'");
                 }
-                LogToFile($"m_SafeServerURL end if conditon Server ='{Server}'");
             }
             if (!Server.EndsWith("/"))
             {
                 Server = Server + "/";
-                LogToFile($"Appended trailing slash. Result: '{Server}'");
             }
-            string finalUrl = Server + m_urlSuffix;
-            LogToFile($"Final URL: '{finalUrl}'");
             return Server + m_urlSuffix;
         }
 

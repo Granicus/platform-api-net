@@ -199,48 +199,26 @@ namespace Granicus.MediaManager.SDK
         /// </summary>
         /// <param name="Server">Server Name (i.e. streaming.granicus.com)</param>
         /// <returns></returns>
-        private readonly string logFilePath = "C:\\Program Files\\Bakers_MediaVault.log";
-
-        private void LogToFile(string message)
-        {
-            try
-            {
-                System.IO.File.AppendAllText(logFilePath, $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {message}\r\n");
-            }
-            catch { /* Ignore logging errors */ }
-        }
 
         private string m_SafeServerURL(ServerInterfaceData Server)
         {
-            LogToFile($"m_SafeServerURL called with Server='{Server}'");
-            LogToFile($"m_SafeServerURL Server.Host='{Server.Host}', ControlPort='{Server.ControlPort}'");
             if (!Server.Host.StartsWith("http://") && !Server.Host.StartsWith("https://"))
             {
-                LogToFile($"m_SafeServerURL reached if condition. Server.Host='{Server.Host}'");
                 System.Net.IPAddress ipAddress;
                 bool isIp = System.Net.IPAddress.TryParse(Server.Host, out ipAddress);
-                LogToFile($"m_SafeServerURL isIp='{isIp}' for Host='{Server.Host}'");
                 if (isIp)
                 {
-                    LogToFile($"m_SafeServerURL reached into isIp if condition. isIp='{isIp}'");
                     Server.Host = "http://" + Server.Host;
-                    LogToFile($"Detected IP. Using http. Result: '{Server.Host}'");
                 }
                 else
                 {
-                    LogToFile($"m_SafeServerURL reached into isIp else condition. isIp='{isIp}'");
                     Server.Host = "https://" + Server.Host;
-                    LogToFile($"Detected DNS. Using https. Result: '{Server.Host}'");
                 }
-                LogToFile($"m_SafeServerURL end if condition. Server='{Server}'");
             }
             if (Server.Host.EndsWith("/"))
             {
                 Server.Host.TrimEnd("/".ToCharArray());
-                LogToFile($"Trimmed trailing slash. Result: '{Server.Host}'");
             }
-            string finalUrl = Server.Host + ":" + Server.ControlPort + m_urlSuffix;
-            LogToFile($"Final URL: '{finalUrl}'");
             return Server.Host + ":" + Server.ControlPort + m_urlSuffix;
         }
         #endregion
@@ -273,15 +251,11 @@ namespace Granicus.MediaManager.SDK
         /// <param name="ImpersonationToken">A valid ImpersonationToken.</param>
         public void Connect(ServerInterfaceData Server, string MediaManagerServer, string ImpersonationToken)
         {
-            LogToFile($"Connect() called with Server='{Server}'");
-            LogToFile($"Connect() called with MediaManagerServer='{MediaManagerServer}'");
-            LogToFile($"Connect() called with ImpersonationToken='{ImpersonationToken}'");
             base.Url = m_SafeServerURL(Server);
             SecurityHeaderValue = new SecurityHeader();
             SecurityHeaderValue.ServiceHost = MediaManagerServer;
             SecurityHeaderValue.SecurityToken = ImpersonationToken;
             this.m_Connected = true;
-            LogToFile($"Connect() end with Server='{Server}'");
         }
 
         /// <summary>
