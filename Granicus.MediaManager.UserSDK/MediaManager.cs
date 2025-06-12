@@ -124,9 +124,17 @@ namespace Granicus.MediaManager.SDK
         {
             if (!Server.StartsWith("https://") && !Server.StartsWith("http://"))
             {
-                Server = "https://" + Server;
-            } else if(Server.StartsWith("http://") && !Server.Contains("mm.lvh.me")) {
-              Server = Server.Replace("http://","https://");
+                string serverHost = Server.Split(':')[0]; // Remove port if present
+                System.Net.IPAddress ipAddress;
+                bool isIp = System.Net.IPAddress.TryParse(serverHost, out ipAddress);
+                if (isIp)
+                {
+                    Server = "http://" + Server;
+                }
+                else
+                {
+                    Server = "https://" + Server;
+                }
             }
             if (!Server.EndsWith("/"))
             {
