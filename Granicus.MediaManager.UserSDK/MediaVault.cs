@@ -199,7 +199,6 @@ namespace Granicus.MediaManager.SDK
         /// </summary>
         /// <param name="Server">Server Name (i.e. streaming.granicus.com)</param>
         /// <returns></returns>
-
         private string m_SafeServerURL(ServerInterfaceData Server)
         {
             if (!Server.Host.StartsWith("http://") && !Server.Host.StartsWith("https://"))
